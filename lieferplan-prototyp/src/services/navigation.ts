@@ -1,4 +1,4 @@
-import type { LatLng } from '../domain/types';
+import type { LatLng } from '../data/types';
 
 /**
  * Hand-off to Google Maps via the official Maps URLs (https://developers.google.com/maps/documentation/urls).

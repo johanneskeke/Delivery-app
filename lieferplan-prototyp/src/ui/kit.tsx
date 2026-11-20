@@ -110,7 +110,7 @@ export function Stack({ children, gap = 8 }: { children: ReactNode; gap?: number
   return <View style={{ gap }}>{children}</View>;
 }
 
-/** Hinweis, dass Daten simuliert sind. Muss überall sichtbar sein, wo Demo-Daten auftauchen. */
+/** Notice that data are synthetic. Must be visible wherever demo data appear. */
 export function SimulatedNotice({ text }: { text: string }) {
   return (
     <View style={styles.notice}>

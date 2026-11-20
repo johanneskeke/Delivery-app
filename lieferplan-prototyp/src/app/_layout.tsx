@@ -1,21 +1,17 @@
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
-import { useTourStore } from '@/store/tour-store';
+import { useDemoStore } from '@/store/demo-store';
 import { colors } from '@/ui/kit';
 
-/** Wartet, bis der gespeicherte Stand vom Gerät geladen ist, damit nichts kurz "leer" aufblitzt. */
+const subscribeHydration = (onChange: () => void) => useDemoStore.persist.onFinishHydration(onChange);
+const isHydrated = () => useDemoStore.persist.hasHydrated();
+
+/** Wait until the saved demo progress is loaded from the phone, so nothing flashes "empty". */
 function useHydrated() {
-  const [hydrated, setHydrated] = useState(useTourStore.persist.hasHydrated());
-  useEffect(() => {
-    const unsubscribe = useTourStore.persist.onFinishHydration(() => setHydrated(true));
-    // Falls das Laden schon fertig war, bevor wir uns angemeldet haben.
-    if (useTourStore.persist.hasHydrated()) setHydrated(true);
-    return unsubscribe;
-  }, []);
-  return hydrated;
+  return useSyncExternalStore(subscribeHydration, isHydrated, isHydrated);
 }
 
 export default function RootLayout() {
@@ -31,18 +27,10 @@ export default function RootLayout() {
   return (
     <>
       <StatusBar style="dark" />
-      <Stack
-        screenOptions={{
-          headerBackTitle: 'Zurück',
-          contentStyle: { backgroundColor: colors.bg },
-        }}>
-        <Stack.Screen name="index" options={{ title: 'Tour vorbereiten' }} />
-        <Stack.Screen name="stops" options={{ title: '1 · Stopps' }} />
-        <Stack.Screen name="check" options={{ title: '2 · Daten prüfen' }} />
-        <Stack.Screen name="route" options={{ title: '3 · Route' }} />
-        <Stack.Screen name="load" options={{ title: '4 · Beladen' }} />
-        <Stack.Screen name="scan" options={{ title: 'Paket scannen', presentation: 'modal' }} />
-        <Stack.Screen name="drive" options={{ title: '5 · Fahren' }} />
+      <Stack screenOptions={{ headerBackTitle: 'Back', contentStyle: { backgroundColor: colors.bg } }}>
+        <Stack.Screen name="index" options={{ title: 'Today’s tour' }} />
+        <Stack.Screen name="import" options={{ title: 'Import check' }} />
+        <Stack.Screen name="about" options={{ title: 'Data and sources' }} />
         <Stack.Screen name="map-test" options={{ title: 'Map test' }} />
       </Stack>
     </>
