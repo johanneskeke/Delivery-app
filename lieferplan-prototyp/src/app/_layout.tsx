@@ -38,7 +38,7 @@ export default function RootLayout() {
           contentStyle: { backgroundColor: colors.bg },
         }}>
         <Stack.Screen name="index" options={{ title: '', headerRight: () => <SettingsButton /> }} />
-        <Stack.Screen name="compare" options={{ title: 'Your route' }} />
+        <Stack.Screen name="insights" options={{ title: 'Insights' }} />
         <Stack.Screen name="details" options={{ title: 'Details' }} />
         <Stack.Screen name="load" options={{ title: 'Load parcels' }} />
         <Stack.Screen name="scan" options={{ headerShown: false, presentation: 'fullScreenModal' }} />

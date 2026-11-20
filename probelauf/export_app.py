@@ -257,7 +257,7 @@ def build_plan(netz, start, sim, rows_by_stop, mode, extra_halt_info=None):
         if c.get("warn"):
             m = re.match(r"Fußweg (\d+) m, Grenze (\d+) m", c["warn"])
             warnings.append({"kind": "walk_over_limit",
-                             "text": f"Walk {m.group(1)} m, limit {m.group(2)} m; nothing closer ({clean_street(c['street'])})" if m
+                             "text": f"Walk {m.group(1)} m (limit {m.group(2)} m), nothing closer" if m
                              else c["warn"], "source": "Rule D (assumption)"})
         halt = {
             "id": hid, "seq": i + 1, "arrival": fmt(p["ankunft"]), "leave": fmt(p["ab"]),
@@ -384,39 +384,38 @@ def add_reasons(res, plan, sim):
             hs, (what, src) = hit
             if "Sperrung" in what:
                 closed = re.sub(r"^VIZ: ", "", src).split(" zwischen")[0]
-                reason = {"text": f"{closed} closed → park in {where}", "source": "VIZ Berlin"}
+                reason = {"text": f"{closed} closed – park here", "source": "VIZ Berlin"}
             else:
-                reason = {"text": f"{hs['label']}: no stopping at the door → park in {where}", "source": "OpenStreetMap"}
+                reason = {"text": f"No stopping at {hs['label']} – park here", "source": "OpenStreetMap"}
         if reason is None:
             times = dict((s["nr"], t) for s, t in p["stopps"])
             for s in sorted(h["stops"], key=lambda s: (s["limit"] or 9999, s["von"] or 0)):
-                eta = fmt(times[s["nr"]])
                 # only tight windows or stops that were late / too early in the list order (no noise)
                 tight = s["limit"] is not None and s["limit"] - times[s["nr"]] < 60
                 if not (s["prio"] or tight or s["nr"] in list_problem):
                     continue
                 if s["prio"]:
-                    reason = {"text": f"{s['label']}: priority until {fmt(s['prio'])} → at the door {eta}",
+                    reason = {"text": f"Priority until {fmt(s['prio'])} · {s['label']}",
                               "source": "Tour list"}
                 elif s["von"] and s["nr"] in too_early:  # the list order arrived before opening
-                    reason = {"text": f"{s['label']}: opens {fmt(s['von'])} → at the door {eta}", "source": "Tour list"}
+                    reason = {"text": f"Opens {fmt(s['von'])} · {s['label']}", "source": "Tour list"}
                 elif s["limit"]:
-                    reason = {"text": f"{s['label']}: time window until {fmt(s['limit'])} → at the door {eta}",
+                    reason = {"text": f"Deliver by {fmt(s['limit'])} · {s['label']}",
                               "source": "Tour list"}
                 elif s["von"]:
-                    reason = {"text": f"{s['label']}: opens {fmt(s['von'])} → at the door {eta}", "source": "Tour list"}
+                    reason = {"text": f"Opens {fmt(s['von'])} · {s['label']}", "source": "Tour list"}
                 if reason:
                     break
         if reason is None and c["typ"] == "Ladezone":
-            reason = {"text": f"Loading zone {clean_street(c['street'])}, valid {fw(c['wins'])}",
+            reason = {"text": f"Loading zone, {fw(c['wins'])}",
                       "source": "OpenStreetMap"}
         if reason is None and p.get("lz_inaktiv"):
             z = p["lz_inaktiv"]
-            reason = {"text": f"Loading zone only {fw(z['wins'])} → park on the kerb in {clean_street(c['street'])}",
+            reason = {"text": f"Loading zone only {fw(z['wins'])} – kerb instead",
                       "source": "OpenStreetMap"}
         if reason is None and len(h["stops"]) > 1:
             far = max(engine_walk_m(c["pt"], s["pt"]) for s in h["stops"])
-            reason = {"text": f"Park once for {len(h['stops'])} stops (walk up to {far:.0f} m)",
+            reason = {"text": f"{len(h['stops'])} stops on foot, up to {far:.0f} m",
                       "source": "Rule D (assumption)"}
         halt["reason"] = reason
 
@@ -521,6 +520,16 @@ def assign_slots(plan, rows_by_stop):
     plan["slots"] = slots
 
 
+# The four parcels scanned live in the demo (decided 2026-11-20): one per case. Printed with QR codes by
+# tourdaten/build_scan_labels.py; every other shipment counts as already loaded (simulated).
+DEMO_SCAN = [
+    "SYN969042356",  # dentist Fidicinstraße 33, priority until 12:00
+    "SYN232967813",  # Feinkost Marheinekeplatz 15, 18.5 kg → bottom slot
+    "SYN842112630",  # bicycle workshop Zossener Straße 14, bulky item → floor
+    "SYN682681796",  # Felix Hartmann, Gneisenaustraße 43, a normal parcel
+]
+
+
 def demo_labels(shipment_ids):
     """The printed demo labels (tourdaten/build_labels.py, PICK and FOREIGN), read as text: that script needs reportlab.
     The app treats every other shipment as already loaded (simulated), decided 2026-11-20 ("Scan and load details")."""
@@ -532,7 +541,10 @@ def demo_labels(shipment_ids):
     missing = [i for i in on_tour if i not in shipment_ids]
     if missing or foreign in shipment_ids or len(on_tour) != 13:
         raise SystemExit(f"demo labels do not match the tour: missing {missing}, foreign {foreign}, {len(on_tour)} labels")
-    return {"on_tour": on_tour, "not_on_tour": foreign, "source": "tourdaten/build_labels.py"}
+    if any(i not in on_tour for i in DEMO_SCAN):
+        raise SystemExit("DEMO_SCAN must be printed demo labels")
+    return {"on_tour": on_tour, "not_on_tour": foreign, "to_scan": DEMO_SCAN,
+            "source": "tourdaten/build_labels.py, tourdaten/build_scan_labels.py"}
 
 
 # ---------------------------------------------------------------- main

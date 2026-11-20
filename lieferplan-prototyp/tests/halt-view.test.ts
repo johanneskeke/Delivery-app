@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
 import { route } from '../src/data/bundle';
-import { stopCard, takeOut } from '../src/data/halt-view';
+import { completeStatus, stopCard, stopDone, takeOut } from '../src/data/halt-view';
 
 const haltWith = (address: string) => {
   const h = route.halts.find((x) => x.stops.some((s) => s.address === address));
@@ -12,7 +12,8 @@ const haltWith = (address: string) => {
 
 test('Solmsstraße: one line why names the closure and the parking street', () => {
   const h = haltWith('Solmsstraße 7');
-  assert.equal(h.reason?.text, 'Solmsstraße closed → park in Fürbringerstraße');
+  assert.equal(h.reason?.text, 'Solmsstraße closed – park here');
+  assert.equal(h.parking.street, 'Fürbringerstraße');
   assert.equal(h.reason?.source, 'VIZ Berlin');
 });
 
@@ -39,4 +40,14 @@ test('pickups are marked and not taken out of a shelf', () => {
   const pickupStops = route.halts.flatMap((h) => h.stops).map(stopCard).filter((c) => c.pickups > 0);
   assert.equal(pickupStops.reduce((n, c) => n + c.pickups, 0), 3);
   assert.ok(pickupStops.every((c) => c.badges.includes('Pickup')));
+});
+
+test('a stop with a parcel and a pickup is done only when both are confirmed (or not at home)', () => {
+  const stop = route.halts.flatMap((h) => h.stops).find((s) => stopCard(s).pickups > 0 && stopCard(s).parcels > 0)!;
+  const card = stopCard(stop);
+  assert.equal(stopDone(card, { delivered: true }), false);
+  assert.equal(stopDone(card, { pickedUp: true }), false);
+  assert.equal(stopDone(card, { delivered: true, pickedUp: true }), true);
+  assert.equal(stopDone(card, { notHome: 'neighbour' }), true);
+  assert.deepEqual(completeStatus(stop), { delivered: true, pickedUp: true });
 });

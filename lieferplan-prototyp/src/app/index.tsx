@@ -1,18 +1,20 @@
-import { router } from 'expo-router';
+import { router, Stack } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { bundleProblems, meta, tour } from '@/data/bundle';
 import { formatDate } from '@/lib/format';
+import { HeaderTextButton } from '@/ui/header-buttons';
 import { Button, colors, SimulatedNotice } from '@/ui/kit';
 
-/** Start: only the tour and one button. Everything else is behind the gear icon or the detail view. */
+/** Start: only the tour and one button. Insights (back office) top left, settings top right. */
 export default function StartScreen() {
   const h = tour.header;
   const problems = bundleProblems();
 
   return (
     <SafeAreaView style={styles.screen} edges={['bottom']}>
+      <Stack.Screen options={{ headerLeft: () => <HeaderTextButton title="Insights" onPress={() => router.push('/insights')} /> }} />
       {problems.length ? <SimulatedNotice text={`Data bundle problem: ${problems.join('; ')}`} /> : null}
       <View style={styles.center}>
         <Text style={styles.date}>{formatDate(h.date)}</Text>
@@ -20,7 +22,7 @@ export default function StartScreen() {
         <Text style={styles.sub}>Departure {meta.departure}</Text>
       </View>
       <View style={styles.bottom}>
-        <Button title="Start tour" onPress={() => router.push('/compare')} />
+        <Button title="Start tour" onPress={() => router.push('/load')} />
         <Text style={styles.synthetic}>Synthetic tour · fictional carrier · real open data</Text>
       </View>
     </SafeAreaView>

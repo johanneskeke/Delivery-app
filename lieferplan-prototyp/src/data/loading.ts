@@ -1,6 +1,6 @@
 /**
  * Loading (decided 2026-11-20, "Scan and load details"): the slot per shipment is precomputed by the engine;
- * this only looks it up. Every loadable shipment except the printed demo labels counts as already loaded (simulated).
+ * this only looks it up. Every loadable shipment except the four demo scan labels counts as already loaded (simulated).
  */
 import { meta, route, shipmentById } from './bundle';
 import type { Shipment } from './types';
@@ -8,7 +8,8 @@ import type { Shipment } from './types';
 const isPickup = (s: Shipment) => s.product.startsWith('Abholung');
 
 const haltSeq = new Map(route.halts.map((h) => [h.id, h.seq]));
-const demoIds = new Set(meta.demo_labels.on_tour);
+// Decided 2026-11-20: four parcels are scanned live in the demo; everything else counts as loaded (simulated).
+const demoIds = new Set(meta.demo_labels.to_scan);
 
 /** The 92 shipments that go into the van (pickups are collected on the way, not loaded). */
 export const loadable: Shipment[] = route.halts

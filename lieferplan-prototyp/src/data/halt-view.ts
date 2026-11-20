@@ -79,6 +79,25 @@ export function stopCard(stop: PlanStop): StopCard {
   };
 }
 
+// ---------------------------------------------------------------- done or not
+
+type Status = { delivered?: true; pickedUp?: true; notHome?: string } | undefined;
+
+/** A stop is done when its parcels are delivered (or not at home) and its pickup is collected (or not at home). */
+export function stopDone(card: StopCard, st: Status): boolean {
+  if (!st) return false;
+  if (st.notHome) return true;
+  return (card.parcels === 0 || !!st.delivered) && (card.pickups === 0 || !!st.pickedUp);
+}
+
+export const haltDone = (h: Halt, stops: Record<number, Status>) => h.stops.every((s) => stopDone(stopCard(s), stops[s.no]));
+
+/** Status that completes a stop (demo shortcut "Deliver all"). */
+export function completeStatus(stop: PlanStop): { delivered?: true; pickedUp?: true } {
+  const c = stopCard(stop);
+  return { ...(c.parcels ? { delivered: true as const } : {}), ...(c.pickups ? { pickedUp: true as const } : {}) };
+}
+
 // ---------------------------------------------------------------- map content per halt
 
 const near = (a: LatLon, b: LatLon, m: number) => {

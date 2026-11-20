@@ -4,10 +4,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { listPlan, route, tour } from '@/data/bundle';
 import { HeaderTextButton } from '@/ui/header-buttons';
-import { Button, colors } from '@/ui/kit';
+import { colors } from '@/ui/kit';
 
-/** Old list vs. new route: two blocks and one button. Details only behind the small header button. */
-export default function CompareScreen() {
+/**
+ * Insights for the back office (2026-11-20): old list vs. new route, reachable from the start screen only.
+ * "Details" opens the map and the reasons (Why).
+ */
+export default function InsightsScreen() {
   const old = listPlan.kpis;
   const now = route.kpis;
 
@@ -27,8 +30,6 @@ export default function CompareScreen() {
       </View>
       <Text style={styles.hint}>Planned with today’s closures, loading zones and time windows.</Text>
 
-      <View style={{ flex: 1 }} />
-      <Button title="Load parcels" onPress={() => router.push('/load')} />
     </SafeAreaView>
   );
 }

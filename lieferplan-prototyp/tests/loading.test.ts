@@ -4,11 +4,11 @@ import { test } from 'node:test';
 import { meta } from '../src/data/bundle';
 import { isLoaded, loadable, scanResult, stillToScan } from '../src/data/loading';
 
-test('92 shipments are loaded; 79 count as already loaded, the 13 demo labels are left to scan', () => {
+test('92 shipments are loaded; 88 count as already loaded, the 4 demo scan labels are left to scan', () => {
   assert.equal(loadable.length, 92);
-  assert.equal(loadable.filter((s) => isLoaded(s.id, {})).length, 79);
-  assert.equal(stillToScan({}).length, 13);
-  assert.deepEqual(new Set(stillToScan({}).map((s) => s.id)), new Set(meta.demo_labels.on_tour));
+  assert.equal(loadable.filter((s) => isLoaded(s.id, {})).length, 88);
+  assert.equal(stillToScan({}).length, 4);
+  assert.deepEqual(new Set(stillToScan({}).map((s) => s.id)), new Set(meta.demo_labels.to_scan));
 });
 
 test('scan: Feinkost 18.5 kg → bottom slot; scanning again → already scanned', () => {
@@ -25,4 +25,6 @@ test('scan: bulky item → floor; label 14 → not on the list; lower-case input
   assert.equal(scanResult('SYN842112630', {}).kind, 'floor');
   assert.equal(scanResult(meta.demo_labels.not_on_tour, {}).kind, 'not_on_list');
   assert.equal(scanResult('  syn969042356 ', {}).kind, 'slot');
+  // a printed label that is not one of the four counts as already loaded
+  assert.equal(scanResult('SYN464094408', {}).kind, 'already');
 });

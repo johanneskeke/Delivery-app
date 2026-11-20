@@ -11,10 +11,8 @@ import { meta } from '@/data/bundle';
  */
 
 export type NotHomeChoice = 'neighbour' | 'dropoff' | 'van';
-export type StopStatus =
-  | { kind: 'delivered' }
-  | { kind: 'picked_up' }
-  | { kind: 'not_home'; choice: NotHomeChoice };
+/** Per stop: parcels delivered and/or pickup collected (both possible at one stop), or not at home. */
+export type StopStatus = { delivered?: true; pickedUp?: true; notHome?: NotHomeChoice };
 
 type DemoState = {
   /** Generation time of the bundle the progress belongs to; a new bundle resets the progress. */
@@ -25,11 +23,14 @@ type DemoState = {
   arrived: boolean;
   /** Status per stop number. */
   stops: Record<number, StopStatus>;
-  /** Demo labels scanned into the van (all other shipments count as already loaded). */
+  /** Demo labels scanned into the van; not saved, so every app start begins with the four labels unscanned. */
   scanned: Record<string, true>;
 
   arrive: () => void;
-  setStop: (no: number, status: StopStatus | null) => void;
+  /** Merge into the status of a stop; null clears it (undo). */
+  setStop: (no: number, patch: StopStatus | null) => void;
+  /** Demo shortcut: mark the given stops as done (from "All halts"). */
+  completeAll: (statuses: Record<number, StopStatus>) => void;
   goToHalt: (index: number) => void;
   markScanned: (id: string) => void;
   reset: () => void;
@@ -42,21 +43,23 @@ export const useDemoStore = create<DemoState>()(
     (set) => ({
       ...initial(),
       arrive: () => set({ arrived: true }),
-      setStop: (no, status) =>
+      setStop: (no, patch) =>
         set((s) => {
           const stops = { ...s.stops };
-          if (status) stops[no] = status;
+          if (patch) stops[no] = { ...stops[no], ...patch };
           else delete stops[no];
           return { stops };
         }),
+      completeAll: (statuses) => set((s) => ({ stops: { ...s.stops, ...statuses } })),
       goToHalt: (index) => set({ haltIndex: index, arrived: false }),
       markScanned: (id) => set((s) => ({ scanned: { ...s.scanned, [id]: true } })),
       reset: () => set(initial()),
     }),
     {
-      name: 'm10-demo-state-v1',
+      name: 'm10-demo-state-v2',
       storage: createJSONStorage(() => AsyncStorage),
-      partialize: ({ bundleGeneratedAt, haltIndex, arrived, stops, scanned }) => ({ bundleGeneratedAt, haltIndex, arrived, stops, scanned }),
+      // `scanned` is left out on purpose: the scans reset on every app start (demo, decided 2026-11-20).
+      partialize: ({ bundleGeneratedAt, haltIndex, arrived, stops }) => ({ bundleGeneratedAt, haltIndex, arrived, stops }),
       // Progress from an older data bundle does not fit the new plans.
       merge: (persisted, current) => {
         const p = persisted as Partial<DemoState> | undefined;

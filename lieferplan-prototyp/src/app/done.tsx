@@ -3,6 +3,7 @@ import { Linking, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { mapData, route } from '@/data/bundle';
+import { stopCard, stopDone } from '@/data/halt-view';
 import { driveLink, NAV_APP_NAME, type NavApp } from '@/services/navigation';
 import { useDemoStore } from '@/store/demo-store';
 import { Button, colors } from '@/ui/kit';
@@ -13,11 +14,10 @@ const NAV_APP: NavApp = 'google'; // settings follow on Tue 2026-11-24
 export default function DoneScreen() {
   const stops = useDemoStore((s) => s.stops);
   const all = route.halts.flatMap((h) => h.stops);
-  const statuses = all.map((s) => stops[s.no]).filter(Boolean);
-  const delivered = statuses.filter((s) => s.kind === 'delivered').length;
-  const pickedUp = statuses.filter((s) => s.kind === 'picked_up').length;
-  const notHome = statuses.filter((s) => s.kind === 'not_home').length;
-  const open = all.length - statuses.length;
+  const delivered = all.filter((s) => stops[s.no]?.delivered).length;
+  const pickedUp = all.filter((s) => stops[s.no]?.pickedUp).length;
+  const notHome = all.filter((s) => stops[s.no]?.notHome).length;
+  const open = all.filter((s) => !stopDone(stopCard(s), stops[s.no])).length;
 
   const summary = [
     `${delivered} stops delivered`,

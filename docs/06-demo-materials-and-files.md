@@ -54,6 +54,16 @@ Correction 2026-11-20: overview line no. 12 first said "Bergmannstraße has no l
 
 Built by `tourdaten/build_labels.py`. Senders used: Kiezkiste Versand GmbH, Nordlicht Feinkost-Großhandel, Praxisbedarf Süd GmbH, Radteile Direkt GmbH, Buchgroßhandel Mustermann (all "Musterstadt", invented).
 
+## 3a. Demo scan labels with QR code (2026-11-20)
+`tourdaten/Demo-Scan-Etiketten_QR_Tour_KRZ-61-07.pdf` (2 pages), built by `tourdaten/build_scan_labels.py` (`../.venv/bin/python build_scan_labels.py`, reportlab 4.0, Helvetica). Page 1: four A6 labels with a QR code (content = shipment number), fictional carrier header, footer "Synthetische Testdaten …"; print at actual size, cut, stick on empty cartons. Page 2: overview for the team. The four parcels are scanned live in the demo (01 "Changes after the first iPhone tests"):
+| Shipment | Recipient, address | App shows (data run 2026-11-20) |
+|---|---|---|
+| SYN969042356 | Zahnarztpraxis Dr. Albers, Fidicinstraße 33 | → B1, halt 11, priority |
+| SYN232967813 | Feinkost am Markt, Marheinekeplatz 15 | → A1 + "18.5 kg → bottom slot", halt 2 |
+| SYN842112630 | Fahrradwerkstatt Zossi, Zossener Straße 14 | → Floor at the back (bulky), halt 13 |
+| SYN682681796 | Felix Hartmann, Gneisenaustraße 43 | → A2, halt 4 |
+Slots can change after the 2026-11-25 rerun: rebuild the PDF then. The older Code128 labels (section 3) still scan; the app shows "Already scanned" for them, label 14 "Not on the list".
+
 ## 4a. App data bundle (data format v1, 2026-11-20)
 Folder `lieferplan-prototyp/assets/data/`, written by `probelauf/export_app.py`, checked by `probelauf/check_app_data.py`. Departure 08:30. Texts for the app in English, tour data in German.
 | File | Content |

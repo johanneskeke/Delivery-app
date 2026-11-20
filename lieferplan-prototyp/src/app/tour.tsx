@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { GoogleMap } from '@/components/google-map';
 import { route } from '@/data/bundle';
-import { approachMap, stopCard, takeOut, walkMap, type StopCard } from '@/data/halt-view';
+import { approachMap, haltDone, stopCard, stopDone, takeOut, walkMap, type StopCard } from '@/data/halt-view';
 import type { Halt, LatLon } from '@/data/types';
 import { driveLink, NAV_APP_NAME, walkLinks, type NavApp } from '@/services/navigation';
 import { useDemoStore, type NotHomeChoice, type StopStatus } from '@/store/demo-store';
@@ -32,7 +32,7 @@ export default function TourScreen() {
   const index = Math.min(haltIndex, route.halts.length - 1);
   const halt = route.halts[index];
   const isLast = index === route.halts.length - 1;
-  const allDone = halt.stops.every((s) => stops[s.no]);
+  const allDone = haltDone(halt, stops);
 
   const next = () => {
     if (isLast) router.replace('/done');
@@ -76,16 +76,12 @@ function Approach({ halt }: { halt: Halt }) {
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.head}>
+        {/* Kept short on purpose (2026-11-20): street, number of stops, one line why. Sources are in Insights. */}
         <Text style={styles.street}>{halt.parking.street}</Text>
         <Text style={styles.sub}>
-          {halt.parking.kind === 'loading_zone' ? 'Loading zone' : 'Kerbside'} · {halt.stops.length}{' '}
-          {halt.stops.length === 1 ? 'stop' : 'stops'} · arrival about {halt.arrival}
+          {halt.stops.length} {halt.stops.length === 1 ? 'stop' : 'stops'}
         </Text>
-        {halt.reason ? (
-          <Text style={styles.reason}>
-            {halt.reason.text} <Text style={styles.source}>({halt.reason.source})</Text>
-          </Text>
-        ) : null}
+        {halt.reason ? <Text style={styles.reason}>{halt.reason.text}</Text> : null}
         {halt.warnings.map((w, i) => (
           <Text key={i} style={styles.warning}>
             {w.text}
@@ -150,31 +146,28 @@ function StopCardView({
       card.preferredDropoff ? `Preferred drop-off spot: ${card.preferredDropoff}` : null,
     ].filter(Boolean);
     Alert.alert('Not at home', pre.length ? pre.join('\n') : 'No preference in the tour list.', [
-      { text: 'Neighbour', onPress: () => setStop(card.no, { kind: 'not_home', choice: 'neighbour' }) },
-      { text: 'Drop-off spot', onPress: () => setStop(card.no, { kind: 'not_home', choice: 'dropoff' }) },
-      { text: 'Stays in the van', onPress: () => setStop(card.no, { kind: 'not_home', choice: 'van' }) },
+      { text: 'Neighbour', onPress: () => setStop(card.no, { notHome: 'neighbour' }) },
+      { text: 'Drop-off spot', onPress: () => setStop(card.no, { notHome: 'dropoff' }) },
+      { text: 'Stays in the van', onPress: () => setStop(card.no, { notHome: 'van' }) },
       { text: 'Cancel', style: 'cancel' },
     ]);
   };
 
-  const doneText =
-    status?.kind === 'delivered'
-      ? '✓ Delivered'
-      : status?.kind === 'picked_up'
-        ? '✓ Picked up → returns slot C4'
-        : status?.kind === 'not_home'
-          ? `Not at home · ${NOT_HOME_LABEL[status.choice]}`
-          : null;
-
+  const done = stopDone(card, status);
   const what = [
     card.parcels ? `${card.parcels} ${card.parcels === 1 ? 'parcel' : 'parcels'}` : null,
     card.pickups ? `${card.pickups} ${card.pickups === 1 ? 'pickup' : 'pickups'}` : null,
   ]
     .filter(Boolean)
     .join(' + ');
+  const doneParts = status?.notHome
+    ? [`Not at home · ${NOT_HOME_LABEL[status.notHome]}`]
+    : [status?.delivered ? '✓ Delivered' : null, status?.pickedUp ? '✓ Picked up → returns slot C4' : null].filter(
+        (x): x is string => !!x,
+      );
 
   return (
-    <View style={[styles.card, status && styles.cardDone]}>
+    <View style={[styles.card, done && styles.cardDone]}>
       <Text style={styles.cardTitle}>{card.address}</Text>
       <Text style={styles.cardSub}>
         {card.recipients} · {what}
@@ -192,28 +185,46 @@ function StopCardView({
           “{n}”
         </Text>
       ))}
-      {doneText ? (
+
+      {doneParts.length ? (
         <View style={styles.doneRow}>
-          <Text style={[styles.done, status?.kind === 'not_home' && { color: colors.warn }]}>{doneText}</Text>
+          <View style={{ flex: 1, gap: 2 }}>
+            {doneParts.map((t) => (
+              <Text key={t} style={[styles.done, status?.notHome && { color: colors.warn }]}>
+                {t}
+              </Text>
+            ))}
+          </View>
           <Pressable hitSlop={10} onPress={() => setStop(card.no, null)}>
             <Text style={styles.undo}>Undo</Text>
           </Pressable>
         </View>
-      ) : (
+      ) : null}
+
+      {!done ? (
         <View style={styles.actions}>
-          <View style={{ flex: 1 }}>
-            <Button
-              title={card.pickupOnly ? 'Picked up' : 'Delivered'}
-              onPress={() => setStop(card.no, { kind: card.pickupOnly ? 'picked_up' : 'delivered' })}
-            />
-          </View>
-          {card.pickupOnly ? null : (
-            <Pressable hitSlop={10} onPress={notHome}>
-              <Text style={styles.link}>Not at home ›</Text>
-            </Pressable>
-          )}
+          {/* Delivered and Picked up are separate: at a stop with a pickup the driver confirms both (2026-11-20). */}
+          {card.parcels > 0 && !status?.delivered ? (
+            <View style={{ flex: 1 }}>
+              <Button title="Delivered" onPress={() => setStop(card.no, { delivered: true })} />
+            </View>
+          ) : null}
+          {card.pickups > 0 && !status?.pickedUp ? (
+            <View style={{ flex: 1 }}>
+              <Button
+                title="Picked up"
+                variant={card.parcels > 0 ? 'secondary' : 'primary'}
+                onPress={() => setStop(card.no, { pickedUp: true })}
+              />
+            </View>
+          ) : null}
         </View>
-      )}
+      ) : null}
+      {!done && card.parcels > 0 && !status?.delivered ? (
+        <Pressable hitSlop={10} onPress={notHome} style={{ alignSelf: 'flex-start' }}>
+          <Text style={styles.link}>Not at home ›</Text>
+        </Pressable>
+      ) : null}
     </View>
   );
 }
@@ -226,7 +237,6 @@ const styles = StyleSheet.create({
   street: { fontSize: 26, fontWeight: '700', color: colors.text },
   sub: { fontSize: 15, color: colors.muted },
   reason: { fontSize: 16, color: colors.text, fontWeight: '600', marginTop: 6 },
-  source: { fontSize: 13, color: colors.muted, fontWeight: '400' },
   warning: { fontSize: 14, color: colors.warn, fontWeight: '600' },
   map: { flex: 1, marginHorizontal: 16, borderRadius: 12, overflow: 'hidden', backgroundColor: colors.neutralBg },
   mapSmall: { height: 220, borderRadius: 12, overflow: 'hidden', backgroundColor: colors.neutralBg },

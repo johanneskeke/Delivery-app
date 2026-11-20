@@ -247,13 +247,21 @@ Refines screen 4 of "Driver app redesign".
 
 ## Scan and load details (decided 2026-11-20, user)
 Refines screen 3 of "Driver app redesign".
-- **Correction of the pre-selection count:** the 3 pickups are not loaded, so 92 shipments are loaded (incl. 2 bulky items). Without the 13 demo labels of the tour the progress bar starts at **79 of 92** (not "82 of 95").
+- **Correction of the pre-selection count:** the 3 pickups are not loaded, so 92 shipments are loaded (incl. 2 bulky items). Without the 13 demo labels of the tour the progress bar starts at **79 of 92** (not "82 of 95"). *(Superseded 2026-11-20: four parcels, 88 of 92, see "Changes after the first iPhone tests".)*
 - **Screen:** progress bar "n of 92 loaded", small link "n still to scan" (list of the missing parcels with recipient and slot, so the presenter knows which cartons are left), big "Scan parcel", "Start route" (asks "n parcels not scanned. Start anyway?" if parcels are missing).
 - **Camera stays open** after "Scan parcel" (full screen, Code128); each scan shows a large result card for about 2 s, then the next parcel can be scanned; "Done" closes it.
 - **Result cards:** normal → huge "→ A2" plus halt, address, recipient; over 10 kg → also "<kg> kg → bottom slot"; bulky → "→ Floor at the back"; already scanned → grey "Already scanned → A2", counter unchanged; not on the tour (demo label 14) → red "Not on the list", "Put it aside and report it at the depot".
 - **Feedback: vibration only** (short pattern on success, double on error; expo-haptics, included in Expo Go). No sound.
 - **"Type number"** link inside the camera as a fallback (bad light, camera problems).
 - The camera logic for Code128 is taken from the parked skeleton (git history, scan.tsx). "Reset demo" also resets the scans.
+
+## Changes after the first iPhone tests (decided 2026-11-20, user)
+- **Insights for the back office:** the comparison old list vs. new route is not shown to the driver any more. A small "Insights" button top left on the start screen opens it; "Details" there opens the map (old/new) and the Why tab, as before. "Start tour" goes straight to loading. (Supersedes the place of screen 2 in "Driver app redesign".)
+- **Four parcels scanned live** (supersedes the pre-selection in "Scan and load details"): dentist Fidicinstraße 33 (priority), Feinkost Marheinekeplatz 15 (18.5 kg → bottom slot), bicycle workshop Zossener Straße 14 (bulky → floor), Felix Hartmann Gneisenaustraße 43 (normal). All other parcels count as already loaded (simulated): the bar starts at **88 of 92**, four scans make 92 of 92. The scans are **not saved** and reset on every app start; the halt progress is still saved. The four IDs are set in `probelauf/export_app.py` (DEMO_SCAN) and exported to `meta.json`.
+- **QR labels:** the scanner reads QR codes as well as Code128. `tourdaten/build_scan_labels.py` builds `Demo-Scan-Etiketten_QR_Tour_KRZ-61-07.pdf` (four A6 labels on one A4 page with QR code, fictional carrier, visibly synthetic; page 2 overview for the team). Rebuild after the 2026-11-25 rerun.
+- **Shorter approach screen:** street, number of stops, one short line why (e.g. "Solmsstraße closed – park here", "Priority until 12:00 · Gneisenaustraße 66", "Loading zone, 06:00–22:00"), warning if any. No arrival time and no source on this screen; both are in Insights.
+- **Delivered and Picked up separately:** at the three stops with a pickup (they all also get parcels) the driver confirms both; "Not at home" completes the stop.
+- **"Deliver all (demo)":** small link at the top of "All halts"; marks every stop as done and opens the end screen. The driver can still click through as far as wanted.
 
 ## Other decisions made in this chat
 - **2026-11-19:** the data-flow and data-source slides are presentation ideas (see 05), not yet agreed with the team.
@@ -266,3 +274,4 @@ Refines screen 3 of "Driver app redesign".
 - **2026-11-20:** driver app redesign: replan completely directly, minimal screens with one-line reasons and a detail view, notes for later drivers, settings with a working navigation-app choice, no "Update situation" in the demo.
 - **2026-11-20:** halt loop details: delivered per stop, not-at-home sheet, all-halts list to jump, end screen with drive back to depot, one-line reason precomputed by the engine.
 - **2026-11-20:** scan and load details: camera stays open, vibration only, type-number fallback, still-to-scan list; pre-selection corrected to 79 of 92.
+- **2026-11-20:** after the first iPhone tests: Insights button for the back office, four QR demo parcels (88 of 92, scans reset on app start), shorter approach screen, delivered and picked up separately, Deliver all (demo).
