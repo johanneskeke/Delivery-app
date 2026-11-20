@@ -59,7 +59,9 @@ Before building the app we ran the decided logic offline with real data to check
 
 **How to read the numbers:** absolute clock times depend strongly on the assumptions (stop duration, speeds, search time). The before plan has no local knowledge. → In the pitch show conflicts avoided and differences, not "3 hours earlier".
 
-**Sensitivity, departure 08:30 (as in the tour header):** before 10 conflicts (same stops); only necessary changes 45 halts, 191 min driving, 0 conflicts, back 19:01; replan completely 34 halts, 82 min driving, 0 conflicts, back 17:03. Same conclusions. Open decision which time to use for slides (02).
+**Sensitivity, departure 08:30 (as in the tour header):** before 10 conflicts (same stops); only necessary changes 45 halts, 191 min driving, 0 conflicts, back 19:01; replan completely 34 halts, 82 min driving, 0 conflicts, back 17:03. Same conclusions. Open decision which time to use for slides (02). (B6 decided 2026-11-20: 08:30.)
+
+**Rerun on the user's Mac, 2026-11-20 (Python 3.9.6, `export_app.py`, departure 08:30):** before 10 conflicts, back 20:09; only necessary changes 45 halts, 191 min driving, 90 min walking, 0 conflicts, back 19:01 (identical); replan completely 34 halts, **78 min** driving, 102 min walking, 0 conflicts, back **16:59** (instead of 82 min / 17:03 from the chat workspace). The 08:00 run reproduces the table above exactly, and the Mac result is the same in repeated runs; the small difference at 08:30 most likely comes from other library versions (tie-breaking in the search). The final slide numbers come from the 2026-11-25 rerun on the Mac.
 
 **Checks passed:** no route uses a closed segment or passes a bollard (5,127 route segments checked); every loading zone used is valid at arrival; no parking point in a no-stopping zone; all 58 stops in every plan; the time components add up to the total time.
 
@@ -84,6 +86,7 @@ Other checks of the demo labels: Gneisenaustraße 43 (two recipients) → one ha
 ## 6. Outputs
 - `probelauf_ergebnis.md` (German, generated), `probelauf_routen.json` (routes of all three variants with parking points, coordinates and times; usable for the app and slides), `Probelauf_Karte_vorher_nachher.png` (three-panel map, draft for slide C). All in the workspace bundle.
 - Rerun: `python3 probelauf/bericht.py` and `python3 probelauf/karte.py` (needs `pip install shapely pyproj networkx matplotlib`).
+- **App data bundle (since 2026-11-20):** `cd probelauf && ../.venv/bin/python export_app.py` (default departure 08:30, `--departure`, `--start-mode`) writes data format v1 to `lieferplan-prototyp/assets/data/` (see 01 "Build plan" P3 and 06); `../.venv/bin/python check_app_data.py` checks it (all stops once, slots, driving paths only on open segments, loading zones valid at arrival, no parking in closures or no-stopping zones, walk limits). These scripts do not change `probelauf_routen.json` or the decision list above (still the 08:00 run).
 
 ## 7. Full decision list, mode "only necessary changes" (as the app would show it)
 | Type | Stop(s) | What and why | Source |

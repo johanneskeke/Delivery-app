@@ -21,7 +21,7 @@ Last updated: 2026-11-20 · Living document: update after every working session.
 - Export the precomputed paths (driving and walking lines) from the engine so the in-app map can draw them.
 
 ## Next topic
-**Build (decided 2026-11-20, 01 "Build plan" P1–P6):** next part Sat 2026-11-21: engine export `export_app.py` (data format v1) and the app reading the bundle. Team topics that stay open in parallel: B1 (MDS role), B8 (demo mode, only the start switch), B9 (scope alignment); decide by Tue 2026-11-24.
+**Build (decided 2026-11-20, 01 "Build plan" P1–P6):** engine export `export_app.py` (data format v1) and check script done 2026-11-20 (see 04, 06); next: the app reads the bundle (start screen in English with tour header, data date, synthetic label, import notes), then the halt loop (Sun 2026-11-22). Team topics that stay open in parallel: B1 (MDS role), B8 (demo mode, only the start switch), B9 (scope alignment); decide by Tue 2026-11-24.
 
 ## B. Open decisions (team/user)
 | # | Question | Context / proposal |
@@ -56,7 +56,7 @@ Last updated: 2026-11-20 · Living document: update after every working session.
 | end of session | Sync the OneDrive snapshot (`Prototyp/Dokumentation/`) once with the current docs. | Claude (with OK) |
 
 ## D. Build phase (started 2026-11-20)
-- **Status 2026-11-20:** Xcode command line tools installed (git, Python 3.9.6); `.venv` at the top level with shapely, pyproj, networkx, matplotlib, openpyxl (reportlab needs Python 3.10+, only for rebuilding PDFs); `npm install` done, `react-native-webview` added; `.env` with the Maps Demo Key (not in git), `.env.example` as template; map test passed on the iPhone. Build plan P1–P6 decided (01).
+- **Status 2026-11-20:** Xcode command line tools installed (git, Python 3.9.6); `.venv` at the top level with shapely, pyproj, networkx, matplotlib, openpyxl (reportlab needs Python 3.10+, only for rebuilding PDFs); `npm install` done, `react-native-webview` added; `.env` with the Maps Demo Key (not in git), `.env.example` as template; map test passed on the iPhone. Build plan P1–P6 decided (01). Workspace is one git repository, pushed to a GitHub repository of the user (`main`). Engine export v1 + check script done (0 errors; warnings: 'what if rejected' not yet computed, 2 heavy parcels in an upper slot in "replan completely"). Replan-completely numbers at 08:30 on the Mac: 78 min driving, back 16:59 (04).
 - **Parked skeleton** (2026-11-19, see 06): Expo SDK 58, Expo Router, TypeScript, zustand + AsyncStorage, expo-camera (Code128 barcodes), expo-location; screens for the five steps; built before the planning, so it decides nothing. Can be reused after the plan is final.
 - Inputs ready for building: synthetic tour (CSV/JSON/XLSX), coordinates for all 58 stops, filtered closures, road network, loading zones, weather, trial-run routes as JSON (`probelauf_routen.json`), decision list.
 - App does not calculate: it shows precomputed results (01, "Demo build decisions"). UI in English.

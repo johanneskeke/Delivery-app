@@ -39,7 +39,7 @@ Talk to the user in German. Project docs are in English.
 - Before any write to OneDrive (Microsoft 365 connector), load the skill `onedrive-ablage` and follow it. If that skill is not available in the session, do not write to OneDrive and tell the user.
 
 ## Findings from the bundle check (2026-11-20), for the build plan
-- `probelauf/engine.py` (ANNAHMEN): `"abfahrt_depot": "08:00"` → set to `"08:30"` for the 2026-11-25 rerun (decision B6). The results in `probelauf/` are still from the 08:00 run.
+- `probelauf/engine.py` (ANNAHMEN): `"abfahrt_depot": "08:00"` → set to `"08:30"` for the 2026-11-25 rerun (decision B6). The results in `probelauf/` (`probelauf_routen.json`, decision list) are still from the 08:00 run. The app bundle from `probelauf/export_app.py` uses 08:30 without changing `engine.py` (`--departure`). Run Python via `.venv/bin/python` (top-level venv, Python 3.9.6).
 - `probelauf/probelauf_routen.json` has, per variant (`vorher`, `nur_noetige`, `ganz_neu`), the halts with arrival, parking point (type, street, lat/lon) and stops (no., address, lat/lon, time), but no line geometry. The engine must also export the driving and walking paths for the in-app map.
 - Parked skeleton, `src/services/navigation.ts`: `drivingUrl` already matches the decision. `walkingUrl` does not: it builds one link per stop with an origin and `dir_action=navigate`; the decision is one walking link per halt with all doors as waypoints, no origin, no `dir_action`.
 - Parked skeleton: UI texts are German (e.g. "Nächster Halt", "Tour abgeschlossen"); the decision is English. It still contains the older small demo tour (12 stops), not the synthetic tour KRZ-61-07.

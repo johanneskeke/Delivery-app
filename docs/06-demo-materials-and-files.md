@@ -54,6 +54,18 @@ Correction 2026-11-20: overview line no. 12 first said "Bergmannstraße has no l
 
 Built by `tourdaten/build_labels.py`. Senders used: Kiezkiste Versand GmbH, Nordlicht Feinkost-Großhandel, Praxisbedarf Süd GmbH, Radteile Direkt GmbH, Buchgroßhandel Mustermann (all "Musterstadt", invented).
 
+## 4a. App data bundle (data format v1, 2026-11-20)
+Folder `lieferplan-prototyp/assets/data/`, written by `probelauf/export_app.py`, checked by `probelauf/check_app_data.py`. Departure 08:30. Texts for the app in English, tour data in German.
+| File | Content |
+|---|---|
+| `meta.json` | format version, generation time, departure, start mode (B8 switch, default `only_necessary`), synthetic label, data dates per source, attributions, assumptions, weather summary for the tour day |
+| `tour.json` | tour header (from the Excel sheet Tourkopf), 95 shipments, 58 stops with door coordinates and flags |
+| `import.json` | 10 import notes: 5 deliberate errors + 5 house numbers not found (nearest number used) |
+| `map.json` | closures (full, one direction, notes) with lines, depot, start point |
+| `plan_before.json`, `plan_only_necessary.json`, `plan_replan_full.json` | key figures, halts (arrival, parking point, stops with ETA, walk, window, notes, warnings, conflicts), driving path per halt and back, changes with reason, source and `rejectable`, slot per shipment with reason |
+Not yet included (P1): `if_rejected` per change (Mon 2026-11-23), `scenario_march.json` (Tue 2026-11-24).
+Slots: rack by route position (A = first part, at the sliding door), same halt → same slot, parcels over 10 kg in slots 1–2, bulky → floor, pickups → C4. In "replan completely" two parcels over 10 kg end up in A3 because the bottom slots of rack A are full; the reason text says so.
+
 ## 4. Other outputs
 - `tourdaten/Data_sources_delivery_prototype.pdf`: English one-page data-source overview (built by `build_datasources_pdf.py`).
 - `probelauf/Probelauf_Karte_vorher_nachher.png`: before/after map, draft for slide C.
