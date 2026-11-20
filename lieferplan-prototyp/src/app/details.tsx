@@ -101,6 +101,16 @@ const walkRows: Row[] = route.halts.flatMap((h) =>
   h.warnings.map((w) => ({ title: `Halt ${h.seq}: ${h.stops.map((s) => s.address).join(', ')}`, detail: w.text, source: w.source })),
 );
 
+// Must stay above SECTIONS: SECTIONS is built when the file loads and uses these names.
+const DATA_LABEL: Record<string, string> = {
+  closures_viz: 'Closures, VIZ Berlin (editorial feed)',
+  closures_landesmeldestelle: 'Closures, VIZ Berlin (Landesmeldestelle)',
+  loading_zones_osm: 'Loading and no-stopping zones, OpenStreetMap',
+  road_network_osm: 'Road network and addresses, OpenStreetMap',
+  weather_dwd: 'Weather forecast, Deutscher Wetterdienst',
+  demonstrations_police: 'Demonstrations, Berlin Police',
+};
+
 const SECTIONS: Section[] = [
   { key: 'closures', title: 'Closures and no-stopping zones', rows: [...changeRows(['parking_moved']), ...walkRows] },
   { key: 'time', title: 'Time windows and priority', rows: timeRows },
@@ -128,15 +138,6 @@ const SECTIONS: Section[] = [
     ],
   },
 ];
-
-const DATA_LABEL: Record<string, string> = {
-  closures_viz: 'Closures, VIZ Berlin (editorial feed)',
-  closures_landesmeldestelle: 'Closures, VIZ Berlin (Landesmeldestelle)',
-  loading_zones_osm: 'Loading and no-stopping zones, OpenStreetMap',
-  road_network_osm: 'Road network and addresses, OpenStreetMap',
-  weather_dwd: 'Weather forecast, Deutscher Wetterdienst',
-  demonstrations_police: 'Demonstrations, Berlin Police',
-};
 
 // ---------------------------------------------------------------- screen
 
