@@ -1,0 +1,277 @@
+{
+ "note": "Map spike only: one halt from probelauf_routen.json (mode only_necessary, departure 08:00 run) plus nearby VIZ closures of 2026-11-19. Replaced by the engine export.",
+ "halt": {
+  "arrival": "13:27",
+  "parking": {
+   "kind": "kerbside",
+   "street": "Fürbringerstraße",
+   "latlon": [
+    52.493451,
+    13.393195
+   ]
+  },
+  "stops": [
+   {
+    "no": 23,
+    "address": "Solmsstraße 7",
+    "latlon": [
+     52.493361,
+     13.392972
+    ],
+    "eta": "13:30"
+   },
+   {
+    "no": 24,
+    "address": "Solmsstraße 12",
+    "latlon": [
+     52.49272,
+     13.392795
+    ],
+    "eta": "13:37"
+   }
+  ]
+ },
+ "closures": [
+  {
+   "street": "Gneisenaustraße (Kreuzberg)",
+   "severity": "keine Sperrung",
+   "until": "2026-12-31T17:00",
+   "source": "VIZ Verkehrsredaktion",
+   "full": false,
+   "path": [
+    [
+     52.489366,
+     13.405348
+    ],
+    [
+     52.491169,
+     13.396422
+    ]
+   ]
+  },
+  {
+   "street": "Gneisenaustraße (Kreuzberg)",
+   "severity": "keine Sperrung",
+   "until": "2026-12-31T17:00",
+   "source": "VIZ Verkehrsredaktion",
+   "full": false,
+   "path": [
+    [
+     52.491234,
+     13.396389
+    ],
+    [
+     52.491384,
+     13.396443
+    ],
+    [
+     52.491502,
+     13.396486
+    ]
+   ]
+  },
+  {
+   "street": "Gneisenaustraße (Kreuzberg)",
+   "severity": "keine Sperrung",
+   "until": "2026-12-31T17:00",
+   "source": "VIZ Verkehrsredaktion",
+   "full": false,
+   "path": [
+    [
+     52.490888,
+     13.397924
+    ],
+    [
+     52.491058,
+     13.397977
+    ],
+    [
+     52.491273,
+     13.398042
+    ]
+   ]
+  },
+  {
+   "street": "Solmsstraße zwischen Fürbringerstraße und Gneisenaustraße",
+   "severity": "closure (Landesmeldestelle)",
+   "until": "2026-12-31T23:59",
+   "source": "VIZ Landesmeldestelle",
+   "full": true,
+   "path": [
+    [
+     52.49342,
+     13.39317
+    ],
+    [
+     52.492481,
+     13.392908
+    ],
+    [
+     52.49202,
+     13.39278
+    ]
+   ]
+  },
+  {
+   "street": "Schleiermacherstraße zwischen Fürbringerstraße und Gneisenaustraße",
+   "severity": "closure (Landesmeldestelle)",
+   "until": "2026-12-31T23:59",
+   "source": "VIZ Landesmeldestelle",
+   "full": true,
+   "path": [
+    [
+     52.49281,
+     13.39854
+    ],
+    [
+     52.49242,
+     13.39842
+    ],
+    [
+     52.491988,
+     13.398295
+    ],
+    [
+     52.49156,
+     13.39817
+    ],
+    [
+     52.49121,
+     13.39804
+    ],
+    [
+     52.49099,
+     13.39793
+    ]
+   ]
+  },
+  {
+   "street": "Baerwaldstraße zwischen Gneisenaustraße und Urbanstraße",
+   "severity": "closure (Landesmeldestelle)",
+   "until": "2026-12-31T23:59",
+   "source": "VIZ Landesmeldestelle",
+   "full": true,
+   "path": [
+    [
+     52.49023,
+     13.40031
+    ],
+    [
+     52.4905,
+     13.40045
+    ],
+    [
+     52.49065,
+     13.40056
+    ],
+    [
+     52.49137,
+     13.40112
+    ],
+    [
+     52.49219,
+     13.40176
+    ],
+    [
+     52.49248,
+     13.40199
+    ],
+    [
+     52.49254,
+     13.40203
+    ],
+    [
+     52.49286,
+     13.40228
+    ],
+    [
+     52.49321,
+     13.40255
+    ],
+    [
+     52.4935,
+     13.40277
+    ],
+    [
+     52.49365,
+     13.40305
+    ],
+    [
+     52.49383,
+     13.40341
+    ],
+    [
+     52.49393,
+     13.40351
+    ],
+    [
+     52.49393,
+     13.40351
+    ]
+   ]
+  },
+  {
+   "street": "Mittenwalder Straße zwischen Gneisenaustraße und Fürbringerstraße",
+   "severity": "closure (Landesmeldestelle)",
+   "until": "2026-12-31T23:59",
+   "source": "VIZ Landesmeldestelle",
+   "full": true,
+   "path": [
+    [
+     52.4913,
+     13.39639
+    ],
+    [
+     52.491574,
+     13.396469
+    ],
+    [
+     52.491849,
+     13.396549
+    ],
+    [
+     52.49238,
+     13.396702
+    ],
+    [
+     52.492804,
+     13.396825
+    ],
+    [
+     52.49303,
+     13.39689
+    ]
+   ]
+  },
+  {
+   "street": "Zossener Straße zwischen Gneisenaustraße und Fürbringerstraße",
+   "severity": "closure (Landesmeldestelle)",
+   "until": "2026-12-31T23:59",
+   "source": "VIZ Landesmeldestelle",
+   "full": true,
+   "path": [
+    [
+     52.4917,
+     13.39447
+    ],
+    [
+     52.491869,
+     13.394516
+    ],
+    [
+     52.492214,
+     13.394611
+    ],
+    [
+     52.49298,
+     13.39482
+    ],
+    [
+     52.49327,
+     13.3949
+    ]
+   ]
+  }
+ ],
+ "attribution": "dl-de-by-2.0, Digitale Plattform Stadtverkehr Berlin / Baustellen, Sperrungen und sonstige Störungen von besonderem verkehrlichem Interesse"
+}

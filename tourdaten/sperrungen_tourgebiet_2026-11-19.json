@@ -1,0 +1,2838 @@
+{
+ "abgerufen": "2026-11-19",
+ "gebiet_bbox": [
+  13.37,
+  52.462,
+  13.43,
+  52.5
+ ],
+ "lizenz": "dl-de-by-2.0, Digitale Plattform Stadtverkehr Berlin / Baustellen, Sperrungen und sonstige Störungen von besonderem verkehrlichem Interesse",
+ "eintraege": [
+  {
+   "id": "353/2026",
+   "quelle": "VIZ Verkehrsredaktion",
+   "typ": "Baustelle",
+   "schwere": "keine Sperrung",
+   "strasse": "Gneisenaustraße (Kreuzberg)",
+   "abschnitt": "in beiden Richtungen zwischen Südstern und Mittenwalder Straße",
+   "text": "Leitungsarbeiten, Fahrbahnverengung und -verschwenkung. Die Mittenwalder Straße und Schleiermacherstraße sind auf der Seite Richtung Blücherstraße von der Gneisenaustraße abgehängt (Sackgasse). Im Anschluss folgen weitere Arbeiten",
+   "von": "2026-04-14T07:00",
+   "bis": "2026-12-31T17:00",
+   "fahrstreifen": [
+    null,
+    null
+   ],
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.398964405059814,
+       52.490646285452925
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.40534806251526,
+        52.489365859367304
+       ],
+       [
+        13.396421670913698,
+        52.4911688976322
+       ]
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.396389484405518,
+        52.49123422371794
+       ],
+       [
+        13.396443128585817,
+        52.49138447334691
+       ],
+       [
+        13.396486043930055,
+        52.49150205965497
+       ]
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.397923707962038,
+        52.49088799435776
+       ],
+       [
+        13.397977352142336,
+        52.49105784306372
+       ],
+       [
+        13.398041725158693,
+        52.491273419322816
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "355/2026",
+   "quelle": "VIZ Verkehrsredaktion",
+   "typ": "Baustelle",
+   "schwere": "keine Sperrung",
+   "strasse": "Mehringdamm (Kreuzberg)",
+   "abschnitt": "Richtung Platz der Luftbrücke zwischen Tempelhofer Ufer und Obentrautstraße",
+   "text": "Gebäudesanierung, rechter Fahrstreifen gesperrt",
+   "von": "2026-04-21T07:00",
+   "bis": "2027-03-31T17:00",
+   "fahrstreifen": [
+    1,
+    3
+   ],
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.389190435409546,
+       52.49664941877483
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.389018774032593,
+        52.497322188957426
+       ],
+       [
+        13.389276266098022,
+        52.496316295747825
+       ],
+       [
+        13.389351367950441,
+        52.496061552906596
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "390/2026",
+   "quelle": "VIZ Verkehrsredaktion",
+   "typ": "Baustelle",
+   "schwere": "keine Sperrung",
+   "strasse": "Schöneberger Straße (Tempelhof)",
+   "abschnitt": "gesamter Kreuzungsbereich Alboinstraße",
+   "text": "Umbau Knotenpunkt und Modernisierung der LZA, einzelne Fahrstreifen gesperrt",
+   "von": "2026-04-29T07:00",
+   "bis": "2027-01-15T17:00",
+   "fahrstreifen": [
+    null,
+    null
+   ],
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.372077961955087,
+       52.469821747201834
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.37165969126824,
+        52.47007005043239
+       ],
+       [
+        13.372678555761853,
+        52.469462358466025
+       ]
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.372442608194929,
+        52.47004391331621
+       ],
+       [
+        13.371541717484778,
+        52.469449289729425
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "456/2026",
+   "quelle": "VIZ Verkehrsredaktion",
+   "typ": "Sperrung",
+   "schwere": "Fahrtrichtungssperrung",
+   "strasse": "Möckernstraße (Kreuzberg)",
+   "abschnitt": "Richtung Kreuzbergstraße zwischen Tempelhofer Ufer und Obentrautstraße",
+   "text": "Hochbaumaßnahme, Fahrtrichtung für den Kfz-Verkehr gesperrt",
+   "von": "2025-05-12T07:00",
+   "bis": "2027-08-30T17:00",
+   "fahrstreifen": [
+    null,
+    1
+   ],
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.380028009414673,
+       52.49814517537641
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.380188941955568,
+        52.49868729293498
+       ],
+       [
+        13.37987780570984,
+        52.497681430955474
+       ],
+       [
+        13.379813432693481,
+        52.497439759388996
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "622/2026",
+   "quelle": "VIZ Verkehrsredaktion",
+   "typ": "Baustelle",
+   "schwere": "keine Sperrung",
+   "strasse": "A100 (Stadtring)",
+   "abschnitt": "in beiden Richtungen zwischen Innsbrucker Platz und Alboinstraße",
+   "text": "Fahrbahnerneuerung, Fahrbahn auf jeweils zwei Fahrstreifen verengt",
+   "von": "2026-06-21T20:00",
+   "bis": "2026-12-14T05:55",
+   "fahrstreifen": [
+    2,
+    6
+   ],
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.363243278237011,
+       52.47381210217771
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.347619992541896,
+        52.47624363185845
+       ],
+       [
+        13.34886470486375,
+        52.47532855581068
+       ],
+       [
+        13.34989481161289,
+        52.474648772713444
+       ],
+       [
+        13.35161165619475,
+        52.474073563428945
+       ],
+       [
+        13.353714790807572,
+        52.47368137096954
+       ],
+       [
+        13.355732083191272,
+        52.47370751724223
+       ],
+       [
+        13.357963981147723,
+        52.474047417373725
+       ],
+       [
+        13.359895431302336,
+        52.47428273131143
+       ],
+       [
+        13.361268906967855,
+        52.474125855492765
+       ],
+       [
+        13.363157436007926,
+        52.473916686864605
+       ],
+       [
+        13.36423046387161,
+        52.47341990738808
+       ],
+       [
+        13.365475176193462,
+        52.47287082881051
+       ],
+       [
+        13.366676967400771,
+        52.472269449174405
+       ],
+       [
+        13.368865944242682,
+        52.47138043813724
+       ],
+       [
+        13.370454025480916,
+        52.47088363002987
+       ],
+       [
+        13.373372661270125,
+        52.470412964544394
+       ],
+       [
+        13.377879378297568,
+        52.47002073946158
+       ],
+       [
+        13.378609037244871,
+        52.469994590998425
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "685/2026",
+   "quelle": "VIZ Verkehrsredaktion",
+   "typ": "Baustelle",
+   "schwere": "keine Sperrung",
+   "strasse": "Yorckstraße (Schöneberg)",
+   "abschnitt": "in beiden Richtungen in Höhe Bautzener Straße",
+   "text": "Reparatur einer defekten Gasleitung, Fahrbahn auf einen Fahrstreifen je Richtung verengt. Das Abbiegen in die Bautzener Straße ist nicht möglich",
+   "von": "2026-07-08T10:30",
+   "bis": "2026-12-18T17:00",
+   "fahrstreifen": [
+    3,
+    4
+   ],
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.3704410031999,
+       52.4927366969083
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.370371735760035,
+        52.49275564106697
+       ],
+       [
+        13.370899378364966,
+        52.49264850993175
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "698/2026",
+   "quelle": "VIZ Verkehrsredaktion",
+   "typ": "Sperrung",
+   "schwere": "Vollsperrung",
+   "strasse": "Manfred-von-Richthofen-Straße (Tempelhof)",
+   "abschnitt": "in beiden Richtungen zwischen Rumeyplan und Werner-Voß-Damm",
+   "text": "Leitungsarbeiten, Vollsperrung für den Kfz-Verkehr",
+   "von": "2026-02-02T07:00",
+   "bis": "2027-03-31T17:00",
+   "fahrstreifen": [
+    2,
+    2
+   ],
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.378740549087526,
+       52.47641251528208
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.379234075546266,
+        52.47577863461856
+       ],
+       [
+        13.378971219062807,
+        52.476082506385396
+       ],
+       [
+        13.378799557685854,
+        52.47630469086529
+       ],
+       [
+        13.37866008281708,
+        52.476592222056226
+       ],
+       [
+        13.378509879112245,
+        52.476902622937445
+       ],
+       [
+        13.378429412841799,
+        52.47711173387561
+       ],
+       [
+        13.37839722633362,
+        52.47736985381944
+       ],
+       [
+        13.37839186191559,
+        52.47752668545089
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "699/2026",
+   "quelle": "VIZ Verkehrsredaktion",
+   "typ": "Sperrung",
+   "schwere": "Fahrtrichtungssperrung",
+   "strasse": "Manfred-von-Richthofen-Straße (Tempelhof)",
+   "abschnitt": "Richtung S+U Tempelhof zwischen Tempelhofer Damm und Schulenburgring",
+   "text": "Bauarbeiten, Fahrtrichtung gesperrt. Der Schulenburgring ist auf der Seite Richtung Mussehlstraße von der M.-v.-R.-Straße abgehängt (Sackgasse). Im Anschluss folgen weitere Arbeiten",
+   "von": "2026-07-09T07:00",
+   "bis": "2027-07-31T17:00",
+   "fahrstreifen": [
+    1,
+    1
+   ],
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.383225202560427,
+       52.48360021379259
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.385784029960634,
+        52.48449205993798
+       ],
+       [
+        13.385671377182009,
+        52.48441365660614
+       ],
+       [
+        13.385542631149294,
+        52.48437445488785
+       ],
+       [
+        13.385016918182375,
+        52.48437445488785
+       ],
+       [
+        13.384748697280886,
+        52.48430911861302
+       ],
+       [
+        13.384448289871218,
+        52.48422744813299
+       ],
+       [
+        13.384287357330324,
+        52.48412290969735
+       ],
+       [
+        13.383965492248537,
+        52.483975902101854
+       ],
+       [
+        13.38382601737976,
+        52.483900764696685
+       ],
+       [
+        13.383525609970095,
+        52.48376029007318
+       ],
+       [
+        13.383219838142395,
+        52.48361001439793
+       ],
+       [
+        13.38287651538849,
+        52.48347607260252
+       ],
+       [
+        13.382715582847597,
+        52.483400934343614
+       ]
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.382527828216555,
+        52.48347933948043
+       ],
+       [
+        13.382651209831238,
+        52.483394400575904
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "887/2026",
+   "quelle": "VIZ Verkehrsredaktion",
+   "typ": "Bauarbeiten",
+   "schwere": "keine Sperrung",
+   "strasse": "Dudenstraße (Kreuzberg)",
+   "abschnitt": "in beiden Richtungen zwischen Mehringdamm und Methfesselstraße",
+   "text": "Wasserrohrbruch, Verschwenkung beider Fahrtrichtungen auf die nördliche Fahrbahn. Das Linksabbiegen in den Mehringdamm ist nicht möglich.",
+   "von": "2026-08-27T07:00",
+   "bis": "2027-07-31T17:00",
+   "fahrstreifen": [
+    2,
+    4
+   ],
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.384355966185561,
+       52.484988697823184
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.382371861645376,
+        52.48499522988469
+       ],
+       [
+        13.385771651587229,
+        52.48495930353441
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "984/2026",
+   "quelle": "VIZ Verkehrsredaktion",
+   "typ": "Sperrung",
+   "schwere": "Vollsperrung",
+   "strasse": "Johanniterstraße (Kreuzberg)",
+   "abschnitt": "in beiden Richtungen zwischen Brachvogelstraße und Tempelherrenstraße",
+   "text": "Leitungsarbeiten, Vollsperrung für den Kfz-Verkehr. Die Querung der Brachvogelstraße an der Kreuzung ist nicht möglich (Sackgasse)",
+   "von": "2026-09-22T07:00",
+   "bis": "2026-12-28T17:00",
+   "fahrstreifen": [
+    2,
+    2
+   ],
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.399471378663115,
+       52.49612794135619
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.398627365062584,
+        52.49639558072553
+       ],
+       [
+        13.401325634692355,
+        52.495544351366235
+       ]
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.398670262824687,
+        52.49644258062183
+       ],
+       [
+        13.39864452423291,
+        52.496382525184345
+       ],
+       [
+        13.398567308457457,
+        52.496296358535126
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "1234/2026",
+   "quelle": "VIZ Verkehrsredaktion",
+   "typ": "Sperrung",
+   "schwere": "Vollsperrung",
+   "strasse": "Planufer (Kreuzberg)",
+   "abschnitt": "zwischen Dieffenbachstraße und Admiralbrücke ",
+   "text": "Straßenbauarbeiten, die Fahrbahn ist für Kfz-Verkehr voll gesperrt.",
+   "von": "2026-11-16T07:00",
+   "bis": "2026-12-18T17:00",
+   "fahrstreifen": [
+    2,
+    2
+   ],
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.413265943527223,
+       52.49495765020708
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.410669565200807,
+        52.4943828259947
+       ],
+       [
+        13.410750031471254,
+        52.49451346852097
+       ],
+       [
+        13.41086268424988,
+        52.494591853850416
+       ],
+       [
+        13.411039710044863,
+        52.4946539088038
+       ],
+       [
+        13.411195278167726,
+        52.49467350508671
+       ],
+       [
+        13.411549329757692,
+        52.49472249575569
+       ],
+       [
+        13.41333031654358,
+        52.49496091623227
+       ],
+       [
+        13.413534164428711,
+        52.4949772463546
+       ],
+       [
+        13.413904309272768,
+        52.4949707143064
+       ],
+       [
+        13.41436564922333,
+        52.494964182257206
+       ],
+       [
+        13.414666056632996,
+        52.4949739803306
+       ],
+       [
+        13.414891362190248,
+        52.495003374537696
+       ],
+       [
+        13.415304422378542,
+        52.495045832802155
+       ]
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.415025472640993,
+        52.49501643862343
+       ],
+       [
+        13.41512203216553,
+        52.49549980706695
+       ]
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.415164947509767,
+        52.495032768725146
+       ],
+       [
+        13.415175676345827,
+        52.49518300537628
+       ],
+       [
+        13.415234684944153,
+        52.49542468934674
+       ],
+       [
+        13.415250778198244,
+        52.49551613698916
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "1252/2026",
+   "quelle": "VIZ Verkehrsredaktion",
+   "typ": "Baustelle",
+   "schwere": "keine Sperrung",
+   "strasse": "Dudenstraße (Kreuzberg)",
+   "abschnitt": "Richtung Platz der Luftbrücke in Höhe Eylauer Straße",
+   "text": "Arbeiten an Wasserleitungen, Fahrbahnverschwenkung. Das Linksabbiegen in die Eylauer Straße ist nicht möglich",
+   "von": "2026-11-19T07:00",
+   "bis": "2026-12-03T17:00",
+   "fahrstreifen": [
+    0,
+    1
+   ],
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.374797701835632,
+       52.48503434582395
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.374524116516115,
+        52.485040879348105
+       ],
+       [
+        13.375291228294374,
+        52.48504414610981
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "LMS-BR/r_LMS-BR/426671_LMS-BR/72",
+   "quelle": "VIZ Landesmeldestelle",
+   "typ": "Gefahr",
+   "schwere": null,
+   "strasse": "Berlin, Schöneberger Straße, Richtung Alt-Tempelhof in Höhe Ringbahnstraße",
+   "abschnitt": "Berlin, Schöneberger Straße, Richtung Alt-Tempelhof in Höhe Ringbahnstraße",
+   "text": "Fahrbahn auf einen Fahrstreifen verengt, Bauarbeiten",
+   "von": null,
+   "bis": "2026-11-30T23:59",
+   "fahrstreifen": null,
+   "geometrie": {
+    "type": "Point",
+    "coordinates": [
+     13.37412,
+     52.46869
+    ]
+   }
+  },
+  {
+   "id": "LMS-BR/r_LMS-BR/425970_LMS-BR/72",
+   "quelle": "VIZ Landesmeldestelle",
+   "typ": "Sperrung",
+   "schwere": null,
+   "strasse": "Berlin, Solmsstraße zwischen Fürbringerstraße und Gneisenaustraße",
+   "abschnitt": "Berlin, Solmsstraße zwischen Fürbringerstraße und Gneisenaustraße",
+   "text": "gesperrt, Baustelle",
+   "von": null,
+   "bis": "2026-12-31T23:59",
+   "fahrstreifen": null,
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.39317,
+       52.49342
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.39317,
+        52.49342
+       ],
+       [
+        13.3929083,
+        52.4924807
+       ],
+       [
+        13.39278,
+        52.49202
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "LMS-BR/r_LMS-BR/426656_LMS-BR/72",
+   "quelle": "VIZ Landesmeldestelle",
+   "typ": "Sperrung",
+   "schwere": null,
+   "strasse": "Berlin, Geibelstraße zwischen Urbanstraße und Carl-Herz-Ufer",
+   "abschnitt": "Berlin, Geibelstraße zwischen Urbanstraße und Carl-Herz-Ufer",
+   "text": "gesperrt, Tiefbauarbeiten",
+   "von": null,
+   "bis": "2027-02-28T18:00",
+   "fahrstreifen": null,
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.40583,
+       52.49352
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.40583,
+        52.49352
+       ],
+       [
+        13.40607,
+        52.4939
+       ],
+       [
+        13.40632,
+        52.49427
+       ],
+       [
+        13.4065,
+        52.49449
+       ],
+       [
+        13.40667,
+        52.49472
+       ],
+       [
+        13.40672,
+        52.4948
+       ],
+       [
+        13.40674,
+        52.49486
+       ],
+       [
+        13.40674,
+        52.4948999
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "LMS-BR/r_LMS-BR/423760_LMS-BR/72",
+   "quelle": "VIZ Landesmeldestelle",
+   "typ": "Baustelle",
+   "schwere": null,
+   "strasse": "Berlin, Dudenstraße zwischen B96, Mehringdamm und Burgherrenstraße",
+   "abschnitt": "Berlin, Dudenstraße zwischen B96, Mehringdamm und Burgherrenstraße",
+   "text": "Abbiegen nach links nicht möglich, geänderte Verkehrsführung, Baustelle",
+   "von": "2026-09-29T00:00",
+   "bis": "2027-07-31T23:59",
+   "fahrstreifen": null,
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.38577,
+       52.48501
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.38577,
+        52.48501
+       ],
+       [
+        13.385447,
+        52.4850149
+       ],
+       [
+        13.38511,
+        52.48502
+       ],
+       [
+        13.38471,
+        52.48501
+       ],
+       [
+        13.38453,
+        52.48498
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "AdbNO/r_AdbNO/23844_AdB-NO",
+   "quelle": "VIZ Landesmeldestelle",
+   "typ": "Gefahr",
+   "schwere": null,
+   "strasse": "A100 Stadtring Berlin, Wilmersdorf Richtung Neukölln zwischen Wexstraße und Tempelhofer Damm",
+   "abschnitt": "A100 Stadtring Berlin, Wilmersdorf Richtung Neukölln zwischen Wexstraße und Tempelhofer Damm",
+   "text": "linker Fahrstreifen gesperrt, Bauarbeiten, Staugefahr",
+   "von": "2026-06-21T19:00",
+   "bis": "2027-04-28T17:00",
+   "fahrstreifen": null,
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.33985,
+       52.47862
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.33985,
+        52.47862
+       ],
+       [
+        13.34008,
+        52.47863
+       ],
+       [
+        13.34051,
+        52.47864
+       ],
+       [
+        13.3411,
+        52.47864
+       ],
+       [
+        13.34121,
+        52.47864
+       ],
+       [
+        13.34151,
+        52.47863
+       ],
+       [
+        13.34176,
+        52.47862
+       ],
+       [
+        13.34195,
+        52.47861
+       ],
+       [
+        13.3421,
+        52.4786
+       ],
+       [
+        13.34255,
+        52.47853
+       ],
+       [
+        13.3428,
+        52.4785
+       ],
+       [
+        13.34295,
+        52.47848
+       ],
+       [
+        13.34328,
+        52.47843
+       ],
+       [
+        13.34369,
+        52.47836
+       ],
+       [
+        13.34403,
+        52.47829
+       ],
+       [
+        13.34426,
+        52.47823
+       ],
+       [
+        13.34459,
+        52.47812
+       ],
+       [
+        13.34471,
+        52.47809
+       ],
+       [
+        13.34476,
+        52.47808
+       ],
+       [
+        13.34494,
+        52.47803
+       ],
+       [
+        13.34516,
+        52.47793
+       ],
+       [
+        13.34543,
+        52.4778
+       ],
+       [
+        13.34568,
+        52.47766
+       ],
+       [
+        13.34611,
+        52.47738
+       ],
+       [
+        13.3464,
+        52.47716
+       ],
+       [
+        13.34647,
+        52.4771
+       ],
+       [
+        13.34659,
+        52.477
+       ],
+       [
+        13.34698,
+        52.47665
+       ],
+       [
+        13.3472,
+        52.47645
+       ],
+       [
+        13.34736,
+        52.47631
+       ],
+       [
+        13.34753,
+        52.47616
+       ],
+       [
+        13.34767,
+        52.47605
+       ],
+       [
+        13.34782,
+        52.47594
+       ],
+       [
+        13.34791,
+        52.47587
+       ],
+       [
+        13.34805,
+        52.47577
+       ],
+       [
+        13.34838,
+        52.47554
+       ],
+       [
+        13.34868,
+        52.47535
+       ],
+       [
+        13.34876,
+        52.4753
+       ],
+       [
+        13.34917,
+        52.47507
+       ],
+       [
+        13.34952,
+        52.47488
+       ],
+       [
+        13.34976,
+        52.47475
+       ],
+       [
+        13.35,
+        52.47463
+       ],
+       [
+        13.35029,
+        52.4745
+       ],
+       [
+        13.35053,
+        52.4744
+       ],
+       [
+        13.3509,
+        52.47425
+       ],
+       [
+        13.35093,
+        52.47424
+       ],
+       [
+        13.35108,
+        52.47418
+       ],
+       [
+        13.35127,
+        52.47412
+       ],
+       [
+        13.35141,
+        52.47408
+       ],
+       [
+        13.35234,
+        52.47382
+       ],
+       [
+        13.353,
+        52.4737
+       ],
+       [
+        13.35349,
+        52.47364
+       ],
+       [
+        13.3537,
+        52.47362
+       ],
+       [
+        13.35443,
+        52.47358
+       ],
+       [
+        13.35518,
+        52.47358
+       ],
+       [
+        13.35553,
+        52.47359
+       ],
+       [
+        13.35601,
+        52.47362
+       ],
+       [
+        13.35693,
+        52.47374
+       ],
+       [
+        13.35738,
+        52.47382
+       ],
+       [
+        13.35779,
+        52.47389
+       ],
+       [
+        13.35793,
+        52.47392
+       ],
+       [
+        13.35834,
+        52.47399
+       ],
+       [
+        13.35888,
+        52.47407
+       ],
+       [
+        13.35919,
+        52.47411
+       ],
+       [
+        13.35986,
+        52.47419
+       ],
+       [
+        13.36035,
+        52.4742
+       ],
+       [
+        13.36083,
+        52.47418
+       ],
+       [
+        13.36125,
+        52.47414
+       ],
+       [
+        13.36155,
+        52.4741
+       ],
+       [
+        13.36186,
+        52.47405
+       ],
+       [
+        13.36248,
+        52.47393
+       ],
+       [
+        13.36278,
+        52.47386
+       ],
+       [
+        13.36308,
+        52.47377
+       ],
+       [
+        13.36338,
+        52.47368
+       ],
+       [
+        13.36358,
+        52.47361
+       ],
+       [
+        13.36366,
+        52.47358
+       ],
+       [
+        13.36378,
+        52.47353
+       ],
+       [
+        13.36389,
+        52.47349
+       ],
+       [
+        13.36409,
+        52.47342
+       ],
+       [
+        13.3642,
+        52.47338
+       ],
+       [
+        13.36432,
+        52.47333
+       ],
+       [
+        13.3644,
+        52.4733
+       ],
+       [
+        13.36453,
+        52.47325
+       ],
+       [
+        13.3646,
+        52.47322
+       ],
+       [
+        13.3652,
+        52.47297
+       ],
+       [
+        13.36567,
+        52.47276
+       ],
+       [
+        13.36591,
+        52.47265
+       ],
+       [
+        13.36621,
+        52.4725
+       ],
+       [
+        13.3665601,
+        52.4723308
+       ],
+       [
+        13.3670695,
+        52.4720846
+       ],
+       [
+        13.36741,
+        52.47192
+       ],
+       [
+        13.36813,
+        52.47159
+       ],
+       [
+        13.36863,
+        52.47138
+       ],
+       [
+        13.36898,
+        52.47128
+       ],
+       [
+        13.36921,
+        52.47122
+       ],
+       [
+        13.36938,
+        52.47118
+       ],
+       [
+        13.36979,
+        52.47108
+       ],
+       [
+        13.37008,
+        52.47101
+       ],
+       [
+        13.37099,
+        52.4708
+       ],
+       [
+        13.37134,
+        52.47073
+       ],
+       [
+        13.37178,
+        52.47065
+       ],
+       [
+        13.37208,
+        52.47059
+       ],
+       [
+        13.37295,
+        52.47043
+       ],
+       [
+        13.37354,
+        52.47033
+       ],
+       [
+        13.37413,
+        52.47024
+       ],
+       [
+        13.37472,
+        52.47018
+       ],
+       [
+        13.37489,
+        52.47017
+       ],
+       [
+        13.37552,
+        52.47012
+       ],
+       [
+        13.3757487,
+        52.4701032
+       ],
+       [
+        13.37647,
+        52.47005
+       ],
+       [
+        13.37691,
+        52.47002
+       ],
+       [
+        13.37699,
+        52.47001
+       ],
+       [
+        13.3775,
+        52.46998
+       ],
+       [
+        13.3779,
+        52.46996
+       ],
+       [
+        13.37814,
+        52.46995
+       ],
+       [
+        13.37837,
+        52.46994
+       ],
+       [
+        13.37957,
+        52.4699
+       ],
+       [
+        13.37995,
+        52.46989
+       ],
+       [
+        13.3804699,
+        52.46987
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "LMS-BR/r_LMS-BR/425973_LMS-BR/72",
+   "quelle": "VIZ Landesmeldestelle",
+   "typ": "Sperrung",
+   "schwere": null,
+   "strasse": "Berlin, Schleiermacherstraße zwischen Fürbringerstraße und Gneisenaustraße",
+   "abschnitt": "Berlin, Schleiermacherstraße zwischen Fürbringerstraße und Gneisenaustraße",
+   "text": "gesperrt, Baustelle",
+   "von": null,
+   "bis": "2026-12-31T23:59",
+   "fahrstreifen": null,
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.39854,
+       52.49281
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.39854,
+        52.49281
+       ],
+       [
+        13.39842,
+        52.49242
+       ],
+       [
+        13.3982946,
+        52.4919885
+       ],
+       [
+        13.39817,
+        52.49156
+       ],
+       [
+        13.39804,
+        52.49121
+       ],
+       [
+        13.39793,
+        52.49099
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "LMS-BR/r_LMS-BR/380721_LMS-BR/72",
+   "quelle": "VIZ Landesmeldestelle",
+   "typ": "Sperrung",
+   "schwere": null,
+   "strasse": "Berlin, Baerwaldstraße zwischen Gneisenaustraße und Urbanstraße",
+   "abschnitt": "Berlin, Baerwaldstraße zwischen Gneisenaustraße und Urbanstraße",
+   "text": "gesperrt, Tiefbauarbeiten",
+   "von": null,
+   "bis": "2026-12-31T23:59",
+   "fahrstreifen": null,
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.40031,
+       52.49023
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.40031,
+        52.49023
+       ],
+       [
+        13.40045,
+        52.4905
+       ],
+       [
+        13.40056,
+        52.49065
+       ],
+       [
+        13.40112,
+        52.49137
+       ],
+       [
+        13.40176,
+        52.49219
+       ],
+       [
+        13.40199,
+        52.49248
+       ],
+       [
+        13.40203,
+        52.49254
+       ],
+       [
+        13.40228,
+        52.49286
+       ],
+       [
+        13.40255,
+        52.49321
+       ],
+       [
+        13.40277,
+        52.4935
+       ],
+       [
+        13.40305,
+        52.49365
+       ],
+       [
+        13.40341,
+        52.49383
+       ],
+       [
+        13.40351,
+        52.49393
+       ],
+       [
+        13.40351,
+        52.4939301
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "LMS-BR/r_LMS-BR/428964_LMS-BR/72",
+   "quelle": "VIZ Landesmeldestelle",
+   "typ": "Gefahr",
+   "schwere": null,
+   "strasse": "Berlin, Mariannenplatz bis Karl-Marx-Straße zwischen Wrangelstraße und Erkstraße über Kottbusser Brücke, Kottbusser Damm und Karl-Marx-Straße",
+   "abschnitt": "Berlin, Mariannenplatz bis Karl-Marx-Straße zwischen Wrangelstraße und Erkstraße über Kottbusser Brücke, Kottbusser Damm und Karl-Marx-Straße",
+   "text": "Demonstration, Verkehrsbehinderung zu erwarten",
+   "von": "2026-11-19T18:00",
+   "bis": "2026-11-19T21:00",
+   "fahrstreifen": null,
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.4240144,
+       52.5026574
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.4240144,
+        52.5026574
+       ],
+       [
+        13.42395,
+        52.50255
+       ],
+       [
+        13.42383,
+        52.50234
+       ],
+       [
+        13.42378,
+        52.50222
+       ],
+       [
+        13.42376,
+        52.50213
+       ],
+       [
+        13.42378,
+        52.50202
+       ],
+       [
+        13.4238,
+        52.50198
+       ],
+       [
+        13.42385,
+        52.50194
+       ],
+       [
+        13.42395,
+        52.50188
+       ],
+       [
+        13.42415,
+        52.5018
+       ],
+       [
+        13.4239871,
+        52.5015802
+       ],
+       [
+        13.42372,
+        52.50122
+       ],
+       [
+        13.4235652,
+        52.5009878
+       ],
+       [
+        13.42326,
+        52.50053
+       ],
+       [
+        13.4232012,
+        52.5004403
+       ],
+       [
+        13.42307,
+        52.50024
+       ],
+       [
+        13.4229873,
+        52.5001136
+       ],
+       [
+        13.4229,
+        52.49998
+       ],
+       [
+        13.42232,
+        52.49917
+       ],
+       [
+        13.42209,
+        52.49916
+       ],
+       [
+        13.421456,
+        52.49916
+       ],
+       [
+        13.4206167,
+        52.49916
+       ],
+       [
+        13.41991,
+        52.49916
+       ],
+       [
+        13.41971,
+        52.49916
+       ],
+       [
+        13.41934,
+        52.49916
+       ],
+       [
+        13.41915,
+        52.49916
+       ],
+       [
+        13.41894,
+        52.49915
+       ],
+       [
+        13.4187,
+        52.49916
+       ],
+       [
+        13.41864,
+        52.49921
+       ],
+       [
+        13.41857,
+        52.49925
+       ],
+       [
+        13.41847,
+        52.49929
+       ],
+       [
+        13.41836,
+        52.49932
+       ],
+       [
+        13.41825,
+        52.49933
+       ],
+       [
+        13.41816,
+        52.49932
+       ],
+       [
+        13.41808,
+        52.49931
+       ],
+       [
+        13.41799,
+        52.49928
+       ],
+       [
+        13.41787,
+        52.49921
+       ],
+       [
+        13.41781,
+        52.49915
+       ],
+       [
+        13.41779,
+        52.49909
+       ],
+       [
+        13.41779,
+        52.49904
+       ],
+       [
+        13.41782,
+        52.49896
+       ],
+       [
+        13.41788,
+        52.4989
+       ],
+       [
+        13.41796,
+        52.49884
+       ],
+       [
+        13.4181,
+        52.4988
+       ],
+       [
+        13.41826,
+        52.49879
+       ],
+       [
+        13.41836,
+        52.49873
+       ],
+       [
+        13.41843,
+        52.49868
+       ],
+       [
+        13.41847,
+        52.49863
+       ],
+       [
+        13.41849,
+        52.49856
+       ],
+       [
+        13.41851,
+        52.49842
+       ],
+       [
+        13.41887,
+        52.4978
+       ],
+       [
+        13.41905,
+        52.49748
+       ],
+       [
+        13.41939,
+        52.49686
+       ],
+       [
+        13.41954,
+        52.49663
+       ],
+       [
+        13.41962,
+        52.49653
+       ],
+       [
+        13.41974,
+        52.49639
+       ],
+       [
+        13.41987,
+        52.49624
+       ],
+       [
+        13.41995,
+        52.49613
+       ],
+       [
+        13.4200113,
+        52.4960402
+       ],
+       [
+        13.4201,
+        52.49591
+       ],
+       [
+        13.42011,
+        52.49589
+       ],
+       [
+        13.4202072,
+        52.4957621
+       ],
+       [
+        13.4203,
+        52.49564
+       ],
+       [
+        13.4205206,
+        52.4953505
+       ],
+       [
+        13.42062,
+        52.49522
+       ],
+       [
+        13.42104,
+        52.49453
+       ],
+       [
+        13.42134,
+        52.49406
+       ],
+       [
+        13.42177,
+        52.49338
+       ],
+       [
+        13.42203,
+        52.49296
+       ],
+       [
+        13.4222929,
+        52.4925383
+       ],
+       [
+        13.42256,
+        52.49211
+       ],
+       [
+        13.423,
+        52.49141
+       ],
+       [
+        13.4226,
+        52.4915
+       ],
+       [
+        13.4217,
+        52.4917
+       ],
+       [
+        13.42092,
+        52.49188
+       ],
+       [
+        13.42077,
+        52.49186
+       ],
+       [
+        13.4203,
+        52.49175
+       ],
+       [
+        13.42015,
+        52.49169
+       ],
+       [
+        13.42021,
+        52.49156
+       ],
+       [
+        13.42038,
+        52.49133
+       ],
+       [
+        13.4205,
+        52.49123
+       ],
+       [
+        13.42105,
+        52.49107
+       ],
+       [
+        13.42125,
+        52.49101
+       ],
+       [
+        13.42155,
+        52.49093
+       ],
+       [
+        13.42218,
+        52.49077
+       ],
+       [
+        13.42252,
+        52.49068
+       ],
+       [
+        13.42295,
+        52.49058
+       ],
+       [
+        13.42323,
+        52.49053
+       ],
+       [
+        13.42339,
+        52.49052
+       ],
+       [
+        13.42354,
+        52.49053
+       ],
+       [
+        13.4236734,
+        52.4903111
+       ],
+       [
+        13.42393,
+        52.48989
+       ],
+       [
+        13.4242664,
+        52.4893526
+       ],
+       [
+        13.4243662,
+        52.4891932
+       ],
+       [
+        13.4246709,
+        52.4887063
+       ],
+       [
+        13.42475,
+        52.48858
+       ],
+       [
+        13.42494,
+        52.48828
+       ],
+       [
+        13.42503,
+        52.48815
+       ],
+       [
+        13.4251,
+        52.48798
+       ],
+       [
+        13.42511,
+        52.48791
+       ],
+       [
+        13.42511,
+        52.48785
+       ],
+       [
+        13.42495,
+        52.48757
+       ],
+       [
+        13.42468,
+        52.48723
+       ],
+       [
+        13.42442,
+        52.48687
+       ],
+       [
+        13.42432,
+        52.48674
+       ],
+       [
+        13.4241,
+        52.48647
+       ],
+       [
+        13.42408,
+        52.48635
+       ],
+       [
+        13.4244,
+        52.48625
+       ],
+       [
+        13.42473,
+        52.48612
+       ],
+       [
+        13.42503,
+        52.48598
+       ],
+       [
+        13.4252,
+        52.4859
+       ],
+       [
+        13.42563,
+        52.48571
+       ],
+       [
+        13.42587,
+        52.4856
+       ],
+       [
+        13.426,
+        52.48554
+       ],
+       [
+        13.4261639,
+        52.485464
+       ],
+       [
+        13.42641,
+        52.48535
+       ],
+       [
+        13.42656,
+        52.48528
+       ],
+       [
+        13.42731,
+        52.48495
+       ],
+       [
+        13.42755,
+        52.48484
+       ],
+       [
+        13.4277768,
+        52.4847361
+       ],
+       [
+        13.4280123,
+        52.4846283
+       ],
+       [
+        13.42886,
+        52.48424
+       ],
+       [
+        13.42905,
+        52.48415
+       ],
+       [
+        13.4291897,
+        52.4840862
+       ],
+       [
+        13.4294136,
+        52.4839839
+       ],
+       [
+        13.4299556,
+        52.4837363
+       ],
+       [
+        13.430745,
+        52.4833756
+       ],
+       [
+        13.43137,
+        52.48309
+       ],
+       [
+        13.431895,
+        52.4828426
+       ],
+       [
+        13.43241,
+        52.4826
+       ],
+       [
+        13.43264,
+        52.48249
+       ],
+       [
+        13.43279,
+        52.48242
+       ],
+       [
+        13.43286,
+        52.48239
+       ],
+       [
+        13.43291,
+        52.48237
+       ],
+       [
+        13.43299,
+        52.48234
+       ],
+       [
+        13.43304,
+        52.48232
+       ],
+       [
+        13.43309,
+        52.4823
+       ],
+       [
+        13.43314,
+        52.48228
+       ],
+       [
+        13.43318,
+        52.48226
+       ],
+       [
+        13.43323,
+        52.48223
+       ],
+       [
+        13.43328,
+        52.4822
+       ],
+       [
+        13.43354,
+        52.48203
+       ],
+       [
+        13.43372,
+        52.4819
+       ],
+       [
+        13.4339321,
+        52.4817434
+       ],
+       [
+        13.43414,
+        52.48159
+       ],
+       [
+        13.43449,
+        52.48136
+       ],
+       [
+        13.43471,
+        52.48122
+       ],
+       [
+        13.43495,
+        52.48106
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "LMS-BR/r_LMS-BR/428963_LMS-BR/72",
+   "quelle": "VIZ Landesmeldestelle",
+   "typ": "Gefahr",
+   "schwere": null,
+   "strasse": "Berlin, Mariannenstraße bis Karl-Marx-Straße zwischen Mariannenplatz und Erkstraße über Kottbusser Straße, Kottbusser Brücke, Kottbusser Damm, Sonnenallee, Weichselstraße und Karl-Marx-Straße",
+   "abschnitt": "Berlin, Mariannenstraße bis Karl-Marx-Straße zwischen Mariannenplatz und Erkstraße über Kottbusser Straße, Kottbusser Brücke, Kottbusser Damm, Sonnenallee, Weichselstraße und Karl-Marx-Straße",
+   "text": "Demonstration, Verkehrsbehinderung zu erwarten, ortskundige Autofahrer werden gebeten, das Gebiet weiträumig zu umfahren",
+   "von": "2026-11-19T18:00",
+   "bis": "2026-11-19T21:00",
+   "fahrstreifen": null,
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.42415,
+       52.5018
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.42415,
+        52.5018
+       ],
+       [
+        13.4239871,
+        52.5015802
+       ],
+       [
+        13.42372,
+        52.50122
+       ],
+       [
+        13.4235652,
+        52.5009878
+       ],
+       [
+        13.42326,
+        52.50053
+       ],
+       [
+        13.4232012,
+        52.5004403
+       ],
+       [
+        13.42307,
+        52.50024
+       ],
+       [
+        13.4229873,
+        52.5001136
+       ],
+       [
+        13.4229,
+        52.49998
+       ],
+       [
+        13.42232,
+        52.49917
+       ],
+       [
+        13.42227,
+        52.49911
+       ],
+       [
+        13.42219,
+        52.49901
+       ],
+       [
+        13.421818,
+        52.4985777
+       ],
+       [
+        13.42145,
+        52.49815
+       ],
+       [
+        13.42144,
+        52.49813
+       ],
+       [
+        13.4211259,
+        52.497738
+       ],
+       [
+        13.4206313,
+        52.4971207
+       ],
+       [
+        13.4205205,
+        52.4969824
+       ],
+       [
+        13.4202225,
+        52.4966105
+       ],
+       [
+        13.42011,
+        52.49647
+       ],
+       [
+        13.41985,
+        52.49641
+       ],
+       [
+        13.41974,
+        52.49639
+       ],
+       [
+        13.41987,
+        52.49624
+       ],
+       [
+        13.41995,
+        52.49613
+       ],
+       [
+        13.4200113,
+        52.4960402
+       ],
+       [
+        13.4201,
+        52.49591
+       ],
+       [
+        13.42011,
+        52.49589
+       ],
+       [
+        13.4202072,
+        52.4957621
+       ],
+       [
+        13.4203,
+        52.49564
+       ],
+       [
+        13.4205206,
+        52.4953505
+       ],
+       [
+        13.42062,
+        52.49522
+       ],
+       [
+        13.42104,
+        52.49453
+       ],
+       [
+        13.42134,
+        52.49406
+       ],
+       [
+        13.42177,
+        52.49338
+       ],
+       [
+        13.42203,
+        52.49296
+       ],
+       [
+        13.4222929,
+        52.4925383
+       ],
+       [
+        13.42256,
+        52.49211
+       ],
+       [
+        13.423,
+        52.49141
+       ],
+       [
+        13.42322,
+        52.49105
+       ],
+       [
+        13.42354,
+        52.49053
+       ],
+       [
+        13.4236734,
+        52.4903111
+       ],
+       [
+        13.42393,
+        52.48989
+       ],
+       [
+        13.4242664,
+        52.4893526
+       ],
+       [
+        13.4243662,
+        52.4891932
+       ],
+       [
+        13.4246709,
+        52.4887063
+       ],
+       [
+        13.42475,
+        52.48858
+       ],
+       [
+        13.42494,
+        52.48828
+       ],
+       [
+        13.42503,
+        52.48815
+       ],
+       [
+        13.4251,
+        52.48798
+       ],
+       [
+        13.42511,
+        52.48791
+       ],
+       [
+        13.42511,
+        52.48785
+       ],
+       [
+        13.42552,
+        52.4877
+       ],
+       [
+        13.42566,
+        52.48765
+       ],
+       [
+        13.42691,
+        52.48721
+       ],
+       [
+        13.42787,
+        52.48687
+       ],
+       [
+        13.42828,
+        52.48672
+       ],
+       [
+        13.42895,
+        52.48648
+       ],
+       [
+        13.4290899,
+        52.4864269
+       ],
+       [
+        13.42924,
+        52.48637
+       ],
+       [
+        13.4294143,
+        52.4863085
+       ],
+       [
+        13.42958,
+        52.48625
+       ],
+       [
+        13.4297287,
+        52.4861978
+       ],
+       [
+        13.4298691,
+        52.4861486
+       ],
+       [
+        13.43015,
+        52.48605
+       ],
+       [
+        13.43054,
+        52.48591
+       ],
+       [
+        13.4314,
+        52.4856
+       ],
+       [
+        13.4321579,
+        52.485334
+       ],
+       [
+        13.43291,
+        52.48507
+       ],
+       [
+        13.43366,
+        52.48478
+       ],
+       [
+        13.43344,
+        52.48465
+       ],
+       [
+        13.43253,
+        52.48397
+       ],
+       [
+        13.43248,
+        52.48393
+       ],
+       [
+        13.43205,
+        52.48359
+       ],
+       [
+        13.4318078,
+        52.4833927
+       ],
+       [
+        13.43151,
+        52.48315
+       ],
+       [
+        13.43137,
+        52.48309
+       ],
+       [
+        13.431895,
+        52.4828426
+       ],
+       [
+        13.43241,
+        52.4826
+       ],
+       [
+        13.43264,
+        52.48249
+       ],
+       [
+        13.43279,
+        52.48242
+       ],
+       [
+        13.43286,
+        52.48239
+       ],
+       [
+        13.43291,
+        52.48237
+       ],
+       [
+        13.43299,
+        52.48234
+       ],
+       [
+        13.43304,
+        52.48232
+       ],
+       [
+        13.43309,
+        52.4823
+       ],
+       [
+        13.43314,
+        52.48228
+       ],
+       [
+        13.43318,
+        52.48226
+       ],
+       [
+        13.43323,
+        52.48223
+       ],
+       [
+        13.43328,
+        52.4822
+       ],
+       [
+        13.43354,
+        52.48203
+       ],
+       [
+        13.43372,
+        52.4819
+       ],
+       [
+        13.4339321,
+        52.4817434
+       ],
+       [
+        13.43414,
+        52.48159
+       ],
+       [
+        13.43449,
+        52.48136
+       ],
+       [
+        13.43471,
+        52.48122
+       ],
+       [
+        13.43495,
+        52.48106
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "LMS-BR/r_LMS-BR/425972_LMS-BR/72",
+   "quelle": "VIZ Landesmeldestelle",
+   "typ": "Sperrung",
+   "schwere": null,
+   "strasse": "Berlin, Mittenwalder Straße zwischen Gneisenaustraße und Fürbringerstraße",
+   "abschnitt": "Berlin, Mittenwalder Straße zwischen Gneisenaustraße und Fürbringerstraße",
+   "text": "gesperrt, Baustelle",
+   "von": null,
+   "bis": "2026-12-31T23:59",
+   "fahrstreifen": null,
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.39639,
+       52.4913
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.39639,
+        52.4913
+       ],
+       [
+        13.3964693,
+        52.4915744
+       ],
+       [
+        13.3965486,
+        52.4918487
+       ],
+       [
+        13.396702,
+        52.4923796
+       ],
+       [
+        13.3968248,
+        52.4928045
+       ],
+       [
+        13.39689,
+        52.49303
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "LMS-BR/r_LMS-BR/426531_LMS-BR/72",
+   "quelle": "VIZ Landesmeldestelle",
+   "typ": "Sperrung",
+   "schwere": null,
+   "strasse": "Berlin, Geibelstraße zwischen Urbanstraße und Carl-Herz-Ufer",
+   "abschnitt": "Berlin, Geibelstraße zwischen Urbanstraße und Carl-Herz-Ufer",
+   "text": "gesperrt, Bauarbeiten",
+   "von": "2026-10-26T07:00",
+   "bis": "2027-02-28T23:59",
+   "fahrstreifen": null,
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.40578,
+       52.49344
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.40578,
+        52.49344
+       ],
+       [
+        13.40583,
+        52.49352
+       ],
+       [
+        13.40607,
+        52.4939
+       ],
+       [
+        13.40632,
+        52.49427
+       ],
+       [
+        13.4065,
+        52.49449
+       ],
+       [
+        13.40667,
+        52.49472
+       ],
+       [
+        13.40672,
+        52.4948
+       ],
+       [
+        13.40674,
+        52.49486
+       ],
+       [
+        13.40674,
+        52.4948999
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "LMS-BR/r_LMS-BR/228995_LMS-BR/72",
+   "quelle": "VIZ Landesmeldestelle",
+   "typ": "Sperrung",
+   "schwere": null,
+   "strasse": "Berlin, Mainzer Straße zwischen Werbellinstraße und Rollbergstraße",
+   "abschnitt": "Berlin, Mainzer Straße zwischen Werbellinstraße und Rollbergstraße",
+   "text": "Vollsperrung, Baustelle",
+   "von": null,
+   "bis": "2026-12-31T23:59",
+   "fahrstreifen": null,
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.42885,
+       52.47792
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.42885,
+        52.47792
+       ],
+       [
+        13.42865,
+        52.47851
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "LMS-BR/r_LMS-BR/425971_LMS-BR/72",
+   "quelle": "VIZ Landesmeldestelle",
+   "typ": "Sperrung",
+   "schwere": null,
+   "strasse": "Berlin, Zossener Straße zwischen Gneisenaustraße und Fürbringerstraße",
+   "abschnitt": "Berlin, Zossener Straße zwischen Gneisenaustraße und Fürbringerstraße",
+   "text": "gesperrt, Baustelle",
+   "von": null,
+   "bis": "2026-12-31T23:59",
+   "fahrstreifen": null,
+   "geometrie": {
+    "type": "GeometryCollection",
+    "geometries": [
+     {
+      "type": "Point",
+      "coordinates": [
+       13.39447,
+       52.4917
+      ]
+     },
+     {
+      "type": "LineString",
+      "coordinates": [
+       [
+        13.39447,
+        52.4917
+       ],
+       [
+        13.3945161,
+        52.4918685
+       ],
+       [
+        13.3946106,
+        52.4922142
+       ],
+       [
+        13.39482,
+        52.49298
+       ],
+       [
+        13.3949,
+        52.49327
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

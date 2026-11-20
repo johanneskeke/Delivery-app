@@ -1,0 +1,78 @@
+# 02 Open work and next steps
+Last updated: 2026-11-20 · Living document: update after every working session. Demo: Thu 2026-11-26.
+
+## A. Step 5 Navigation and demo build: decided 2026-11-20 (details in 01)
+**Short version:** one Google Maps driving link per halt to the parking-point coordinates; walking shown on a Google map inside our app (WebView + Maps Demo Key; fallback Apple Maps) plus an optional walking link per halt with all doors; confirm per delivery; next halt via a button; no extra functions for deviations or a missing Google Maps app; "Update situation" (Step 3b) stays. Everything the app shows is precomputed by our engine. Internet is allowed in the demo; fallback is a video recorded beforehand. In-app turn-by-turn (Navigation SDK) is outlook (slide D). UI in English; slide numbers at 08:30 departure.
+
+**Scope principle (2026-11-20):** keep the app small. Only what the demo and the user test need; everything else goes to the outlook (slide D).
+
+**Facts about Google Maps URLs (checked 2026-11-19/20):**
+- Universal "Maps URLs" (`https://www.google.com/maps/dir/?api=1&...`), no API key needed.
+- `travelmode=driving` or `walking`; one travel mode per link, so driving and walking need separate links.
+- `dir_action=navigate` starts turn-by-turn navigation directly if no origin is given (current location) or the origin is near the current location; with a distant origin only a route preview. Navigation is not available on all Google Maps products.
+- Waypoints: up to 9 in the app; only 3 in mobile browsers. Multiple destinations work for driving and walking (all modes except transit and flights).
+- Destinations can be coordinates (use them for parking points) or addresses (walking to the door).
+- If the Google Maps app is not installed, the URL opens Google Maps in the browser (Android and iOS).
+
+**To check when building:**
+- ~~First step: Maps Demo Key works inside the WebView on the iPhone~~ **Done 2026-11-20:** works in Expo Go on the iPhone; no fallback needed (01, "Build step 1 result").
+- ~~On the demo iPhone: driving link starts navigation; walking link with waypoints shows all doors (no `dir_action`).~~ **Done 2026-11-20:** both links work from the map test (user check).
+- Door coordinates for walking links where the synthetic house number does not exist (B4); import shows "house number not found, nearest number used".
+- Export the precomputed paths (driving and walking lines) from the engine so the in-app map can draw them.
+
+## Next topic
+**Build (decided 2026-11-20, 01 "Build plan" P1–P6):** next part Sat 2026-11-21: engine export `export_app.py` (data format v1) and the app reading the bundle. Team topics that stay open in parallel: B1 (MDS role), B8 (demo mode, only the start switch), B9 (scope alignment); decide by Tue 2026-11-24.
+
+## B. Open decisions (team/user)
+| # | Question | Context / proposal |
+|---|---|---|
+| 1 | Role of MDS in the pitch | Team decided on 2026-10-20 not to use MDS; the module brief requires "inc. MDS". Proposal: the prototype uses Berlin open data; MDS is the way to do the same in other cities with their data (see 05). |
+| 2 | UI language of the demo app | **Decided 2026-11-20:** English, no language switch; data stay German (01). |
+| 3 | Shelf labels A–C / 1–4 | Kept provisionally; user is unsure. |
+| 4 | Five synthetic house numbers do not exist in OSM | **Decided 2026-11-20:** not corrected; shown as an import note "not found, nearest number used" (e.g. Chamissoplatz 9 → 8); walking links use coordinates; no files rebuilt (01). |
+| 5 | Baerwaldstraße 18 only reachable with about 205 m on foot | Car ban (OSM motor_vehicle=no) plus VIZ closure. Over the 150 m limit; the app warns. Is a warning enough, or a special rule? |
+| 6 | Departure time for the slide numbers | **Decided 2026-11-20:** 08:30 as in the tour header; 2026-11-25 rerun at 08:30 (01). |
+| 7 | Bergmannstraße delivery time 6–11 (Senate rule) | Not in OSM. Check on site and add as a labelled own rule, or leave out. |
+| 8 | Which mode to show in the demo | Proposal 2026-11-20: start in "only necessary changes", switch to "replan completely" with one tap; loading and the halt loop only in the default mode. **User tendency 2026-11-20:** plan completely right away; the driver should not have to make many decisions; how much the driver confirms in the interface is a detail for later. Not decided yet. Note: this differs from 01 Step 3 rule B (default "only necessary changes", close to the interviewed drivers) and rule C (reject single changes) → align with the team. Whichever mode is chosen, slots and halt cards are precomputed for that mode (04 only has the full decision list for the default mode; the engine can produce it for "replan completely"). |
+| 9 | Scope vs. the deck decision of 2026-10-20 | The team removed weather, parking and live data from the first MVP test and planned a simulated closure. This chat brings back real data, parking (loading zones) and weather. Needs team alignment (see pitch-deck-content, sections 1, 7). |
+| 10 | Data only on the phone, or also a server? | **For the demo decided 2026-11-20** (01): precomputed results bundled in the app, no server. A server only matters for the future (real-time data). |
+| 11 | Technology for the route calculation (rule F) | **Decided 2026-11-20** (01, "Demo build decisions"): everything precomputed by the Python engine, nothing live in the app. One rejection at a time; missing-parcel recalculation only a note. |
+
+## C. To-dos with dates
+| When | What | Who |
+|---|---|---|
+| before building | Create the **Maps Demo Key** with a personal Google account (Gmail; Workspace accounts are not eligible); store it in `.env` in the project folder, never in chat or git. | user |
+| before building | Choose the project folder on the computer (not in OneDrive because of node_modules). | user |
+| optional | OpenRouteService account (openrouteservice.org, HeiGIT, free standard token) is **not needed for the demo** since everything is precomputed (B11); only if the app calculates live later. Not my.optimoroute.com (commercial planner). | user/team |
+| ~~before demo~~ | ~~Install the Google Maps app on the demo iPhone; test one driving link and one walking link (with waypoints) from the app.~~ **Done 2026-11-20.** | user |
+| 2026-11-25 | Re-download both VIZ feeds and the weather forecast for 2026-11-26; recheck the Christmas markets list (2026 list was not yet published on 2026-11-19); rerun the trial **at 08:30 departure**; update slide numbers. | user downloads, Claude checks |
+| 2026-11-25 | Fetch DWD weather warnings for the tour day (only current warnings are available). | Claude |
+| 2026-11-25 | Run the engine for the demo: plan for the chosen mode (B8), march scenario for "Update situation", slots per shipment, "what if rejected" per change, paths for the map, import notes for the five house numbers; bundle the results into the app; show the data date in the app. | team/Claude |
+| 2026-11-25 | Record the full flow on the iPhone as a video (plan, loading, halt, hand-off, return, confirm, "Update situation") as fallback for the demo. | user |
+| demo day | Internet allowed; tip: iPhone on mobile data or as hotspot instead of university Wi-Fi; load the app before the pitch and keep it open. | team |
+| before demo | Print the demo labels (actual size, not "fit to page"), stick them on empty cartons. | team |
+| before slides | Check logo usage rules (Land Berlin, Police, DWD, OpenStreetMap brand); fallback: names in one typeface plus licence note. | team |
+| before slides | Add mandatory attributions (see 03; for the in-app map also Google's attribution as shown by the map). | team |
+| end of session | Sync the OneDrive snapshot (`Prototyp/Dokumentation/`) once with the current docs. | Claude (with OK) |
+
+## D. Build phase (started 2026-11-20)
+- **Status 2026-11-20:** Xcode command line tools installed (git, Python 3.9.6); `.venv` at the top level with shapely, pyproj, networkx, matplotlib, openpyxl (reportlab needs Python 3.10+, only for rebuilding PDFs); `npm install` done, `react-native-webview` added; `.env` with the Maps Demo Key (not in git), `.env.example` as template; map test passed on the iPhone. Build plan P1–P6 decided (01).
+- **Parked skeleton** (2026-11-19, see 06): Expo SDK 58, Expo Router, TypeScript, zustand + AsyncStorage, expo-camera (Code128 barcodes), expo-location; screens for the five steps; built before the planning, so it decides nothing. Can be reused after the plan is final.
+- Inputs ready for building: synthetic tour (CSV/JSON/XLSX), coordinates for all 58 stops, filtered closures, road network, loading zones, weather, trial-run routes as JSON (`probelauf_routen.json`), decision list.
+- App does not calculate: it shows precomputed results (01, "Demo build decisions"). UI in English.
+- Step 5 in the app (01): halt card → [Drive] (Google Maps link) → stop cards with [Delivered]/[Not at home] → next halt; Google map inside the app via WebView + Maps Demo Key (fallback react-native-maps / Apple Maps); optional walking link per halt.
+- Build order, reuse, data format, git, roles and the 2026-11-25 plan: decided (01, "Build plan"). B8 only sets the start mode; both modes are precomputed.
+- Scope principle: only what the demo and the user test need.
+
+## E. Slides (ideas only, see 05)
+- A data flow · B data sources (English one-pager PDF exists) · E decision logic · C before/after (draft map exists) · D outlook.
+- Slide D now also has: in-app navigation (Google Navigation SDK) with real-time data and live re-optimisation (driver decides, or the system optimises as a switchable mode); deviation handling (loading zone occupied, parked elsewhere, free choice of the next halt); localisation (language switch). The SDK note is also in OneDrive (Folien-Uebersicht, slide 11 "Next Steps").
+- In the demo the Google map inside the app is the bridge to slide D: "this is how it will look later".
+- Slide numbers at 08:30 departure (B6).
+- To do: agree with the team; replace numbers after the 2026-11-25 rerun; build in the team deck.
+
+## F. Known limits of the trial run (state honestly)
+- Travel times from the OSM road network with assumed speeds, not from ORS; no turn restrictions.
+- The "before" plan has no local knowledge (real drivers re-sort their list), so minutes are estimates; conflicts are the strong argument.
+- 5 addresses use neighbouring house numbers (kept as import notes, B4).
+- OSM mapping is not legal proof; signs on site take precedence.

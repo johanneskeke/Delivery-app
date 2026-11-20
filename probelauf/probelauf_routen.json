@@ -1,0 +1,3355 @@
+{
+ "vorher": [
+  {
+   "ankunft": "08:20",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Blücherstraße",
+    "latlon": [
+     52.492462,
+     13.402172
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 1,
+     "adresse": "Baerwaldstraße 18",
+     "latlon": [
+      52.49169,
+      13.400684
+     ],
+     "zeit": "08:25"
+    }
+   ]
+  },
+  {
+   "ankunft": "08:31",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Blücherstraße",
+    "latlon": [
+     52.491944,
+     13.402967
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 2,
+     "adresse": "Baerwaldstraße 49",
+     "latlon": [
+      52.491204,
+      13.401721
+     ],
+     "zeit": "08:36"
+    }
+   ]
+  },
+  {
+   "ankunft": "08:51",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Bergmannstraße",
+    "latlon": [
+     52.489926,
+     13.388023
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 3,
+     "adresse": "Bergmannstraße 3",
+     "latlon": [
+      52.489777,
+      13.387967
+     ],
+     "zeit": "08:54"
+    }
+   ]
+  },
+  {
+   "ankunft": "08:58",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Bergmannstraße",
+    "latlon": [
+     52.489705,
+     13.389619
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 4,
+     "adresse": "Bergmannstraße 9",
+     "latlon": [
+      52.48955,
+      13.389562
+     ],
+     "zeit": "09:01"
+    }
+   ]
+  },
+  {
+   "ankunft": "09:10",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Bergmannstraße",
+    "latlon": [
+     52.489332,
+     13.392316
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 5,
+     "adresse": "Bergmannstraße 18",
+     "latlon": [
+      52.489171,
+      13.392254
+     ],
+     "zeit": "09:13"
+    }
+   ]
+  },
+  {
+   "ankunft": "09:19",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Friesenstraße",
+    "latlon": [
+     52.488874,
+     13.394427
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 6,
+     "adresse": "Bergmannstraße 26",
+     "latlon": [
+      52.488855,
+      13.395014
+     ],
+     "zeit": "09:23"
+    }
+   ]
+  },
+  {
+   "ankunft": "09:29",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Bergmannstraße",
+    "latlon": [
+     52.488895,
+     13.397649
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 7,
+     "adresse": "Bergmannstraße 34",
+     "latlon": [
+      52.488715,
+      13.397641
+     ],
+     "zeit": "09:32"
+    }
+   ]
+  },
+  {
+   "ankunft": "09:37",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Bergmannstraße",
+    "latlon": [
+     52.488784,
+     13.404932
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 8,
+     "adresse": "Bergmannstraße 52",
+     "latlon": [
+      52.488916,
+      13.404937
+     ],
+     "zeit": "09:40"
+    }
+   ]
+  },
+  {
+   "ankunft": "09:44",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Bergmannstraße",
+    "latlon": [
+     52.488828,
+     13.402024
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 9,
+     "adresse": "Bergmannstraße 61",
+     "latlon": [
+      52.48896,
+      13.402029
+     ],
+     "zeit": "09:48"
+    }
+   ]
+  },
+  {
+   "ankunft": "09:58",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Blücherstraße",
+    "latlon": [
+     52.494596,
+     13.398975
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 10,
+     "adresse": "Blücherstraße 22",
+     "latlon": [
+      52.494371,
+      13.398783
+     ],
+     "zeit": "10:02"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:12",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Blücherstraße",
+    "latlon": [
+     52.491008,
+     13.404458
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 11,
+     "adresse": "Blücherstraße 37",
+     "latlon": [
+      52.490936,
+      13.404338
+     ],
+     "zeit": "10:15"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:20",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Gneisenaustraße",
+    "latlon": [
+     52.48999,
+     13.401597
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 12,
+     "adresse": "Gneisenaustraße 43",
+     "latlon": [
+      52.489813,
+      13.401502
+     ],
+     "zeit": "10:23"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:31",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Gneisenaustraße",
+    "latlon": [
+     52.489491,
+     13.404088
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 13,
+     "adresse": "Gneisenaustraße 58",
+     "latlon": [
+      52.489864,
+      13.404289
+     ],
+     "zeit": "10:35"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:39",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Gneisenaustraße",
+    "latlon": [
+     52.489896,
+     13.402067
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 14,
+     "adresse": "Gneisenaustraße 66",
+     "latlon": [
+      52.490271,
+      13.402269
+     ],
+     "zeit": "10:43"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:56",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Marheinekeplatz",
+    "latlon": [
+     52.489454,
+     13.395253
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 15,
+     "adresse": "Marheinekeplatz 15",
+     "latlon": [
+      52.489423,
+      13.395244
+     ],
+     "zeit": "10:59"
+    }
+   ]
+  },
+  {
+   "ankunft": "11:15",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Mehringdamm",
+    "latlon": [
+     52.491227,
+     13.386946
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 16,
+     "adresse": "Mehringdamm 57",
+     "latlon": [
+      52.491167,
+      13.387342
+     ],
+     "zeit": "11:19"
+    }
+   ]
+  },
+  {
+   "ankunft": "11:26",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Mittenwalder Straße",
+    "latlon": [
+     52.49393,
+     13.397164
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 17,
+     "adresse": "Mittenwalder Straße 6",
+     "latlon": [
+      52.493949,
+      13.397029
+     ],
+     "zeit": "11:29"
+    }
+   ]
+  },
+  {
+   "ankunft": "11:38",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Mittenwalder Straße",
+    "latlon": [
+     52.489799,
+     13.395995
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 18,
+     "adresse": "Mittenwalder Straße 30",
+     "latlon": [
+      52.489818,
+      13.395811
+     ],
+     "zeit": "11:41"
+    }
+   ]
+  },
+  {
+   "ankunft": "11:58",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Nostitzstraße",
+    "latlon": [
+     52.491381,
+     13.390616
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 19,
+     "adresse": "Nostitzstraße 15",
+     "latlon": [
+      52.491404,
+      13.390405
+     ],
+     "zeit": "12:01"
+    }
+   ]
+  },
+  {
+   "ankunft": "12:08",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Nostitzstraße",
+    "latlon": [
+     52.490581,
+     13.390382
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 20,
+     "adresse": "Nostitzstraße 41",
+     "latlon": [
+      52.490554,
+      13.390622
+     ],
+     "zeit": "12:11"
+    }
+   ]
+  },
+  {
+   "ankunft": "12:17",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Riemannstraße",
+    "latlon": [
+     52.490463,
+     13.392896
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 21,
+     "adresse": "Riemannstraße 9",
+     "latlon": [
+      52.490325,
+      13.392853
+     ],
+     "zeit": "12:20"
+    }
+   ]
+  },
+  {
+   "ankunft": "12:25",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Riemannstraße",
+    "latlon": [
+     52.490692,
+     13.390929
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 22,
+     "adresse": "Riemannstraße 21",
+     "latlon": [
+      52.490579,
+      13.390896
+     ],
+     "zeit": "12:28"
+    }
+   ]
+  },
+  {
+   "ankunft": "12:37",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Fürbringerstraße",
+    "latlon": [
+     52.493451,
+     13.393195
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 23,
+     "adresse": "Solmsstraße 7",
+     "latlon": [
+      52.493361,
+      13.392972
+     ],
+     "zeit": "12:44"
+    }
+   ]
+  },
+  {
+   "ankunft": "12:54",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Gneisenaustraße",
+    "latlon": [
+     52.492111,
+     13.392476
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 24,
+     "adresse": "Solmsstraße 12",
+     "latlon": [
+      52.49272,
+      13.392795
+     ],
+     "zeit": "13:01"
+    }
+   ]
+  },
+  {
+   "ankunft": "13:06",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Solmsstraße",
+    "latlon": [
+     52.489814,
+     13.392131
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 25,
+     "adresse": "Solmsstraße 30",
+     "latlon": [
+      52.489791,
+      13.392336
+     ],
+     "zeit": "13:09"
+    }
+   ]
+  },
+  {
+   "ankunft": "13:15",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Gneisenaustraße",
+    "latlon": [
+     52.491761,
+     13.394236
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 26,
+     "adresse": "Zossener Straße 14",
+     "latlon": [
+      52.49198,
+      13.394353
+     ],
+     "zeit": "13:21"
+    }
+   ]
+  },
+  {
+   "ankunft": "13:30",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Zossener Straße",
+    "latlon": [
+     52.490168,
+     13.394034
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 27,
+     "adresse": "Zossener Straße 22",
+     "latlon": [
+      52.490192,
+      13.393813
+     ],
+     "zeit": "13:33"
+    }
+   ]
+  },
+  {
+   "ankunft": "13:37",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Zossener Straße",
+    "latlon": [
+     52.491033,
+     13.394284
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 28,
+     "adresse": "Zossener Straße 37",
+     "latlon": [
+      52.491016,
+      13.394461
+     ],
+     "zeit": "13:40"
+    }
+   ]
+  },
+  {
+   "ankunft": "13:49",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Zossener Straße",
+    "latlon": [
+     52.493607,
+     13.395005
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 29,
+     "adresse": "Zossener Straße 48",
+     "latlon": [
+      52.493583,
+      13.395228
+     ],
+     "zeit": "13:53"
+    }
+   ]
+  },
+  {
+   "ankunft": "14:05",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Arndtstraße",
+    "latlon": [
+     52.488409,
+     13.392966
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 30,
+     "adresse": "Arndtstraße 12",
+     "latlon": [
+      52.488518,
+      13.392996
+     ],
+     "zeit": "14:08"
+    }
+   ]
+  },
+  {
+   "ankunft": "14:12",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Arndtstraße",
+    "latlon": [
+     52.488474,
+     13.392329
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 31,
+     "adresse": "Arndtstraße 29",
+     "latlon": [
+      52.48834,
+      13.392292
+     ],
+     "zeit": "14:16"
+    }
+   ]
+  },
+  {
+   "ankunft": "14:22",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Chamissoplatz",
+    "latlon": [
+     52.48799,
+     13.390648
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 32,
+     "adresse": "Chamissoplatz 4",
+     "latlon": [
+      52.488007,
+      13.390485
+     ],
+     "zeit": "14:25"
+    }
+   ]
+  },
+  {
+   "ankunft": "14:35",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Chamissoplatz",
+    "latlon": [
+     52.488331,
+     13.391658
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 33,
+     "adresse": "Chamissoplatz 9",
+     "latlon": [
+      52.48831,
+      13.391872
+     ],
+     "zeit": "14:39"
+    }
+   ]
+  },
+  {
+   "ankunft": "14:43",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Fidicinstraße",
+    "latlon": [
+     52.486908,
+     13.390416
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 34,
+     "adresse": "Fidicinstraße 10",
+     "latlon": [
+      52.486814,
+      13.390389
+     ],
+     "zeit": "14:46"
+    }
+   ]
+  },
+  {
+   "ankunft": "14:55",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Fidicinstraße",
+    "latlon": [
+     52.486877,
+     13.390894
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 35,
+     "adresse": "Fidicinstraße 33",
+     "latlon": [
+      52.486988,
+      13.390904
+     ],
+     "zeit": "14:58"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:08",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Friesenstraße",
+    "latlon": [
+     52.487907,
+     13.394407
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 36,
+     "adresse": "Friesenstraße 6",
+     "latlon": [
+      52.487907,
+      13.394234
+     ],
+     "zeit": "15:11"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:15",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Friesenstraße",
+    "latlon": [
+     52.48585,
+     13.394396
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 37,
+     "adresse": "Friesenstraße 16",
+     "latlon": [
+      52.48585,
+      13.394673
+     ],
+     "zeit": "15:19"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:23",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Heimstraße",
+    "latlon": [
+     52.488456,
+     13.396935
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 38,
+     "adresse": "Heimstraße 3",
+     "latlon": [
+      52.488469,
+      13.396749
+     ],
+     "zeit": "15:27"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:41",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Heimstraße",
+    "latlon": [
+     52.487492,
+     13.396758
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 39,
+     "adresse": "Heimstraße 17",
+     "latlon": [
+      52.487475,
+      13.397021
+     ],
+     "zeit": "15:44"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:53",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Katzbachstraße",
+    "latlon": [
+     52.48724,
+     13.376618
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 40,
+     "adresse": "Katzbachstraße 18",
+     "latlon": [
+      52.487242,
+      13.376422
+     ],
+     "zeit": "15:56"
+    }
+   ]
+  },
+  {
+   "ankunft": "16:05",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Kopischstraße",
+    "latlon": [
+     52.487379,
+     13.389496
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 41,
+     "adresse": "Kopischstraße 5",
+     "latlon": [
+      52.487399,
+      13.389298
+     ],
+     "zeit": "16:08"
+    }
+   ]
+  },
+  {
+   "ankunft": "16:17",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Kreuzbergstraße",
+    "latlon": [
+     52.489484,
+     13.377676
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 42,
+     "adresse": "Kreuzbergstraße 30",
+     "latlon": [
+      52.489623,
+      13.377647
+     ],
+     "zeit": "16:20"
+    }
+   ]
+  },
+  {
+   "ankunft": "16:27",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Kreuzbergstraße",
+    "latlon": [
+     52.489676,
+     13.380165
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 43,
+     "adresse": "Kreuzbergstraße 62",
+     "latlon": [
+      52.489467,
+      13.380209
+     ],
+     "zeit": "16:30"
+    }
+   ]
+  },
+  {
+   "ankunft": "16:37",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Methfesselstraße",
+    "latlon": [
+     52.487679,
+     13.384522
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 44,
+     "adresse": "Methfesselstraße 22",
+     "latlon": [
+      52.487607,
+      13.38464
+     ],
+     "zeit": "16:40"
+    }
+   ]
+  },
+  {
+   "ankunft": "16:48",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Willibald-Alexis-Straße",
+    "latlon": [
+     52.487457,
+     13.393634
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 45,
+     "adresse": "Willibald-Alexis-Straße 8",
+     "latlon": [
+      52.487569,
+      13.393665
+     ],
+     "zeit": "16:52"
+    }
+   ]
+  },
+  {
+   "ankunft": "16:58",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Willibald-Alexis-Straße",
+    "latlon": [
+     52.487736,
+     13.39092
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 46,
+     "adresse": "Willibald-Alexis-Straße 24",
+     "latlon": [
+      52.487621,
+      13.390888
+     ],
+     "zeit": "17:01"
+    }
+   ]
+  },
+  {
+   "ankunft": "17:09",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Yorckstraße",
+    "latlon": [
+     52.493293,
+     13.385019
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 47,
+     "adresse": "Yorckstraße 84",
+     "latlon": [
+      52.493105,
+      13.384921
+     ],
+     "zeit": "17:12"
+    }
+   ]
+  },
+  {
+   "ankunft": "17:27",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Böckhstraße",
+    "latlon": [
+     52.493162,
+     13.421011
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 48,
+     "adresse": "Böckhstraße 25",
+     "latlon": [
+      52.493055,
+      13.42086
+     ],
+     "zeit": "17:31"
+    }
+   ]
+  },
+  {
+   "ankunft": "17:39",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Dieffenbachstraße",
+    "latlon": [
+     52.491879,
+     13.419467
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 49,
+     "adresse": "Dieffenbachstraße 36",
+     "latlon": [
+      52.491729,
+      13.419372
+     ],
+     "zeit": "17:43"
+    }
+   ]
+  },
+  {
+   "ankunft": "17:49",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Dieffenbachstraße",
+    "latlon": [
+     52.492726,
+     13.416112
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 50,
+     "adresse": "Dieffenbachstraße 59",
+     "latlon": [
+      52.492839,
+      13.416188
+     ],
+     "zeit": "17:52"
+    }
+   ]
+  },
+  {
+   "ankunft": "17:58",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Fichtestraße",
+    "latlon": [
+     52.490639,
+     13.41317
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 51,
+     "adresse": "Fichtestraße 30",
+     "latlon": [
+      52.49066,
+      13.413432
+     ],
+     "zeit": "18:02"
+    }
+   ]
+  },
+  {
+   "ankunft": "18:09",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Graefestraße",
+    "latlon": [
+     52.493572,
+     13.4182
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 52,
+     "adresse": "Graefestraße 11",
+     "latlon": [
+      52.493623,
+      13.418022
+     ],
+     "zeit": "18:12"
+    }
+   ]
+  },
+  {
+   "ankunft": "18:17",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Graefestraße",
+    "latlon": [
+     52.492697,
+     13.417484
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 53,
+     "adresse": "Graefestraße 74",
+     "latlon": [
+      52.49264,
+      13.417681
+     ],
+     "zeit": "18:20"
+    }
+   ]
+  },
+  {
+   "ankunft": "18:28",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Grimmstraße",
+    "latlon": [
+     52.494167,
+     13.414233
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 54,
+     "adresse": "Grimmstraße 4",
+     "latlon": [
+      52.49423,
+      13.414007
+     ],
+     "zeit": "18:31"
+    }
+   ]
+  },
+  {
+   "ankunft": "18:39",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Hasenheide",
+    "latlon": [
+     52.48879,
+     13.409869
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 55,
+     "adresse": "Hasenheide 54",
+     "latlon": [
+      52.48906,
+      13.409962
+     ],
+     "zeit": "18:43"
+    }
+   ]
+  },
+  {
+   "ankunft": "18:50",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Körtestraße",
+    "latlon": [
+     52.491216,
+     13.411467
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 56,
+     "adresse": "Körtestraße 8",
+     "latlon": [
+      52.491329,
+      13.411324
+     ],
+     "zeit": "18:53"
+    }
+   ]
+  },
+  {
+   "ankunft": "19:00",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Körtestraße",
+    "latlon": [
+     52.49038,
+     13.409698
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 57,
+     "adresse": "Körtestraße 20",
+     "latlon": [
+      52.490498,
+      13.409549
+     ],
+     "zeit": "19:03"
+    }
+   ]
+  },
+  {
+   "ankunft": "19:11",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Urbanstraße",
+    "latlon": [
+     52.49024,
+     13.418955
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 58,
+     "adresse": "Urbanstraße 112",
+     "latlon": [
+      52.49036,
+      13.419045
+     ],
+     "zeit": "19:14"
+    }
+   ]
+  }
+ ],
+ "nur_noetige": [
+  {
+   "ankunft": "08:24",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Dieffenbachstraße",
+    "latlon": [
+     52.491879,
+     13.419467
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 49,
+     "adresse": "Dieffenbachstraße 36",
+     "latlon": [
+      52.491729,
+      13.419372
+     ],
+     "zeit": "08:30"
+    }
+   ]
+  },
+  {
+   "ankunft": "08:46",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Fidicinstraße",
+    "latlon": [
+     52.486877,
+     13.390894
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 34,
+     "adresse": "Fidicinstraße 10",
+     "latlon": [
+      52.486814,
+      13.390389
+     ],
+     "zeit": "08:49"
+    },
+    {
+     "nr": 35,
+     "adresse": "Fidicinstraße 33",
+     "latlon": [
+      52.486988,
+      13.390904
+     ],
+     "zeit": "08:53"
+    }
+   ]
+  },
+  {
+   "ankunft": "09:04",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Parkfläche bei Marheinekeplatz",
+    "latlon": [
+     52.489389,
+     13.395432
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 15,
+     "adresse": "Marheinekeplatz 15",
+     "latlon": [
+      52.489423,
+      13.395244
+     ],
+     "zeit": "09:05"
+    }
+   ]
+  },
+  {
+   "ankunft": "09:11",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Gneisenaustraße",
+    "latlon": [
+     52.490416,
+     13.399462
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 1,
+     "adresse": "Baerwaldstraße 18",
+     "latlon": [
+      52.49169,
+      13.400684
+     ],
+     "zeit": "09:17"
+    }
+   ]
+  },
+  {
+   "ankunft": "09:26",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Parkfläche bei Blücherstraße",
+    "latlon": [
+     52.491914,
+     13.402922
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 2,
+     "adresse": "Baerwaldstraße 49",
+     "latlon": [
+      52.491204,
+      13.401721
+     ],
+     "zeit": "09:29"
+    }
+   ]
+  },
+  {
+   "ankunft": "09:44",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Parkfläche bei Bergmannstraße",
+    "latlon": [
+     52.48971,
+     13.389249
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 3,
+     "adresse": "Bergmannstraße 3",
+     "latlon": [
+      52.489777,
+      13.387967
+     ],
+     "zeit": "09:46"
+    },
+    {
+     "nr": 4,
+     "adresse": "Bergmannstraße 9",
+     "latlon": [
+      52.48955,
+      13.389562
+     ],
+     "zeit": "10:00"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:09",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Parkfläche bei Bergmannstraße",
+    "latlon": [
+     52.489362,
+     13.392312
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 5,
+     "adresse": "Bergmannstraße 18",
+     "latlon": [
+      52.489171,
+      13.392254
+     ],
+     "zeit": "10:10"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:16",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Friesenstraße",
+    "latlon": [
+     52.488731,
+     13.394415
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 6,
+     "adresse": "Bergmannstraße 26",
+     "latlon": [
+      52.488855,
+      13.395014
+     ],
+     "zeit": "10:18"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:24",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Bergmannstraße",
+    "latlon": [
+     52.488895,
+     13.397649
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 7,
+     "adresse": "Bergmannstraße 34",
+     "latlon": [
+      52.488715,
+      13.397641
+     ],
+     "zeit": "10:27"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:32",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Bergmannstraße",
+    "latlon": [
+     52.488784,
+     13.404932
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 8,
+     "adresse": "Bergmannstraße 52",
+     "latlon": [
+      52.488916,
+      13.404937
+     ],
+     "zeit": "10:35"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:39",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Bergmannstraße",
+    "latlon": [
+     52.488828,
+     13.402024
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 9,
+     "adresse": "Bergmannstraße 61",
+     "latlon": [
+      52.48896,
+      13.402029
+     ],
+     "zeit": "10:43"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:53",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Parkfläche bei Graefestraße",
+    "latlon": [
+     52.493644,
+     13.41817
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 52,
+     "adresse": "Graefestraße 11",
+     "latlon": [
+      52.493623,
+      13.418022
+     ],
+     "zeit": "10:54"
+    },
+    {
+     "nr": 53,
+     "adresse": "Graefestraße 74",
+     "latlon": [
+      52.49264,
+      13.417681
+     ],
+     "zeit": "11:00"
+    }
+   ]
+  },
+  {
+   "ankunft": "11:13",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Blücherstraße",
+    "latlon": [
+     52.494596,
+     13.398975
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 10,
+     "adresse": "Blücherstraße 22",
+     "latlon": [
+      52.494371,
+      13.398783
+     ],
+     "zeit": "11:16"
+    }
+   ]
+  },
+  {
+   "ankunft": "11:26",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Blücherstraße",
+    "latlon": [
+     52.491008,
+     13.404458
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 11,
+     "adresse": "Blücherstraße 37",
+     "latlon": [
+      52.490936,
+      13.404338
+     ],
+     "zeit": "11:29"
+    }
+   ]
+  },
+  {
+   "ankunft": "11:34",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Gneisenaustraße",
+    "latlon": [
+     52.490191,
+     13.400593
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 12,
+     "adresse": "Gneisenaustraße 43",
+     "latlon": [
+      52.489813,
+      13.401502
+     ],
+     "zeit": "11:36"
+    }
+   ]
+  },
+  {
+   "ankunft": "11:45",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Gneisenaustraße",
+    "latlon": [
+     52.489789,
+     13.403995
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 13,
+     "adresse": "Gneisenaustraße 58",
+     "latlon": [
+      52.489864,
+      13.404289
+     ],
+     "zeit": "11:47"
+    }
+   ]
+  },
+  {
+   "ankunft": "11:51",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Gneisenaustraße",
+    "latlon": [
+     52.489896,
+     13.402067
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 14,
+     "adresse": "Gneisenaustraße 66",
+     "latlon": [
+      52.490271,
+      13.402269
+     ],
+     "zeit": "11:54"
+    }
+   ]
+  },
+  {
+   "ankunft": "12:09",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Mehringdamm",
+    "latlon": [
+     52.49043,
+     13.386648
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 16,
+     "adresse": "Mehringdamm 57",
+     "latlon": [
+      52.491167,
+      13.387342
+     ],
+     "zeit": "12:12"
+    }
+   ]
+  },
+  {
+   "ankunft": "12:20",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Mittenwalder Straße",
+    "latlon": [
+     52.494144,
+     13.397251
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 17,
+     "adresse": "Mittenwalder Straße 6",
+     "latlon": [
+      52.493949,
+      13.397029
+     ],
+     "zeit": "12:21"
+    }
+   ]
+  },
+  {
+   "ankunft": "12:30",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Mittenwalder Straße",
+    "latlon": [
+     52.489799,
+     13.395995
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 18,
+     "adresse": "Mittenwalder Straße 30",
+     "latlon": [
+      52.489818,
+      13.395811
+     ],
+     "zeit": "12:34"
+    }
+   ]
+  },
+  {
+   "ankunft": "12:50",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Riemannstraße",
+    "latlon": [
+     52.490747,
+     13.390431
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 19,
+     "adresse": "Nostitzstraße 15",
+     "latlon": [
+      52.491404,
+      13.390405
+     ],
+     "zeit": "12:54"
+    },
+    {
+     "nr": 20,
+     "adresse": "Nostitzstraße 41",
+     "latlon": [
+      52.490554,
+      13.390622
+     ],
+     "zeit": "13:00"
+    }
+   ]
+  },
+  {
+   "ankunft": "13:06",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Solmsstraße",
+    "latlon": [
+     52.490385,
+     13.392297
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 21,
+     "adresse": "Riemannstraße 9",
+     "latlon": [
+      52.490325,
+      13.392853
+     ],
+     "zeit": "13:10"
+    },
+    {
+     "nr": 22,
+     "adresse": "Riemannstraße 21",
+     "latlon": [
+      52.490579,
+      13.390896
+     ],
+     "zeit": "13:15"
+    }
+   ]
+  },
+  {
+   "ankunft": "13:27",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Fürbringerstraße",
+    "latlon": [
+     52.493451,
+     13.393195
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 23,
+     "adresse": "Solmsstraße 7",
+     "latlon": [
+      52.493361,
+      13.392972
+     ],
+     "zeit": "13:30"
+    },
+    {
+     "nr": 24,
+     "adresse": "Solmsstraße 12",
+     "latlon": [
+      52.49272,
+      13.392795
+     ],
+     "zeit": "13:37"
+    }
+   ]
+  },
+  {
+   "ankunft": "13:47",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Parkfläche bei Bergmannstraße",
+    "latlon": [
+     52.489362,
+     13.392312
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 25,
+     "adresse": "Solmsstraße 30",
+     "latlon": [
+      52.489791,
+      13.392336
+     ],
+     "zeit": "13:49"
+    }
+   ]
+  },
+  {
+   "ankunft": "13:55",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Gneisenaustraße",
+    "latlon": [
+     52.491761,
+     13.394236
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 26,
+     "adresse": "Zossener Straße 14",
+     "latlon": [
+      52.49198,
+      13.394353
+     ],
+     "zeit": "13:59"
+    }
+   ]
+  },
+  {
+   "ankunft": "14:07",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Riemannstraße",
+    "latlon": [
+     52.490345,
+     13.393929
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 27,
+     "adresse": "Zossener Straße 22",
+     "latlon": [
+      52.490192,
+      13.393813
+     ],
+     "zeit": "14:09"
+    },
+    {
+     "nr": 28,
+     "adresse": "Zossener Straße 37",
+     "latlon": [
+      52.491016,
+      13.394461
+     ],
+     "zeit": "14:13"
+    }
+   ]
+  },
+  {
+   "ankunft": "14:24",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Zossener Straße",
+    "latlon": [
+     52.493607,
+     13.395005
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 29,
+     "adresse": "Zossener Straße 48",
+     "latlon": [
+      52.493583,
+      13.395228
+     ],
+     "zeit": "14:27"
+    }
+   ]
+  },
+  {
+   "ankunft": "14:40",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Arndtstraße",
+    "latlon": [
+     52.488515,
+     13.391929
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 30,
+     "adresse": "Arndtstraße 12",
+     "latlon": [
+      52.488518,
+      13.392996
+     ],
+     "zeit": "14:44"
+    },
+    {
+     "nr": 31,
+     "adresse": "Arndtstraße 29",
+     "latlon": [
+      52.48834,
+      13.392292
+     ],
+     "zeit": "14:50"
+    },
+    {
+     "nr": 32,
+     "adresse": "Chamissoplatz 4",
+     "latlon": [
+      52.488007,
+      13.390485
+     ],
+     "zeit": "14:56"
+    },
+    {
+     "nr": 33,
+     "adresse": "Chamissoplatz 9",
+     "latlon": [
+      52.48831,
+      13.391872
+     ],
+     "zeit": "15:02"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:06",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Friesenstraße",
+    "latlon": [
+     52.487971,
+     13.394407
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 36,
+     "adresse": "Friesenstraße 6",
+     "latlon": [
+      52.487907,
+      13.394234
+     ],
+     "zeit": "15:08"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:11",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Jüterboger Straße",
+    "latlon": [
+     52.486487,
+     13.394733
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 37,
+     "adresse": "Friesenstraße 16",
+     "latlon": [
+      52.48585,
+      13.394673
+     ],
+     "zeit": "15:16"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:21",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Arndtstraße",
+    "latlon": [
+     52.488091,
+     13.396865
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 38,
+     "adresse": "Heimstraße 3",
+     "latlon": [
+      52.488469,
+      13.396749
+     ],
+     "zeit": "15:25"
+    },
+    {
+     "nr": 39,
+     "adresse": "Heimstraße 17",
+     "latlon": [
+      52.487475,
+      13.397021
+     ],
+     "zeit": "15:33"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:43",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Katzbachstraße",
+    "latlon": [
+     52.48724,
+     13.376618
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 40,
+     "adresse": "Katzbachstraße 18",
+     "latlon": [
+      52.487242,
+      13.376422
+     ],
+     "zeit": "15:46"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:55",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Kopischstraße",
+    "latlon": [
+     52.487379,
+     13.389496
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 41,
+     "adresse": "Kopischstraße 5",
+     "latlon": [
+      52.487399,
+      13.389298
+     ],
+     "zeit": "15:58"
+    }
+   ]
+  },
+  {
+   "ankunft": "16:06",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Kreuzbergstraße",
+    "latlon": [
+     52.489484,
+     13.377676
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 42,
+     "adresse": "Kreuzbergstraße 30",
+     "latlon": [
+      52.489623,
+      13.377647
+     ],
+     "zeit": "16:10"
+    }
+   ]
+  },
+  {
+   "ankunft": "16:16",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Parkfläche bei Kreuzbergstraße",
+    "latlon": [
+     52.489703,
+     13.379677
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 43,
+     "adresse": "Kreuzbergstraße 62",
+     "latlon": [
+      52.489467,
+      13.380209
+     ],
+     "zeit": "16:18"
+    }
+   ]
+  },
+  {
+   "ankunft": "16:26",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Methfesselstraße",
+    "latlon": [
+     52.487679,
+     13.384522
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 44,
+     "adresse": "Methfesselstraße 22",
+     "latlon": [
+      52.487607,
+      13.38464
+     ],
+     "zeit": "16:29"
+    }
+   ]
+  },
+  {
+   "ankunft": "16:37",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Kloedenstraße",
+    "latlon": [
+     52.487578,
+     13.392451
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 45,
+     "adresse": "Willibald-Alexis-Straße 8",
+     "latlon": [
+      52.487569,
+      13.393665
+     ],
+     "zeit": "16:42"
+    },
+    {
+     "nr": 46,
+     "adresse": "Willibald-Alexis-Straße 24",
+     "latlon": [
+      52.487621,
+      13.390888
+     ],
+     "zeit": "16:48"
+    }
+   ]
+  },
+  {
+   "ankunft": "16:57",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Yorckstraße",
+    "latlon": [
+     52.493517,
+     13.385148
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 47,
+     "adresse": "Yorckstraße 84",
+     "latlon": [
+      52.493105,
+      13.384921
+     ],
+     "zeit": "16:59"
+    }
+   ]
+  },
+  {
+   "ankunft": "17:14",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Kottbusser Damm",
+    "latlon": [
+     52.493638,
+     13.421627
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 48,
+     "adresse": "Böckhstraße 25",
+     "latlon": [
+      52.493055,
+      13.42086
+     ],
+     "zeit": "17:17"
+    }
+   ]
+  },
+  {
+   "ankunft": "17:27",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Dieffenbachstraße",
+    "latlon": [
+     52.492726,
+     13.416112
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 50,
+     "adresse": "Dieffenbachstraße 59",
+     "latlon": [
+      52.492839,
+      13.416188
+     ],
+     "zeit": "17:30"
+    }
+   ]
+  },
+  {
+   "ankunft": "17:36",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Fichtestraße",
+    "latlon": [
+     52.490639,
+     13.41317
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 51,
+     "adresse": "Fichtestraße 30",
+     "latlon": [
+      52.49066,
+      13.413432
+     ],
+     "zeit": "17:39"
+    }
+   ]
+  },
+  {
+   "ankunft": "17:44",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Grimmstraße",
+    "latlon": [
+     52.494296,
+     13.414968
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 54,
+     "adresse": "Grimmstraße 4",
+     "latlon": [
+      52.49423,
+      13.414007
+     ],
+     "zeit": "17:46"
+    }
+   ]
+  },
+  {
+   "ankunft": "17:57",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Hasenheide",
+    "latlon": [
+     52.48864,
+     13.410362
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 55,
+     "adresse": "Hasenheide 54",
+     "latlon": [
+      52.48906,
+      13.409962
+     ],
+     "zeit": "17:59"
+    }
+   ]
+  },
+  {
+   "ankunft": "18:06",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Freiligrathstraße",
+    "latlon": [
+     52.490883,
+     13.410761
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 56,
+     "adresse": "Körtestraße 8",
+     "latlon": [
+      52.491329,
+      13.411324
+     ],
+     "zeit": "18:10"
+    },
+    {
+     "nr": 57,
+     "adresse": "Körtestraße 20",
+     "latlon": [
+      52.490498,
+      13.409549
+     ],
+     "zeit": "18:16"
+    }
+   ]
+  },
+  {
+   "ankunft": "18:23",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Urbanstraße",
+    "latlon": [
+     52.49024,
+     13.418955
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 58,
+     "adresse": "Urbanstraße 112",
+     "latlon": [
+      52.49036,
+      13.419045
+     ],
+     "zeit": "18:26"
+    }
+   ]
+  }
+ ],
+ "ganz_neu": [
+  {
+   "ankunft": "08:16",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Chamissoplatz",
+    "latlon": [
+     52.48777,
+     13.390587
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 32,
+     "adresse": "Chamissoplatz 4",
+     "latlon": [
+      52.488007,
+      13.390485
+     ],
+     "zeit": "08:19"
+    },
+    {
+     "nr": 46,
+     "adresse": "Willibald-Alexis-Straße 24",
+     "latlon": [
+      52.487621,
+      13.390888
+     ],
+     "zeit": "08:24"
+    },
+    {
+     "nr": 41,
+     "adresse": "Kopischstraße 5",
+     "latlon": [
+      52.487399,
+      13.389298
+     ],
+     "zeit": "08:29"
+    },
+    {
+     "nr": 35,
+     "adresse": "Fidicinstraße 33",
+     "latlon": [
+      52.486988,
+      13.390904
+     ],
+     "zeit": "08:36"
+    }
+   ]
+  },
+  {
+   "ankunft": "08:45",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Mehringdamm",
+    "latlon": [
+     52.49043,
+     13.386648
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 16,
+     "adresse": "Mehringdamm 57",
+     "latlon": [
+      52.491167,
+      13.387342
+     ],
+     "zeit": "08:48"
+    }
+   ]
+  },
+  {
+   "ankunft": "08:56",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Heimstraße",
+    "latlon": [
+     52.488456,
+     13.396935
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 38,
+     "adresse": "Heimstraße 3",
+     "latlon": [
+      52.488469,
+      13.396749
+     ],
+     "zeit": "08:59"
+    },
+    {
+     "nr": 7,
+     "adresse": "Bergmannstraße 34",
+     "latlon": [
+      52.488715,
+      13.397641
+     ],
+     "zeit": "09:07"
+    },
+    {
+     "nr": 39,
+     "adresse": "Heimstraße 17",
+     "latlon": [
+      52.487475,
+      13.397021
+     ],
+     "zeit": "09:12"
+    }
+   ]
+  },
+  {
+   "ankunft": "09:18",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Mittenwalder Straße",
+    "latlon": [
+     52.489799,
+     13.395995
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 18,
+     "adresse": "Mittenwalder Straße 30",
+     "latlon": [
+      52.489818,
+      13.395811
+     ],
+     "zeit": "09:21"
+    },
+    {
+     "nr": 15,
+     "adresse": "Marheinekeplatz 15",
+     "latlon": [
+      52.489423,
+      13.395244
+     ],
+     "zeit": "09:29"
+    }
+   ]
+  },
+  {
+   "ankunft": "09:36",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Gneisenaustraße",
+    "latlon": [
+     52.490416,
+     13.399462
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 1,
+     "adresse": "Baerwaldstraße 18",
+     "latlon": [
+      52.49169,
+      13.400684
+     ],
+     "zeit": "09:42"
+    }
+   ]
+  },
+  {
+   "ankunft": "09:48",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Gneisenaustraße",
+    "latlon": [
+     52.489896,
+     13.402067
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 12,
+     "adresse": "Gneisenaustraße 43",
+     "latlon": [
+      52.489813,
+      13.401502
+     ],
+     "zeit": "09:52"
+    },
+    {
+     "nr": 9,
+     "adresse": "Bergmannstraße 61",
+     "latlon": [
+      52.48896,
+      13.402029
+     ],
+     "zeit": "10:01"
+    },
+    {
+     "nr": 14,
+     "adresse": "Gneisenaustraße 66",
+     "latlon": [
+      52.490271,
+      13.402269
+     ],
+     "zeit": "10:06"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:13",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Gneisenaustraße",
+    "latlon": [
+     52.489789,
+     13.403995
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 13,
+     "adresse": "Gneisenaustraße 58",
+     "latlon": [
+      52.489864,
+      13.404289
+     ],
+     "zeit": "10:14"
+    },
+    {
+     "nr": 8,
+     "adresse": "Bergmannstraße 52",
+     "latlon": [
+      52.488916,
+      13.404937
+     ],
+     "zeit": "10:19"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:25",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Blücherstraße",
+    "latlon": [
+     52.491008,
+     13.404458
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 11,
+     "adresse": "Blücherstraße 37",
+     "latlon": [
+      52.490936,
+      13.404338
+     ],
+     "zeit": "10:29"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:32",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Parkfläche bei Blücherstraße",
+    "latlon": [
+     52.491914,
+     13.402922
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 2,
+     "adresse": "Baerwaldstraße 49",
+     "latlon": [
+      52.491204,
+      13.401721
+     ],
+     "zeit": "10:35"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:44",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Hasenheide",
+    "latlon": [
+     52.48864,
+     13.410362
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 55,
+     "adresse": "Hasenheide 54",
+     "latlon": [
+      52.48906,
+      13.409962
+     ],
+     "zeit": "10:46"
+    }
+   ]
+  },
+  {
+   "ankunft": "10:53",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Graefestraße",
+    "latlon": [
+     52.492697,
+     13.417484
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 50,
+     "adresse": "Dieffenbachstraße 59",
+     "latlon": [
+      52.492839,
+      13.416188
+     ],
+     "zeit": "10:58"
+    },
+    {
+     "nr": 52,
+     "adresse": "Graefestraße 11",
+     "latlon": [
+      52.493623,
+      13.418022
+     ],
+     "zeit": "11:04"
+    },
+    {
+     "nr": 53,
+     "adresse": "Graefestraße 74",
+     "latlon": [
+      52.49264,
+      13.417681
+     ],
+     "zeit": "11:10"
+    }
+   ]
+  },
+  {
+   "ankunft": "11:16",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Dieffenbachstraße",
+    "latlon": [
+     52.491879,
+     13.419467
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 49,
+     "adresse": "Dieffenbachstraße 36",
+     "latlon": [
+      52.491729,
+      13.419372
+     ],
+     "zeit": "11:19"
+    }
+   ]
+  },
+  {
+   "ankunft": "11:27",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Kottbusser Damm",
+    "latlon": [
+     52.4936,
+     13.421768
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 48,
+     "adresse": "Böckhstraße 25",
+     "latlon": [
+      52.493055,
+      13.42086
+     ],
+     "zeit": "11:29"
+    }
+   ]
+  },
+  {
+   "ankunft": "11:38",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Urbanstraße",
+    "latlon": [
+     52.49024,
+     13.418955
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 58,
+     "adresse": "Urbanstraße 112",
+     "latlon": [
+      52.49036,
+      13.419045
+     ],
+     "zeit": "11:41"
+    }
+   ]
+  },
+  {
+   "ankunft": "11:48",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Grimmstraße",
+    "latlon": [
+     52.494296,
+     13.414968
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 54,
+     "adresse": "Grimmstraße 4",
+     "latlon": [
+      52.49423,
+      13.414007
+     ],
+     "zeit": "11:50"
+    }
+   ]
+  },
+  {
+   "ankunft": "11:58",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Freiligrathstraße",
+    "latlon": [
+     52.490883,
+     13.410761
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 56,
+     "adresse": "Körtestraße 8",
+     "latlon": [
+      52.491329,
+      13.411324
+     ],
+     "zeit": "12:02"
+    },
+    {
+     "nr": 57,
+     "adresse": "Körtestraße 20",
+     "latlon": [
+      52.490498,
+      13.409549
+     ],
+     "zeit": "12:07"
+    }
+   ]
+  },
+  {
+   "ankunft": "12:13",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Fichtestraße",
+    "latlon": [
+     52.490639,
+     13.41317
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 51,
+     "adresse": "Fichtestraße 30",
+     "latlon": [
+      52.49066,
+      13.413432
+     ],
+     "zeit": "12:16"
+    }
+   ]
+  },
+  {
+   "ankunft": "12:24",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Mittenwalder Straße",
+    "latlon": [
+     52.494144,
+     13.397251
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 17,
+     "adresse": "Mittenwalder Straße 6",
+     "latlon": [
+      52.493949,
+      13.397029
+     ],
+     "zeit": "12:25"
+    },
+    {
+     "nr": 10,
+     "adresse": "Blücherstraße 22",
+     "latlon": [
+      52.494371,
+      13.398783
+     ],
+     "zeit": "12:30"
+    }
+   ]
+  },
+  {
+   "ankunft": "12:37",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Zossener Straße",
+    "latlon": [
+     52.493607,
+     13.395005
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 29,
+     "adresse": "Zossener Straße 48",
+     "latlon": [
+      52.493583,
+      13.395228
+     ],
+     "zeit": "12:40"
+    }
+   ]
+  },
+  {
+   "ankunft": "12:48",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Fürbringerstraße",
+    "latlon": [
+     52.493451,
+     13.393195
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 23,
+     "adresse": "Solmsstraße 7",
+     "latlon": [
+      52.493361,
+      13.392972
+     ],
+     "zeit": "12:51"
+    },
+    {
+     "nr": 24,
+     "adresse": "Solmsstraße 12",
+     "latlon": [
+      52.49272,
+      13.392795
+     ],
+     "zeit": "12:58"
+    }
+   ]
+  },
+  {
+   "ankunft": "13:06",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Yorckstraße",
+    "latlon": [
+     52.493517,
+     13.385148
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 47,
+     "adresse": "Yorckstraße 84",
+     "latlon": [
+      52.493105,
+      13.384921
+     ],
+     "zeit": "13:08"
+    }
+   ]
+  },
+  {
+   "ankunft": "13:16",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Gneisenaustraße",
+    "latlon": [
+     52.491761,
+     13.394236
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 26,
+     "adresse": "Zossener Straße 14",
+     "latlon": [
+      52.49198,
+      13.394353
+     ],
+     "zeit": "13:20"
+    }
+   ]
+  },
+  {
+   "ankunft": "13:28",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Zossener Straße",
+    "latlon": [
+     52.491033,
+     13.394284
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 28,
+     "adresse": "Zossener Straße 37",
+     "latlon": [
+      52.491016,
+      13.394461
+     ],
+     "zeit": "13:32"
+    }
+   ]
+  },
+  {
+   "ankunft": "13:35",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Riemannstraße",
+    "latlon": [
+     52.490379,
+     13.393626
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 21,
+     "adresse": "Riemannstraße 9",
+     "latlon": [
+      52.490325,
+      13.392853
+     ],
+     "zeit": "13:37"
+    },
+    {
+     "nr": 27,
+     "adresse": "Zossener Straße 22",
+     "latlon": [
+      52.490192,
+      13.393813
+     ],
+     "zeit": "13:41"
+    },
+    {
+     "nr": 25,
+     "adresse": "Solmsstraße 30",
+     "latlon": [
+      52.489791,
+      13.392336
+     ],
+     "zeit": "13:47"
+    }
+   ]
+  },
+  {
+   "ankunft": "13:54",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Parkfläche bei Bergmannstraße",
+    "latlon": [
+     52.48971,
+     13.389249
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 3,
+     "adresse": "Bergmannstraße 3",
+     "latlon": [
+      52.489777,
+      13.387967
+     ],
+     "zeit": "13:56"
+    },
+    {
+     "nr": 4,
+     "adresse": "Bergmannstraße 9",
+     "latlon": [
+      52.48955,
+      13.389562
+     ],
+     "zeit": "14:01"
+    }
+   ]
+  },
+  {
+   "ankunft": "14:08",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Riemannstraße",
+    "latlon": [
+     52.49072,
+     13.390672
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 20,
+     "adresse": "Nostitzstraße 41",
+     "latlon": [
+      52.490554,
+      13.390622
+     ],
+     "zeit": "14:11"
+    },
+    {
+     "nr": 22,
+     "adresse": "Riemannstraße 21",
+     "latlon": [
+      52.490579,
+      13.390896
+     ],
+     "zeit": "14:16"
+    },
+    {
+     "nr": 19,
+     "adresse": "Nostitzstraße 15",
+     "latlon": [
+      52.491404,
+      13.390405
+     ],
+     "zeit": "14:21"
+    }
+   ]
+  },
+  {
+   "ankunft": "14:30",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Arndtstraße",
+    "latlon": [
+     52.488474,
+     13.392329
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 33,
+     "adresse": "Chamissoplatz 9",
+     "latlon": [
+      52.48831,
+      13.391872
+     ],
+     "zeit": "14:33"
+    },
+    {
+     "nr": 31,
+     "adresse": "Arndtstraße 29",
+     "latlon": [
+      52.48834,
+      13.392292
+     ],
+     "zeit": "14:37"
+    },
+    {
+     "nr": 30,
+     "adresse": "Arndtstraße 12",
+     "latlon": [
+      52.488518,
+      13.392996
+     ],
+     "zeit": "14:42"
+    },
+    {
+     "nr": 5,
+     "adresse": "Bergmannstraße 18",
+     "latlon": [
+      52.489171,
+      13.392254
+     ],
+     "zeit": "14:48"
+    }
+   ]
+  },
+  {
+   "ankunft": "14:54",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Friesenstraße",
+    "latlon": [
+     52.487971,
+     13.394407
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 36,
+     "adresse": "Friesenstraße 6",
+     "latlon": [
+      52.487907,
+      13.394234
+     ],
+     "zeit": "14:55"
+    },
+    {
+     "nr": 45,
+     "adresse": "Willibald-Alexis-Straße 8",
+     "latlon": [
+      52.487569,
+      13.393665
+     ],
+     "zeit": "15:00"
+    },
+    {
+     "nr": 6,
+     "adresse": "Bergmannstraße 26",
+     "latlon": [
+      52.488855,
+      13.395014
+     ],
+     "zeit": "15:05"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:12",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Jüterboger Straße",
+    "latlon": [
+     52.486487,
+     13.394733
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 37,
+     "adresse": "Friesenstraße 16",
+     "latlon": [
+      52.48585,
+      13.394673
+     ],
+     "zeit": "15:16"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:21",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Fidicinstraße",
+    "latlon": [
+     52.486908,
+     13.390416
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 34,
+     "adresse": "Fidicinstraße 10",
+     "latlon": [
+      52.486814,
+      13.390389
+     ],
+     "zeit": "15:24"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:31",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Methfesselstraße",
+    "latlon": [
+     52.487679,
+     13.384522
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 44,
+     "adresse": "Methfesselstraße 22",
+     "latlon": [
+      52.487607,
+      13.38464
+     ],
+     "zeit": "15:34"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:40",
+   "park": {
+    "typ": "Ladezone",
+    "strasse": "Parkfläche bei Kreuzbergstraße",
+    "latlon": [
+     52.489703,
+     13.379677
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 43,
+     "adresse": "Kreuzbergstraße 62",
+     "latlon": [
+      52.489467,
+      13.380209
+     ],
+     "zeit": "15:41"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:47",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Kreuzbergstraße",
+    "latlon": [
+     52.489484,
+     13.377676
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 42,
+     "adresse": "Kreuzbergstraße 30",
+     "latlon": [
+      52.489623,
+      13.377647
+     ],
+     "zeit": "15:50"
+    }
+   ]
+  },
+  {
+   "ankunft": "15:57",
+   "park": {
+    "typ": "Straßenrand",
+    "strasse": "Katzbachstraße",
+    "latlon": [
+     52.48724,
+     13.376618
+    ]
+   },
+   "stopps": [
+    {
+     "nr": 40,
+     "adresse": "Katzbachstraße 18",
+     "latlon": [
+      52.487242,
+      13.376422
+     ],
+     "zeit": "16:00"
+    }
+   ]
+  }
+ ]
+}

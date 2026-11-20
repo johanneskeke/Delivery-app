@@ -1,0 +1,15 @@
+# Secrets: API keys (e.g. the Maps Demo Key) never go into git
+.env
+.env*.local
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Node / Expo (the app folder has its own .gitignore as well)
+node_modules/
+.expo/
+
+# macOS
+.DS_Store
