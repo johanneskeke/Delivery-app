@@ -1,9 +1,11 @@
 import type { LatLng } from '../data/types';
 
 /**
- * Hand-off to Google Maps via the official Maps URLs (https://developers.google.com/maps/documentation/urls).
- * On the phone the links open the Google Maps app if installed, otherwise the browser.
- * Decided 2026-11-20 (docs/01, Step 5): no origin (Google starts at the current location).
+ * Hand-off to the navigation app (decided 2026-11-20, docs/01 Step 5 and "Settings and notes details").
+ * - Google Maps URLs: https://developers.google.com/maps/documentation/urls
+ * - Apple Maps unified URLs (iOS 18.4+): https://developer.apple.com/documentation/mapkit/unified-map-urls
+ * - Waze deep links: https://waze.com/ul?ll=<lat>,<lng>&navigate=yes
+ * No origin anywhere: every app starts at the current location.
  */
 
 type Place = LatLng | string;
@@ -29,23 +31,44 @@ export function walkingUrl(doors: Place[]): string {
   return `https://www.google.com/maps/dir/?${parts.join('&')}`;
 }
 
-// ---------------------------------------------------------------- switch for the navigation app
+/** Apple Maps directions; `waypoints` are tried only in the map test (not documented for walking). */
+export function appleUrl(destination: Place, mode: 'driving' | 'walking', waypoints: Place[] = []): string {
+  const parts = [`destination=${enc(destination)}`, `mode=${mode}`, ...waypoints.map((w) => `waypoint=${enc(w)}`)];
+  return `https://maps.apple.com/directions?${parts.join('&')}`;
+}
 
-/** The settings (Tue 2026-11-24) add Apple Maps and Waze; until then every button uses Google Maps. */
-export type NavApp = 'google';
-export const NAV_APP_NAME: Record<NavApp, string> = { google: 'Google Maps' };
+/** Waze: driving only; navigation starts directly. Coordinates only (Waze needs ll=). */
+export function wazeUrl(p: LatLng): string {
+  return `https://waze.com/ul?ll=${p.lat.toFixed(6)},${p.lng.toFixed(6)}&navigate=yes`;
+}
 
-export function driveLink(app: NavApp, parking: Place): string {
+// ---------------------------------------------------------------- switch for the navigation app (settings)
+
+export type NavApp = 'google' | 'apple' | 'waze';
+export const NAV_APPS: NavApp[] = ['google', 'apple', 'waze'];
+export const NAV_APP_NAME: Record<NavApp, string> = { google: 'Google Maps', apple: 'Apple Maps', waze: 'Waze' };
+
+/** Driving to the parking point (or to the depot address, which Waze cannot take as text). */
+export function driveLink(app: NavApp, target: Place): string {
   switch (app) {
     case 'google':
-      return drivingUrl(parking);
+      return drivingUrl(target);
+    case 'apple':
+      return appleUrl(target, 'driving');
+    case 'waze':
+      return typeof target === 'string' ? `https://waze.com/ul?q=${encodeURIComponent(target)}&navigate=yes` : wazeUrl(target);
   }
 }
 
-/** Walking links for one halt: Google Maps takes all doors in one link. */
-export function walkLinks(app: NavApp, doors: Place[]): { label: string; url: string }[] {
-  switch (app) {
-    case 'google':
-      return [{ label: `Walk in ${NAV_APP_NAME[app]}`, url: walkingUrl(doors) }];
-  }
+/** Waze has no walking mode: walking then uses Apple Maps (always on the iPhone). */
+export const walkApp = (app: NavApp): Exclude<NavApp, 'waze'> => (app === 'waze' ? 'apple' : app);
+
+/** One walking link for the whole halt (Google Maps only); null → one link per door instead. */
+export function walkHaltLink(app: NavApp, doors: LatLng[]): string | null {
+  return walkApp(app) === 'google' ? walkingUrl(doors) : null;
+}
+
+/** Walking link to one door (Apple Maps, also when Waze is chosen). */
+export function walkDoorLink(app: NavApp, door: LatLng): string {
+  return walkApp(app) === 'google' ? walkingUrl([door]) : appleUrl(door, 'walking');
 }

@@ -1,14 +1,16 @@
 import { router, Stack } from 'expo-router';
-import { useMemo } from 'react';
-import { Alert, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useMemo, useState } from 'react';
+import { Alert, Linking, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { GoogleMap } from '@/components/google-map';
 import { route } from '@/data/bundle';
+import { EXAMPLE_NOTES, type DriverNote } from '@/data/example-notes';
 import { approachMap, haltDone, stopCard, stopDone, takeOut, walkMap, type StopCard } from '@/data/halt-view';
 import type { Halt, LatLon } from '@/data/types';
-import { driveLink, NAV_APP_NAME, walkLinks, type NavApp } from '@/services/navigation';
+import { driveLink, NAV_APP_NAME, walkApp, walkDoorLink, walkHaltLink, type NavApp } from '@/services/navigation';
 import { useDemoStore, type NotHomeChoice, type StopStatus } from '@/store/demo-store';
+import { useSettingsStore } from '@/store/settings-store';
 import { HeaderTextButton } from '@/ui/header-buttons';
 import { Badge, Button, colors } from '@/ui/kit';
 
@@ -18,7 +20,6 @@ import { Badge, Button, colors } from '@/ui/kit';
  */
 
 const API_KEY = process.env.EXPO_PUBLIC_GOOGLE_MAPS_KEY ?? '';
-const NAV_APP: NavApp = 'google'; // settings follow on Tue 2026-11-24
 const toLatLng = (p: LatLon) => ({ lat: p[0], lng: p[1] });
 
 const NOT_HOME_LABEL: Record<NotHomeChoice, string> = {
@@ -29,14 +30,17 @@ const NOT_HOME_LABEL: Record<NotHomeChoice, string> = {
 
 export default function TourScreen() {
   const { haltIndex, arrived, stops, arrive, setStop, goToHalt } = useDemoStore();
+  const { navApp, autoNavigate } = useSettingsStore();
   const index = Math.min(haltIndex, route.halts.length - 1);
   const halt = route.halts[index];
   const isLast = index === route.halts.length - 1;
   const allDone = haltDone(halt, stops);
 
   const next = () => {
-    if (isLast) router.replace('/done');
-    else goToHalt(index + 1);
+    if (isLast) return router.replace('/done');
+    goToHalt(index + 1);
+    // Setting "Open navigation automatically after Next halt" (default off): the approach screen stays behind it.
+    if (autoNavigate) Linking.openURL(driveLink(navApp, toLatLng(route.halts[index + 1].parking.latlon)));
   };
 
   return (
@@ -52,7 +56,7 @@ export default function TourScreen() {
       </View>
 
       {arrived ? (
-        <Arrived halt={halt} stops={stops} setStop={setStop} />
+        <Arrived halt={halt} stops={stops} setStop={setStop} navApp={navApp} />
       ) : (
         <Approach halt={halt} />
       )}
@@ -62,7 +66,7 @@ export default function TourScreen() {
           <Button title={isLast ? 'Finish tour' : 'Next halt'} onPress={next} disabled={!allDone} />
         ) : (
           <>
-            <Button title={`Open in ${NAV_APP_NAME[NAV_APP]}`} onPress={() => Linking.openURL(driveLink(NAV_APP, toLatLng(halt.parking.latlon)))} />
+            <Button title={`Open in ${NAV_APP_NAME[navApp]}`} onPress={() => Linking.openURL(driveLink(navApp, toLatLng(halt.parking.latlon)))} />
             <Button title="Arrived" variant="secondary" onPress={arrive} />
           </>
         )}
@@ -103,14 +107,20 @@ function Arrived({
   halt,
   stops,
   setStop,
+  navApp,
 }: {
   halt: Halt;
   stops: Record<number, StopStatus>;
   setStop: (no: number, s: StopStatus | null) => void;
+  navApp: NavApp;
 }) {
   const map = useMemo(() => walkMap(halt), [halt]);
   const cards = useMemo(() => halt.stops.map(stopCard), [halt]);
-  const walks = walkLinks(NAV_APP, halt.stops.map((s) => toLatLng(s.door)));
+  // Google Maps: one walking link with all doors; Apple Maps (also for Waze): one "Walk ›" per stop card.
+  const haltWalk = walkHaltLink(navApp, halt.stops.map((s) => toLatLng(s.door)));
+  const walkName = NAV_APP_NAME[walkApp(navApp)];
+  const notes = useDemoStore((s) => s.notes);
+  const setNote = useDemoStore((s) => s.setNote);
 
   return (
     <ScrollView contentContainerStyle={styles.scroll}>
@@ -121,11 +131,19 @@ function Arrived({
       <View style={styles.mapSmall}>
         {API_KEY ? <GoogleMap key={`walk-${halt.id}`} apiKey={API_KEY} lines={map.lines} markers={map.markers} fitTo={map.fitTo} /> : null}
       </View>
-      {walks.map((w) => (
-        <Button key={w.url} title={w.label} variant="secondary" onPress={() => Linking.openURL(w.url)} />
-      ))}
+      {haltWalk ? <Button title={`Walk in ${walkName}`} variant="secondary" onPress={() => Linking.openURL(haltWalk)} /> : null}
       {cards.map((c) => (
-        <StopCardView key={c.no} card={c} status={stops[c.no]} setStop={setStop} />
+        <StopCardView
+          key={c.no}
+          card={c}
+          status={stops[c.no]}
+          setStop={setStop}
+          walkUrl={haltWalk ? null : walkDoorLink(navApp, toLatLng(c.door))}
+          walkName={walkName}
+          example={EXAMPLE_NOTES[c.no]}
+          note={notes[c.no]}
+          setNote={setNote}
+        />
       ))}
     </ScrollView>
   );
@@ -135,11 +153,23 @@ function StopCardView({
   card,
   status,
   setStop,
+  walkUrl,
+  walkName,
+  example,
+  note,
+  setNote,
 }: {
   card: StopCard;
   status: StopStatus | undefined;
   setStop: (no: number, s: StopStatus | null) => void;
+  walkUrl: string | null;
+  walkName: string;
+  example: DriverNote | undefined;
+  note: DriverNote | undefined;
+  setNote: (no: number, text: string | null) => void;
 }) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState('');
   const notHome = () => {
     const pre = [
       card.preferredNeighbour ? `Preferred neighbour: ${card.preferredNeighbour}` : null,
@@ -185,6 +215,47 @@ function StopCardView({
           “{n}”
         </Text>
       ))}
+      {example ? (
+        <View style={styles.driverNote}>
+          <Text style={styles.driverNoteLabel}>Note from a driver · earlier driver · synthetic example</Text>
+          <Text style={styles.driverNoteText}>{example.text}</Text>
+        </View>
+      ) : null}
+      {note && !editing ? (
+        <View style={styles.driverNote}>
+          <Text style={styles.driverNoteLabel}>Note from a driver · you, {note.at}</Text>
+          <Text style={styles.driverNoteText}>{note.text}</Text>
+          <View style={styles.links}>
+            <Pressable hitSlop={8} onPress={() => { setDraft(note.text); setEditing(true); }}>
+              <Text style={styles.smallLink}>Edit</Text>
+            </Pressable>
+            <Pressable hitSlop={8} onPress={() => setNote(card.no, null)}>
+              <Text style={[styles.smallLink, { color: colors.danger }]}>Delete</Text>
+            </Pressable>
+          </View>
+        </View>
+      ) : null}
+      {editing ? (
+        <View style={styles.driverNote}>
+          <TextInput
+            value={draft}
+            onChangeText={setDraft}
+            placeholder="For the next driver: door code, entrance, where to park …"
+            placeholderTextColor={colors.muted}
+            multiline
+            autoFocus
+            style={styles.noteInput}
+          />
+          <View style={styles.links}>
+            <Pressable hitSlop={8} onPress={() => { setNote(card.no, draft); setEditing(false); }}>
+              <Text style={styles.smallLink}>Save</Text>
+            </Pressable>
+            <Pressable hitSlop={8} onPress={() => setEditing(false)}>
+              <Text style={[styles.smallLink, { color: colors.muted }]}>Cancel</Text>
+            </Pressable>
+          </View>
+        </View>
+      ) : null}
 
       {doneParts.length ? (
         <View style={styles.doneRow}>
@@ -220,11 +291,24 @@ function StopCardView({
           ) : null}
         </View>
       ) : null}
-      {!done && card.parcels > 0 && !status?.delivered ? (
-        <Pressable hitSlop={10} onPress={notHome} style={{ alignSelf: 'flex-start' }}>
-          <Text style={styles.link}>Not at home ›</Text>
-        </Pressable>
-      ) : null}
+      <View style={styles.links}>
+        {walkUrl ? (
+          <Pressable hitSlop={10} accessibilityLabel={`Walk in ${walkName}`} onPress={() => Linking.openURL(walkUrl)}>
+            <Text style={styles.link}>Walk ›</Text>
+          </Pressable>
+        ) : null}
+        {!done && card.parcels > 0 && !status?.delivered ? (
+          <Pressable hitSlop={10} onPress={notHome}>
+            <Text style={styles.link}>Not at home ›</Text>
+          </Pressable>
+        ) : null}
+        {!note && !editing ? (
+          <Pressable hitSlop={10} onPress={() => { setDraft(''); setEditing(true); }}>
+            <Text style={[styles.link, { color: colors.muted }]}>Add note</Text>
+          </Pressable>
+        ) : null}
+      </View>
+
     </View>
   );
 }
@@ -270,4 +354,10 @@ const styles = StyleSheet.create({
   doneRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 4 },
   done: { fontSize: 15, fontWeight: '700', color: colors.ok },
   undo: { color: colors.primary, fontSize: 14 },
+  links: { flexDirection: 'row', flexWrap: 'wrap', gap: 18, marginTop: 4 },
+  smallLink: { color: colors.primary, fontSize: 14, fontWeight: '600' },
+  driverNote: { backgroundColor: colors.infoBg, borderRadius: 8, padding: 10, gap: 4 },
+  driverNoteLabel: { fontSize: 12, color: colors.info, fontWeight: '600' },
+  driverNoteText: { fontSize: 15, color: colors.text },
+  noteInput: { minHeight: 60, fontSize: 15, color: colors.text, backgroundColor: colors.card, borderRadius: 6, padding: 8 },
 });

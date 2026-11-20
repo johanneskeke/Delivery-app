@@ -32,6 +32,7 @@ export function takeOut(halt: Halt): string {
 export type StopCard = {
   no: number;
   address: string;
+  door: LatLon;
   recipients: string;
   parcels: number;
   pickups: number;
@@ -67,6 +68,7 @@ export function stopCard(stop: PlanStop): StopCard {
   return {
     no: stop.no,
     address: stop.address,
+    door: stop.door,
     recipients: [...new Set(ships.map((s) => s.recipient))].join(', '),
     parcels: ships.length - pickups,
     pickups,

@@ -4,13 +4,21 @@ import { useSyncExternalStore } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
 import { useDemoStore } from '@/store/demo-store';
+import { useSettingsStore } from '@/store/settings-store';
 import { SettingsButton } from '@/ui/header-buttons';
 import { colors } from '@/ui/kit';
 
-const subscribeHydration = (onChange: () => void) => useDemoStore.persist.onFinishHydration(onChange);
-const isHydrated = () => useDemoStore.persist.hasHydrated();
+const subscribeHydration = (onChange: () => void) => {
+  const a = useDemoStore.persist.onFinishHydration(onChange);
+  const b = useSettingsStore.persist.onFinishHydration(onChange);
+  return () => {
+    a();
+    b();
+  };
+};
+const isHydrated = () => useDemoStore.persist.hasHydrated() && useSettingsStore.persist.hasHydrated();
 
-/** Wait until the saved demo progress is loaded from the phone, so nothing flashes "empty". */
+/** Wait until the saved demo progress and settings are loaded from the phone, so nothing flashes "empty". */
 function useHydrated() {
   return useSyncExternalStore(subscribeHydration, isHydrated, isHydrated);
 }

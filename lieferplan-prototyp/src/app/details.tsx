@@ -6,7 +6,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { GoogleMap, type LatLon, type MapLine, type MapMarker, type MapStatus } from '@/components/google-map';
 import { importData, listPlan, mapData, meta, route, stopByNo } from '@/data/bundle';
 import type { Plan } from '@/data/types';
+import { EXAMPLE_NOTES } from '@/data/example-notes';
 import { formatDate, formatDateTime } from '@/lib/format';
+import { useDemoStore } from '@/store/demo-store';
 import { colors } from '@/ui/kit';
 
 /**
@@ -203,12 +205,25 @@ function MapTab() {
 
 function WhyTab() {
   const [open, setOpen] = useState<string | null>(null);
+  // Driver notes (2026-11-20): driver knowledge flowing back to the back office; stored on this phone in the demo.
+  const own = useDemoStore((s) => s.notes);
+  const noteRows: Row[] = [
+    ...Object.entries(EXAMPLE_NOTES).map(([no, n]) => ({
+      title: n.text,
+      detail: `${stopByNo(Number(no))?.address ?? `Stop ${no}`} · earlier driver · synthetic example`,
+    })),
+    ...Object.entries(own).map(([no, n]) => ({
+      title: n.text,
+      detail: `${stopByNo(Number(no))?.address ?? `Stop ${no}`} · driver, ${n.at}`,
+    })),
+  ];
+  const sections: Section[] = [...SECTIONS.slice(0, 4), { key: 'notes', title: 'Driver notes', rows: noteRows }, ...SECTIONS.slice(4)];
   return (
     <ScrollView contentContainerStyle={styles.why}>
       <Text style={styles.intro}>
         Every change in the new route, with reason and source. Computed before the tour by our planning engine.
       </Text>
-      {SECTIONS.filter((s) => s.rows.length).map((s) => {
+      {sections.filter((s) => s.rows.length).map((s) => {
         const isOpen = open === s.key;
         return (
           <View key={s.key} style={styles.section}>

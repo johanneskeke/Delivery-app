@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { GoogleMap, type LatLon, type MapLine, type MapMarker, type MapStatus } from '@/components/google-map';
 import spike from '@/dev/map-test-data.json';
-import { drivingUrl, walkingUrl } from '@/services/navigation';
+import { appleUrl, drivingUrl, walkingUrl } from '@/services/navigation';
 import { Button, colors, Row } from '@/ui/kit';
 
 /**
@@ -106,6 +106,12 @@ export default function MapTestScreen() {
             <Button title="Walk in Google Maps" variant="secondary" onPress={() => Linking.openURL(walkingUrl(doors))} />
           </View>
         </Row>
+        {/* Test 2026-11-20: does Apple Maps take several doors in one walking link? (not documented for walking) */}
+        <Button
+          title="Test: Apple Maps walking, both doors"
+          variant="secondary"
+          onPress={() => Linking.openURL(appleUrl(doors[doors.length - 1], 'walking', doors.slice(0, -1)))}
+        />
       </View>
     </SafeAreaView>
   );
@@ -117,5 +123,5 @@ const styles = StyleSheet.create({
   status: { fontSize: 15, fontWeight: '600' },
   small: { fontSize: 12, color: colors.muted },
   map: { flex: 1 },
-  footer: { padding: 12, backgroundColor: colors.card, borderTopWidth: 1, borderColor: colors.border },
+  footer: { padding: 12, gap: 8, backgroundColor: colors.card, borderTopWidth: 1, borderColor: colors.border },
 });

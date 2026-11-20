@@ -4,15 +4,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { mapData, route } from '@/data/bundle';
 import { stopCard, stopDone } from '@/data/halt-view';
-import { driveLink, NAV_APP_NAME, type NavApp } from '@/services/navigation';
+import { driveLink, NAV_APP_NAME } from '@/services/navigation';
 import { useDemoStore } from '@/store/demo-store';
+import { useSettingsStore } from '@/store/settings-store';
 import { Button, colors } from '@/ui/kit';
-
-const NAV_APP: NavApp = 'google'; // settings follow on Tue 2026-11-24
 
 /** End of the tour: one summary line and the way back to the depot. */
 export default function DoneScreen() {
   const stops = useDemoStore((s) => s.stops);
+  const navApp = useSettingsStore((s) => s.navApp);
   const all = route.halts.flatMap((h) => h.stops);
   const delivered = all.filter((s) => stops[s.no]?.delivered).length;
   const pickedUp = all.filter((s) => stops[s.no]?.pickedUp).length;
@@ -37,8 +37,8 @@ export default function DoneScreen() {
       </View>
       <View style={{ gap: 8 }}>
         <Button
-          title={`Drive back to depot (${NAV_APP_NAME[NAV_APP]})`}
-          onPress={() => Linking.openURL(driveLink(NAV_APP, `${mapData.depot.name}, ${mapData.depot.address}`))}
+          title={`Drive back to depot (${NAV_APP_NAME[navApp]})`}
+          onPress={() => Linking.openURL(driveLink(navApp, mapData.depot.address))}
         />
         <Button title="Back to start" variant="secondary" onPress={() => router.dismissTo('/')} />
       </View>

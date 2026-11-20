@@ -3,11 +3,12 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
 import { meta } from '@/data/bundle';
+import type { DriverNote } from '@/data/example-notes';
 
 /**
  * What the driver did during the demo (kept on the phone so a reload does not lose it).
  * The plans themselves are not stored here: they come from the bundled data.
- * Later build steps add notes and settings.
+ * Settings live in settings-store.ts (not cleared by Reset demo).
  */
 
 export type NotHomeChoice = 'neighbour' | 'dropoff' | 'van';
@@ -23,6 +24,8 @@ type DemoState = {
   arrived: boolean;
   /** Status per stop number. */
   stops: Record<number, StopStatus>;
+  /** Notes the driver wrote, per stop number (the example note lives in data/example-notes.ts). */
+  notes: Record<number, DriverNote>;
   /** Demo labels scanned into the van; not saved, so every app start begins with the four labels unscanned. */
   scanned: Record<string, true>;
 
@@ -33,10 +36,12 @@ type DemoState = {
   completeAll: (statuses: Record<number, StopStatus>) => void;
   goToHalt: (index: number) => void;
   markScanned: (id: string) => void;
+  /** Save a note for a stop; null deletes it. */
+  setNote: (no: number, text: string | null) => void;
   reset: () => void;
 };
 
-const initial = () => ({ bundleGeneratedAt: meta.generated_at, haltIndex: 0, arrived: false, stops: {}, scanned: {} });
+const initial = () => ({ bundleGeneratedAt: meta.generated_at, haltIndex: 0, arrived: false, stops: {}, scanned: {}, notes: {} });
 
 export const useDemoStore = create<DemoState>()(
   persist(
@@ -53,13 +58,20 @@ export const useDemoStore = create<DemoState>()(
       completeAll: (statuses) => set((s) => ({ stops: { ...s.stops, ...statuses } })),
       goToHalt: (index) => set({ haltIndex: index, arrived: false }),
       markScanned: (id) => set((s) => ({ scanned: { ...s.scanned, [id]: true } })),
+      setNote: (no, text) =>
+        set((s) => {
+          const notes = { ...s.notes };
+          if (text && text.trim()) notes[no] = { text: text.trim(), at: new Date().toISOString().slice(0, 10) };
+          else delete notes[no];
+          return { notes };
+        }),
       reset: () => set(initial()),
     }),
     {
       name: 'm10-demo-state-v2',
       storage: createJSONStorage(() => AsyncStorage),
       // `scanned` is left out on purpose: the scans reset on every app start (demo, decided 2026-11-20).
-      partialize: ({ bundleGeneratedAt, haltIndex, arrived, stops }) => ({ bundleGeneratedAt, haltIndex, arrived, stops }),
+      partialize: ({ bundleGeneratedAt, haltIndex, arrived, stops, notes }) => ({ bundleGeneratedAt, haltIndex, arrived, stops, notes }),
       // Progress from an older data bundle does not fit the new plans.
       merge: (persisted, current) => {
         const p = persisted as Partial<DemoState> | undefined;
