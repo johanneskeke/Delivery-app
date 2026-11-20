@@ -47,7 +47,7 @@ Read this file first in every new chat. It says what the project is, how we work
 | 5 Navigation (Google Maps hand-off) | decided 2026-11-20: one driving link per halt, walk on a Google map in the app (see 01) |
 | Demo build | decided 2026-11-20: everything precomputed; internet allowed, video as fallback; Google map in the app via WebView + Maps Demo Key; UI in English; five non-existent house numbers kept as import notes; slide numbers at 08:30 |
 | Open team topics | B1 MDS role, B9 scope alignment; small: B3, B5, B7. B8 decided by the user 2026-11-20 (replan completely, the system decides); team to be informed, slide E to adjust. |
-| Build | **built 2026-11-20 and checked on the iPhone** (build plan and driver app redesign in 01): start with Insights (back office), loading with four live Code128 scans, halt loop (one-line why, take out, delivered / picked up / not at home), end screen, settings (Google Maps / Apple Maps / Waze), driver notes. Engine export and check script in `probelauf/`. One git repository (GitHub, private remote of the user). |
+| Build | **built 2026-11-20 and checked on the iPhone** (build plan and driver app redesign in 01): start with Insights (back office), loading with four live Code128 scans, halt loop (one-line why, take out, delivered / picked up / not at home), end screen, settings (Google Maps / Apple Maps / Waze), driver notes. Engine export and check script in `probelauf/`. One git repository for the whole workspace, pushed to the user's GitHub repository. |
 | Slides | ideas + a draft map for the before/after slide |
 
 ## 5. Next steps (short; details in 02)
@@ -58,9 +58,9 @@ Read this file first in every new chat. It says what the project is, how we work
 
 ## 6. How to start a new chat
 Paste something like:
-> We are continuing the M10 delivery-planning prototype (Expo Go, Berlin-Kreuzberg). Read `claude/00-START-HERE.md` and the docs it links before answering. Today's topic: …
+> We are continuing the M10 delivery-planning prototype (Expo Go, Berlin-Kreuzberg). Read `CLAUDE.md` and `docs/00-START-HERE.md` and the docs it links before answering. Today's topic: …
 
-A new chat cannot see this chat's files. If code, data or PDFs are needed, **attach the workspace bundle** `M10_lieferplan_workspace_2026-11-20.zip` (see 06), or unpack it in the project folder on the computer and connect that folder in the Claude desktop app ("+" → "Add folder").
+Since 2026-11-20 the work happens in Claude Code (desktop app) in the project folder on the computer (`M10_lieferplan_workspace`, one git repository). A chat on claude.ai cannot see these files; there, attach the docs or the files needed.
 
 ## 7. Glossary
 - **Stop:** one delivery address; several recipients at the same address are one stop.
