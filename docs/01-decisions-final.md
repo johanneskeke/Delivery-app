@@ -233,6 +233,18 @@ Principle: the app is used by the driver while working, so it shows as little as
 | Wed 2026-11-25 | as in P6 (without the march scenario) |
 If time runs short, the settings keep only the navigation app; language and walking distance become a line in the outlook.
 
+## Halt loop details (decided 2026-11-20, user)
+Refines screen 4 of "Driver app redesign".
+- **Approach screen** (before every halt): thin progress bar "Halt n of 34", parking street and number of stops, **one line why**, small map (way from the last halt or the start point to the parking point, P, doors, closures), big "Open in <navigation app>", smaller "Arrived". The one-line reason is **precomputed by the engine** (one field per halt); priority when several apply: closure / no-stopping zone > time window or priority > loading zone > stops bundled; no special reason → only the street.
+- **After "Arrived":** "Take out" summarises the slots of the whole halt (e.g. "A2 × 3 · floor × 1 (bulky)"); map parking point → doors; "Walk in <app>"; one compact card per stop: address, recipient(s), number of parcels, badges only when they apply (ID check, 18+, priority, bulky, pickup), the note from the tour list, the import note if any (e.g. "Chamissoplatz 9 not found – door at No. 8"), from Tue the driver note.
+- **Delivered per stop** (not per halt): a halt has 1–4 stops and "Not at home" concerns one stop. "Next halt" appears when every stop of the halt is done.
+- **"Not at home":** small choice sheet with three options (neighbour / drop-off spot / stays in the van, back to depot); preferred neighbour and preferred drop-off spot from the tour list are pre-filled (as in Step 5 Q3).
+- **Pickups:** "Picked up" instead of "Delivered", hint "→ returns slot C4".
+- **"All halts"** (small button top right): list of halts, tap to jump. For the demo (go straight to e.g. the Solmsstraße closure or the Feinkost time window) and the user test.
+- **"Next halt"** opens the approach screen of the next halt; navigation opens automatically only with the setting (Tue).
+- **End:** "All parcels delivered", one summary line (delivered, not at home), button "Drive back to depot".
+- Technical: the navigation button goes through one small switch (Google Maps until the settings exist on Tue); progress (current halt, status per stop) survives an app reload, "Reset demo" clears it.
+
 ## Other decisions made in this chat
 - **2026-11-19:** the data-flow and data-source slides are presentation ideas (see 05), not yet agreed with the team.
 - **2026-11-20:** the decision-logic slide (E) is added to the slide ideas.
@@ -242,3 +254,4 @@ If time runs short, the settings keep only the navigation app; language and walk
 - **2026-11-20:** demo build decisions: everything precomputed; internet allowed with a video as fallback; Google map in the app via WebView and Maps Demo Key; UI in English; the five non-existent house numbers stay as import notes; slide numbers at 08:30 departure.
 - **2026-11-20:** build plan P1–P6 (order, reuse of the skeleton, data format v1, one git repository, roles, plan for 2026-11-25); map test passed on the iPhone.
 - **2026-11-20:** driver app redesign: replan completely directly, minimal screens with one-line reasons and a detail view, notes for later drivers, settings with a working navigation-app choice, no "Update situation" in the demo.
+- **2026-11-20:** halt loop details: delivered per stop, not-at-home sheet, all-halts list to jump, end screen with drive back to depot, one-line reason precomputed by the engine.
