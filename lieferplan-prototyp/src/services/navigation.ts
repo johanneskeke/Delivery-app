@@ -31,7 +31,7 @@ export function walkingUrl(doors: Place[]): string {
   return `https://www.google.com/maps/dir/?${parts.join('&')}`;
 }
 
-/** Apple Maps directions; `waypoints` are tried only in the map test (not documented for walking). */
+/** Apple Maps directions; walking with `waypoint`s works (checked on the user's iPhone, 2026-11-20). */
 export function appleUrl(destination: Place, mode: 'driving' | 'walking', waypoints: Place[] = []): string {
   const parts = [`destination=${enc(destination)}`, `mode=${mode}`, ...waypoints.map((w) => `waypoint=${enc(w)}`)];
   return `https://maps.apple.com/directions?${parts.join('&')}`;
@@ -63,12 +63,8 @@ export function driveLink(app: NavApp, target: Place): string {
 /** Waze has no walking mode: walking then uses Apple Maps (always on the iPhone). */
 export const walkApp = (app: NavApp): Exclude<NavApp, 'waze'> => (app === 'waze' ? 'apple' : app);
 
-/** One walking link for the whole halt (Google Maps only); null → one link per door instead. */
-export function walkHaltLink(app: NavApp, doors: LatLng[]): string | null {
-  return walkApp(app) === 'google' ? walkingUrl(doors) : null;
-}
-
-/** Walking link to one door (Apple Maps, also when Waze is chosen). */
-export function walkDoorLink(app: NavApp, door: LatLng): string {
-  return walkApp(app) === 'google' ? walkingUrl([door]) : appleUrl(door, 'walking');
+/** One walking link for the whole halt with all doors: earlier doors as waypoints, the last door as destination. */
+export function walkHaltLink(app: NavApp, doors: LatLng[]): string {
+  if (walkApp(app) === 'google') return walkingUrl(doors);
+  return appleUrl(doors[doors.length - 1], 'walking', doors.slice(0, -1));
 }

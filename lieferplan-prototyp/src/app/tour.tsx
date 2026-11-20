@@ -8,7 +8,7 @@ import { route } from '@/data/bundle';
 import { EXAMPLE_NOTES, type DriverNote } from '@/data/example-notes';
 import { approachMap, haltDone, stopCard, stopDone, takeOut, walkMap, type StopCard } from '@/data/halt-view';
 import type { Halt, LatLon } from '@/data/types';
-import { driveLink, NAV_APP_NAME, walkApp, walkDoorLink, walkHaltLink, type NavApp } from '@/services/navigation';
+import { driveLink, NAV_APP_NAME, walkApp, walkHaltLink, type NavApp } from '@/services/navigation';
 import { useDemoStore, type NotHomeChoice, type StopStatus } from '@/store/demo-store';
 import { useSettingsStore } from '@/store/settings-store';
 import { HeaderTextButton } from '@/ui/header-buttons';
@@ -116,7 +116,7 @@ function Arrived({
 }) {
   const map = useMemo(() => walkMap(halt), [halt]);
   const cards = useMemo(() => halt.stops.map(stopCard), [halt]);
-  // Google Maps: one walking link with all doors; Apple Maps (also for Waze): one "Walk ›" per stop card.
+  // One walking link with all doors (Google Maps or Apple Maps; Waze has no walking, so Apple Maps).
   const haltWalk = walkHaltLink(navApp, halt.stops.map((s) => toLatLng(s.door)));
   const walkName = NAV_APP_NAME[walkApp(navApp)];
   const notes = useDemoStore((s) => s.notes);
@@ -131,15 +131,13 @@ function Arrived({
       <View style={styles.mapSmall}>
         {API_KEY ? <GoogleMap key={`walk-${halt.id}`} apiKey={API_KEY} lines={map.lines} markers={map.markers} fitTo={map.fitTo} /> : null}
       </View>
-      {haltWalk ? <Button title={`Walk in ${walkName}`} variant="secondary" onPress={() => Linking.openURL(haltWalk)} /> : null}
+      <Button title={`Walk in ${walkName}`} variant="secondary" onPress={() => Linking.openURL(haltWalk)} />
       {cards.map((c) => (
         <StopCardView
           key={c.no}
           card={c}
           status={stops[c.no]}
           setStop={setStop}
-          walkUrl={haltWalk ? null : walkDoorLink(navApp, toLatLng(c.door))}
-          walkName={walkName}
           example={EXAMPLE_NOTES[c.no]}
           note={notes[c.no]}
           setNote={setNote}
@@ -153,8 +151,6 @@ function StopCardView({
   card,
   status,
   setStop,
-  walkUrl,
-  walkName,
   example,
   note,
   setNote,
@@ -162,8 +158,6 @@ function StopCardView({
   card: StopCard;
   status: StopStatus | undefined;
   setStop: (no: number, s: StopStatus | null) => void;
-  walkUrl: string | null;
-  walkName: string;
   example: DriverNote | undefined;
   note: DriverNote | undefined;
   setNote: (no: number, text: string | null) => void;
@@ -292,11 +286,6 @@ function StopCardView({
         </View>
       ) : null}
       <View style={styles.links}>
-        {walkUrl ? (
-          <Pressable hitSlop={10} accessibilityLabel={`Walk in ${walkName}`} onPress={() => Linking.openURL(walkUrl)}>
-            <Text style={styles.link}>Walk ›</Text>
-          </Pressable>
-        ) : null}
         {!done && card.parcels > 0 && !status?.delivered ? (
           <Pressable hitSlop={10} onPress={notHome}>
             <Text style={styles.link}>Not at home ›</Text>

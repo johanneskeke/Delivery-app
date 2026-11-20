@@ -3,7 +3,7 @@ import { test } from 'node:test';
 
 import { tour } from '../src/data/bundle';
 import { EXAMPLE_NOTES } from '../src/data/example-notes';
-import { appleUrl, driveLink, walkApp, walkDoorLink, walkHaltLink, wazeUrl } from '../src/services/navigation';
+import { appleUrl, driveLink, walkApp, walkHaltLink, wazeUrl } from '../src/services/navigation';
 
 const P = { lat: 52.493451, lng: 13.393195 };
 const D1 = { lat: 52.493361, lng: 13.392972 };
@@ -16,12 +16,12 @@ test('driving links per app (settings, 2026-11-20)', () => {
   assert.equal(wazeUrl(P), driveLink('waze', P));
 });
 
-test('walking: Google one link per halt, Apple Maps one per door, Waze walks with Apple Maps', () => {
-  assert.ok(walkHaltLink('google', [D1, D2])?.includes('waypoints='));
-  assert.equal(walkHaltLink('apple', [D1, D2]), null);
-  assert.equal(walkHaltLink('waze', [D1, D2]), null);
+test('walking: one link per halt with all doors (Google and Apple Maps); Waze walks with Apple Maps', () => {
+  assert.ok(walkHaltLink('google', [D1, D2]).includes('waypoints='));
+  const apple = 'https://maps.apple.com/directions?destination=52.492720%2C13.392795&mode=walking&waypoint=52.493361%2C13.392972';
+  assert.equal(walkHaltLink('apple', [D1, D2]), apple);
+  assert.equal(walkHaltLink('waze', [D1, D2]), apple);
   assert.equal(walkApp('waze'), 'apple');
-  assert.equal(walkDoorLink('waze', D2), 'https://maps.apple.com/directions?destination=52.492720%2C13.392795&mode=walking');
   assert.equal(
     appleUrl(D2, 'walking', [D1]),
     'https://maps.apple.com/directions?destination=52.492720%2C13.392795&mode=walking&waypoint=52.493361%2C13.392972',
