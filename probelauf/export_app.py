@@ -521,6 +521,20 @@ def assign_slots(plan, rows_by_stop):
     plan["slots"] = slots
 
 
+def demo_labels(shipment_ids):
+    """The printed demo labels (tourdaten/build_labels.py, PICK and FOREIGN), read as text: that script needs reportlab.
+    The app treats every other shipment as already loaded (simulated), decided 2026-11-20 ("Scan and load details")."""
+    text = open(os.path.join(BASE, "tourdaten", "build_labels.py"), encoding="utf-8").read()
+    pick = text[text.index("PICK = ["):text.index("FOREIGN = {")]
+    on_tour = re.findall(r'\("(SYN\d{9})"', pick)
+    foreign_block = text[text.index("FOREIGN = {"):]
+    foreign = re.search(r'"Sendungsnummer": "(SYN\d{9})"', foreign_block).group(1)
+    missing = [i for i in on_tour if i not in shipment_ids]
+    if missing or foreign in shipment_ids or len(on_tour) != 13:
+        raise SystemExit(f"demo labels do not match the tour: missing {missing}, foreign {foreign}, {len(on_tour)} labels")
+    return {"on_tour": on_tour, "not_on_tour": foreign, "source": "tourdaten/build_labels.py"}
+
+
 # ---------------------------------------------------------------- main
 
 def main():
@@ -581,6 +595,7 @@ def main():
         "attributions": ATTRIBUTIONS,
         "assumptions": ASSUMPTIONS_EN,
         "weather": weather_json(),
+        "demo_labels": demo_labels({r["Sendungsnummer"] for r in tour["rows"]}),
         "not_yet_included": ["Real-time updates during the round (outlook)", "The driver accepts or rejects single changes (outlook)"],
         "files": ["meta.json", "tour.json", "import.json", "map.json", "plan_before.json",
                   "plan_only_necessary.json", "plan_replan_full.json"],

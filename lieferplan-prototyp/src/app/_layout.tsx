@@ -41,6 +41,8 @@ export default function RootLayout() {
         <Stack.Screen name="compare" options={{ title: 'Your route' }} />
         <Stack.Screen name="details" options={{ title: 'Details' }} />
         <Stack.Screen name="load" options={{ title: 'Load parcels' }} />
+        <Stack.Screen name="scan" options={{ headerShown: false, presentation: 'fullScreenModal' }} />
+        <Stack.Screen name="to-scan" options={{ title: 'Still to scan', presentation: 'modal' }} />
         <Stack.Screen name="tour" options={{ title: 'Route' }} />
         <Stack.Screen name="halts" options={{ title: 'All halts', presentation: 'modal' }} />
         <Stack.Screen name="done" options={{ title: 'Done', headerBackVisible: false, gestureEnabled: false }} />

@@ -29,6 +29,8 @@ export type Meta = {
     note: string | null;
     hours: { hour: string; condition: string; precip_mm: number; precip_prob: number; temp_c: number; gust_kmh: number }[];
   };
+  /** The printed demo labels; every other loadable shipment counts as already loaded (simulated). */
+  demo_labels: { on_tour: string[]; not_on_tour: string; source: string };
   not_yet_included: string[];
   files: string[];
 };

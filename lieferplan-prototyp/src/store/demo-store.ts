@@ -7,7 +7,7 @@ import { meta } from '@/data/bundle';
 /**
  * What the driver did during the demo (kept on the phone so a reload does not lose it).
  * The plans themselves are not stored here: they come from the bundled data.
- * Later build steps add scanned parcels, notes and settings.
+ * Later build steps add notes and settings.
  */
 
 export type NotHomeChoice = 'neighbour' | 'dropoff' | 'van';
@@ -25,14 +25,17 @@ type DemoState = {
   arrived: boolean;
   /** Status per stop number. */
   stops: Record<number, StopStatus>;
+  /** Demo labels scanned into the van (all other shipments count as already loaded). */
+  scanned: Record<string, true>;
 
   arrive: () => void;
   setStop: (no: number, status: StopStatus | null) => void;
   goToHalt: (index: number) => void;
+  markScanned: (id: string) => void;
   reset: () => void;
 };
 
-const initial = () => ({ bundleGeneratedAt: meta.generated_at, haltIndex: 0, arrived: false, stops: {} });
+const initial = () => ({ bundleGeneratedAt: meta.generated_at, haltIndex: 0, arrived: false, stops: {}, scanned: {} });
 
 export const useDemoStore = create<DemoState>()(
   persist(
@@ -47,12 +50,13 @@ export const useDemoStore = create<DemoState>()(
           return { stops };
         }),
       goToHalt: (index) => set({ haltIndex: index, arrived: false }),
+      markScanned: (id) => set((s) => ({ scanned: { ...s.scanned, [id]: true } })),
       reset: () => set(initial()),
     }),
     {
       name: 'm10-demo-state-v1',
       storage: createJSONStorage(() => AsyncStorage),
-      partialize: ({ bundleGeneratedAt, haltIndex, arrived, stops }) => ({ bundleGeneratedAt, haltIndex, arrived, stops }),
+      partialize: ({ bundleGeneratedAt, haltIndex, arrived, stops, scanned }) => ({ bundleGeneratedAt, haltIndex, arrived, stops, scanned }),
       // Progress from an older data bundle does not fit the new plans.
       merge: (persisted, current) => {
         const p = persisted as Partial<DemoState> | undefined;
