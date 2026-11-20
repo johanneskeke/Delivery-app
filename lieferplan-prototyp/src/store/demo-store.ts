@@ -6,7 +6,7 @@ import { meta } from '@/data/bundle';
 import type { DriverNote } from '@/data/example-notes';
 
 /**
- * What the driver did during the demo (kept on the phone so a reload does not lose it).
+ * What the driver did during the demo. Only the notes survive an app start; route progress and scans start fresh.
  * The plans themselves are not stored here: they come from the bundled data.
  * Settings live in settings-store.ts (not cleared by Reset demo).
  */
@@ -70,8 +70,8 @@ export const useDemoStore = create<DemoState>()(
     {
       name: 'm10-demo-state-v2',
       storage: createJSONStorage(() => AsyncStorage),
-      // `scanned` is left out on purpose: the scans reset on every app start (demo, decided 2026-11-20).
-      partialize: ({ bundleGeneratedAt, haltIndex, arrived, stops, notes }) => ({ bundleGeneratedAt, haltIndex, arrived, stops, notes }),
+      // Only the notes are saved (decided 2026-11-20): every app start begins at halt 1 with nothing scanned or delivered.
+      partialize: ({ bundleGeneratedAt, notes }) => ({ bundleGeneratedAt, notes }),
       // Progress from an older data bundle does not fit the new plans.
       merge: (persisted, current) => {
         const p = persisted as Partial<DemoState> | undefined;

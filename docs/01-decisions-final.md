@@ -272,6 +272,9 @@ Refines "Settings" and "Notes for later drivers" in "Driver app redesign".
 - **Reset demo** deletes own notes; the example note stays, so every demo starts the same.
 - **Insights → Why** gets a group "Driver notes" (driver knowledge flowing back to the back office).
 
+## Fresh start on every app start (decided 2026-11-20, user)
+- On every app start (or reload) the route starts at **halt 1** with no stop confirmed and the four demo parcels unscanned. Only the driver's own notes and the settings are saved on the phone. (Supersedes "progress survives an app reload" in "Halt loop details" and "the halt progress is still saved" in "Changes after the first iPhone tests".)
+
 ## Other decisions made in this chat
 - **2026-11-19:** the data-flow and data-source slides are presentation ideas (see 05), not yet agreed with the team.
 - **2026-11-20:** the decision-logic slide (E) is added to the slide ideas.
@@ -285,3 +288,4 @@ Refines "Settings" and "Notes for later drivers" in "Driver app redesign".
 - **2026-11-20:** scan and load details: camera stays open, vibration only, type-number fallback, still-to-scan list; pre-selection corrected to 79 of 92.
 - **2026-11-20:** after the first iPhone tests: Insights button for the back office, four Code128 demo parcels (88 of 92, scans reset on app start), shorter approach screen, delivered and picked up separately, Deliver all (demo).
 - **2026-11-20:** settings and notes details: navigation app choice with per-door walk links for Apple Maps/Waze, auto-navigation off by default, example note at Chamissoplatz 9, reset keeps the example, driver notes in Insights.
+- **2026-11-20:** every app start begins at halt 1; only notes and settings are saved.
