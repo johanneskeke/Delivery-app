@@ -28,3 +28,24 @@ export function walkingUrl(doors: Place[]): string {
   if (waypoints.length) parts.push(`waypoints=${encodeURIComponent(waypoints.map(placeText).join('|'))}`);
   return `https://www.google.com/maps/dir/?${parts.join('&')}`;
 }
+
+// ---------------------------------------------------------------- switch for the navigation app
+
+/** The settings (Tue 2026-11-24) add Apple Maps and Waze; until then every button uses Google Maps. */
+export type NavApp = 'google';
+export const NAV_APP_NAME: Record<NavApp, string> = { google: 'Google Maps' };
+
+export function driveLink(app: NavApp, parking: Place): string {
+  switch (app) {
+    case 'google':
+      return drivingUrl(parking);
+  }
+}
+
+/** Walking links for one halt: Google Maps takes all doors in one link. */
+export function walkLinks(app: NavApp, doors: Place[]): { label: string; url: string }[] {
+  switch (app) {
+    case 'google':
+      return [{ label: `Walk in ${NAV_APP_NAME[app]}`, url: walkingUrl(doors) }];
+  }
+}

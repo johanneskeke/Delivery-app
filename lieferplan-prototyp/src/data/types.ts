@@ -145,6 +145,8 @@ export type Halt = {
   conflicts: { kind: string; text: string; source: string }[];
   drive_path: LatLon[];
   drive_min: number;
+  /** One line "why" for the approach screen; null for the list as it comes or when nothing special applies. */
+  reason: { text: string; source: string } | null;
 };
 
 export type Change = {

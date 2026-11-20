@@ -91,6 +91,11 @@ def mins(x):
     return int(round(x))
 
 
+def clean_street(name):
+    """Engine names like "Parkfläche bei Bergmannstraße" → "Bergmannstraße" (the kind is shown separately)."""
+    return re.sub(r"^(Parkfläche|Ladezone) bei ", "", name or "")
+
+
 def street_short(text):
     return (text or "").replace("Berlin, ", "")
 
@@ -252,11 +257,11 @@ def build_plan(netz, start, sim, rows_by_stop, mode, extra_halt_info=None):
         if c.get("warn"):
             m = re.match(r"Fußweg (\d+) m, Grenze (\d+) m", c["warn"])
             warnings.append({"kind": "walk_over_limit",
-                             "text": f"Walk {m.group(1)} m, limit {m.group(2)} m; nothing closer ({c['street']})" if m
+                             "text": f"Walk {m.group(1)} m, limit {m.group(2)} m; nothing closer ({clean_street(c['street'])})" if m
                              else c["warn"], "source": "Rule D (assumption)"})
         halt = {
             "id": hid, "seq": i + 1, "arrival": fmt(p["ankunft"]), "leave": fmt(p["ab"]),
-            "parking": {"kind": PARK_KIND[c["typ"]], "street": c["street"], "latlon": ll(c["pt"]),
+            "parking": {"kind": PARK_KIND[c["typ"]], "street": clean_street(c["street"]), "latlon": ll(c["pt"]),
                         "valid": fw(c["wins"]) if c["typ"] == "Ladezone" else None,
                         "search_min": c["search"]},
             "stops": stops_out, "warnings": warnings, "conflicts": [],
@@ -332,21 +337,21 @@ def changes_for(netz, res, plan, sim, mode):
                 else:
                     why = "The nearest kerbside spot is in a no-stopping zone"
                     reason = "Hard rule: never park in a no-stopping zone"
-                add("parking_moved", halt, [s["nr"]], f"Park in {c['street']} for {s['nr']} {s['label']}",
-                    f"{why}; new: {'loading zone' if c['typ'] == 'Ladezone' else 'kerbside'} {c['street']}",
+                add("parking_moved", halt, [s["nr"]], f"Park in {clean_street(c['street'])} for {s['nr']} {s['label']}",
+                    f"{why}; new: {'loading zone' if c['typ'] == 'Ladezone' else 'kerbside'} {clean_street(c['street'])}",
                     {"name": "VIZ Berlin" if src.startswith("VIZ") else "OpenStreetMap",
                      "ref": street_short(src.replace("VIZ: ", "")) if src.startswith("VIZ") else "no-stopping zones"},
                     False, reason)
         if c["typ"] == "Ladezone":
-            add("loading_zone", halt, nos, f"Park in the loading zone {c['street']}",
+            add("loading_zone", halt, nos, f"Park in the loading zone {clean_street(c['street'])}",
                 f"Valid {fw(c['wins'])}, arrival {fmt(p['ankunft'])}",
                 {"name": "OpenStreetMap", "ref": "parking:*:restriction / restriction:conditional"}, True)
         if p.get("lz_inaktiv"):
             z = p["lz_inaktiv"]
-            add("loading_zone_not_valid", halt, nos, f"Loading zone {z['street']} not valid at arrival",
+            add("loading_zone_not_valid", halt, nos, f"Loading zone {clean_street(z['street'])} not valid at arrival",
                 f"Valid {fw(z['wins'])}, arrival {fmt(p['ankunft'])} → instead "
-                + (f"another loading zone {c['street']} (valid {fw(c['wins'])})" if c["typ"] == "Ladezone"
-                   else f"kerbside {c['street']}"),
+                + (f"another loading zone {clean_street(c['street'])} (valid {fw(c['wins'])})" if c["typ"] == "Ladezone"
+                   else f"kerbside {clean_street(c['street'])}"),
                 {"name": "OpenStreetMap", "ref": "loading-zone times"}, False,
                 "Hard rule: loading zones only at their times")
         first = h["stops"][0]["nr"]
@@ -362,6 +367,58 @@ def changes_for(netz, res, plan, sim, mode):
                 f"{'; '.join(why).capitalize() or 'Time window'}: at the door {fmt(v0_times[first])} in the list "
                 f"order, now {fmt(now)}", {"name": "Tour list", "ref": "time windows and priority shipments"}, True)
     return out
+
+
+def add_reasons(res, plan, sim):
+    """One line "why" per halt for the approach screen (decided 2026-11-20, "Halt loop details").
+    Priority: closure / no-stopping zone > time window or priority > loading zone > stops bundled; else None."""
+    konf = {s["nr"]: (what, src) for s, what, src in res["v0_konf"]}
+    too_early = {s["nr"] for s, _ in res["v0"]["frueh"]}
+    list_problem = {s["nr"] for s, _ in res["v0"]["spaet"]} | too_early
+    for p, halt in zip(sim["plan"], plan["halts"]):
+        h, c = p["halt"], p["park"]
+        where = f"{'loading zone ' if c['typ'] == 'Ladezone' else ''}{clean_street(c['street'])}"
+        reason = None
+        hit = next(((s, konf[s["nr"]]) for s in h["stops"] if s["nr"] in konf), None)
+        if hit:
+            hs, (what, src) = hit
+            if "Sperrung" in what:
+                closed = re.sub(r"^VIZ: ", "", src).split(" zwischen")[0]
+                reason = {"text": f"{closed} closed → park in {where}", "source": "VIZ Berlin"}
+            else:
+                reason = {"text": f"{hs['label']}: no stopping at the door → park in {where}", "source": "OpenStreetMap"}
+        if reason is None:
+            times = dict((s["nr"], t) for s, t in p["stopps"])
+            for s in sorted(h["stops"], key=lambda s: (s["limit"] or 9999, s["von"] or 0)):
+                eta = fmt(times[s["nr"]])
+                # only tight windows or stops that were late / too early in the list order (no noise)
+                tight = s["limit"] is not None and s["limit"] - times[s["nr"]] < 60
+                if not (s["prio"] or tight or s["nr"] in list_problem):
+                    continue
+                if s["prio"]:
+                    reason = {"text": f"{s['label']}: priority until {fmt(s['prio'])} → at the door {eta}",
+                              "source": "Tour list"}
+                elif s["von"] and s["nr"] in too_early:  # the list order arrived before opening
+                    reason = {"text": f"{s['label']}: opens {fmt(s['von'])} → at the door {eta}", "source": "Tour list"}
+                elif s["limit"]:
+                    reason = {"text": f"{s['label']}: time window until {fmt(s['limit'])} → at the door {eta}",
+                              "source": "Tour list"}
+                elif s["von"]:
+                    reason = {"text": f"{s['label']}: opens {fmt(s['von'])} → at the door {eta}", "source": "Tour list"}
+                if reason:
+                    break
+        if reason is None and c["typ"] == "Ladezone":
+            reason = {"text": f"Loading zone {clean_street(c['street'])}, valid {fw(c['wins'])}",
+                      "source": "OpenStreetMap"}
+        if reason is None and p.get("lz_inaktiv"):
+            z = p["lz_inaktiv"]
+            reason = {"text": f"Loading zone only {fw(z['wins'])} → park on the kerb in {clean_street(c['street'])}",
+                      "source": "OpenStreetMap"}
+        if reason is None and len(h["stops"]) > 1:
+            far = max(engine_walk_m(c["pt"], s["pt"]) for s in h["stops"])
+            reason = {"text": f"Park once for {len(h['stops'])} stops (walk up to {far:.0f} m)",
+                      "source": "Rule D (assumption)"}
+        halt["reason"] = reason
 
 
 def before_conflicts(res, plan):
@@ -506,7 +563,10 @@ def main():
         p["changes"] = changes_for(netz, res, p, res[key], mode)
         p["kpis"]["conflicts"] = 0
         assign_slots(p, rows_by_stop)
+        add_reasons(res, p, res[key])
         plans[mode] = p
+    for h in plans["before"]["halts"]:
+        h["reason"] = None
 
     meta = {
         "schema_version": SCHEMA_VERSION,

@@ -41,6 +41,9 @@ export default function RootLayout() {
         <Stack.Screen name="compare" options={{ title: 'Your route' }} />
         <Stack.Screen name="details" options={{ title: 'Details' }} />
         <Stack.Screen name="load" options={{ title: 'Load parcels' }} />
+        <Stack.Screen name="tour" options={{ title: 'Route' }} />
+        <Stack.Screen name="halts" options={{ title: 'All halts', presentation: 'modal' }} />
+        <Stack.Screen name="done" options={{ title: 'Done', headerBackVisible: false, gestureEnabled: false }} />
         <Stack.Screen name="settings" options={{ title: 'Settings', presentation: 'modal' }} />
         <Stack.Screen name="map-test" options={{ title: 'Map test' }} />
       </Stack>
