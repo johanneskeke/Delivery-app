@@ -46,17 +46,15 @@ Read this file first in every new chat. It says what the project is, how we work
 | 4 Scan and load | decided (shelf labels A–C/1–4 provisional) |
 | 5 Navigation (Google Maps hand-off) | decided 2026-11-20: one driving link per halt, walk on a Google map in the app (see 01) |
 | Demo build | decided 2026-11-20: everything precomputed; internet allowed, video as fallback; Google map in the app via WebView + Maps Demo Key; UI in English; five non-existent house numbers kept as import notes; slide numbers at 08:30 |
-| Open team topics | B1 MDS role, B8 demo mode (user tendency: plan completely right away, few decisions for the driver), B9 scope alignment; small: B3, B5, B7. None of them blocks the build. |
-| Build | **next:** build plan, then build (new chat); old skeleton parked |
+| Open team topics | B1 MDS role, B9 scope alignment; small: B3, B5, B7. B8 decided by the user 2026-11-20 (replan completely, the system decides); team to be informed, slide E to adjust. |
+| Build | **built 2026-11-20 and checked on the iPhone** (build plan and driver app redesign in 01): start with Insights (back office), loading with four live Code128 scans, halt loop (one-line why, take out, delivered / picked up / not at home), end screen, settings (Google Maps / Apple Maps / Waze), driver notes. Engine export and check script in `probelauf/`. One git repository (GitHub, private remote of the user). |
 | Slides | ideas + a draft map for the before/after slide |
 
 ## 5. Next steps (short; details in 02)
-1. **Build plan** (next chat): build order from 2026-11-20 to 2026-11-25, reuse of the parked skeleton, output format of the Python engine for the app, who does what. Then build after an explicit go; first build step: test the Maps Demo Key in the WebView on the iPhone.
-2. Before building: create the Maps Demo Key (personal Gmail) and store it in `.env`; choose the project folder on the computer (not OneDrive). OpenRouteService key not needed for the demo.
-3. Install Google Maps on the demo iPhone and test the links from the app.
-4. On 2026-11-25: re-download VIZ closures and weather, recheck Christmas markets, rerun the engine at 08:30 for the demo and bundle the results, record the fallback video.
-5. Team: settle B1, B8, B9.
-6. Build slides A, B, E, C, D.
+1. Polish and buffer until 2026-11-24 (only if something comes up in tests; scope principle).
+2. On 2026-11-25 (01 "Build plan" P6): re-download VIZ closures, weather, police page, Christmas markets; run `probelauf/export_app.py` and `check_app_data.py` (departure 08:30); rebuild `tourdaten/build_scan_labels.py` if slots changed; full run on the iPhone; record the fallback video; update the numbers in 04 and 05.
+3. Team: settle B1 and B9; adjust slide E (no rejecting single changes in the demo); slide D additions (real-time checks, the driver decides, shared driver notes, settings).
+4. Build slides A, B, E, C, D.
 
 ## 6. How to start a new chat
 Paste something like:
