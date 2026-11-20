@@ -109,8 +109,6 @@ def main():
             ids = [c["id"] for c in p["changes"]]
             if len(ids) != len(set(ids)):
                 err(f"{mode}: duplicate change ids")
-            if any(c["if_rejected"] is None for c in p["changes"] if c["rejectable"]):
-                warn(f"{mode}: 'what if rejected' not yet computed (planned build step Mon 2026-11-23)")
         print(f"{mode:16s} halts {len(p['halts']):3d}, driving segments checked {segs}")
 
     for w in warnings:

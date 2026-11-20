@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { bundleProblems, importData, meta, plans, tour } from '../src/data/bundle';
+import { bundleProblems, importData, meta, plans, route, tour } from '../src/data/bundle';
 import { formatDate } from '../src/lib/format';
 import { drivingUrl, walkingUrl } from '../src/services/navigation';
 
@@ -49,6 +49,16 @@ test('data bundle: proposed plans have no conflicts and a slot for every shipmen
     assert.equal(Object.keys(p.slots).length, 95, mode);
   }
   assert.ok(plans.before.kpis.conflicts > 0);
+});
+
+test('the app uses "replan completely" (B8, redesign 2026-11-20) and every heavy parcel sits in slot 1–2', () => {
+  assert.equal(meta.start_mode, 'replan_full');
+  assert.equal(route.mode, 'replan_full');
+  const weight = new Map(tour.shipments.map((s) => [s.id, s.weight_kg]));
+  const heavyUp = Object.entries(route.slots).filter(
+    ([id, s]) => (weight.get(id) ?? 0) > 10 && /[34]$/.test(s.slot) && s.slot !== 'C4',
+  );
+  assert.deepEqual(heavyUp, []);
 });
 
 test('date format', () => {

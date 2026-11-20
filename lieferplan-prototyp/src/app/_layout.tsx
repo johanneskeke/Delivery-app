@@ -4,6 +4,7 @@ import { useSyncExternalStore } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
 import { useDemoStore } from '@/store/demo-store';
+import { SettingsButton } from '@/ui/header-buttons';
 import { colors } from '@/ui/kit';
 
 const subscribeHydration = (onChange: () => void) => useDemoStore.persist.onFinishHydration(onChange);
@@ -28,9 +29,11 @@ export default function RootLayout() {
     <>
       <StatusBar style="dark" />
       <Stack screenOptions={{ headerBackTitle: 'Back', contentStyle: { backgroundColor: colors.bg } }}>
-        <Stack.Screen name="index" options={{ title: 'Today’s tour' }} />
-        <Stack.Screen name="import" options={{ title: 'Import check' }} />
-        <Stack.Screen name="about" options={{ title: 'Data and sources' }} />
+        <Stack.Screen name="index" options={{ title: '', headerRight: () => <SettingsButton /> }} />
+        <Stack.Screen name="compare" options={{ title: 'Your route' }} />
+        <Stack.Screen name="details" options={{ title: 'Details' }} />
+        <Stack.Screen name="load" options={{ title: 'Load parcels' }} />
+        <Stack.Screen name="settings" options={{ title: 'Settings', presentation: 'modal' }} />
         <Stack.Screen name="map-test" options={{ title: 'Map test' }} />
       </Stack>
     </>

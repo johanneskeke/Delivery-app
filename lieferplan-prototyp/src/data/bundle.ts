@@ -24,6 +24,10 @@ export const plans: Record<PlanMode, Plan> = {
   replan_full: fullJson as unknown as Plan,
 };
 
+/** The plan the app uses (B8 decided 2026-11-20: replan completely) and the list as it comes, for the comparison. */
+export const route = plans[meta.start_mode];
+export const listPlan = plans.before;
+
 const shipmentsById = new Map<string, Shipment>(tour.shipments.map((s) => [s.id, s]));
 const stopsByNo = new Map<number, TourStop>(tour.stops.map((s) => [s.no, s]));
 

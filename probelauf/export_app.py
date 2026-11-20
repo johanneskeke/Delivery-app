@@ -5,8 +5,9 @@ Writes JSON files into lieferplan-prototyp/assets/data/. The app shows these res
     ../.venv/bin/python export_app.py                  # departure 08:30 (tour header, decision B6)
     ../.venv/bin/python export_app.py --departure 08:00
 
-Not yet in v1 (later build steps, P1): "what if rejected" per change (if_rejected stays null), the march scenario
-for "Update situation". Texts for the app are English; tour data stay German (decision UI language).
+Since the driver app redesign (2026-11-20) the app uses "replan completely" and accepts no single rejections, so
+"what if rejected" (if_rejected, always null) and the march scenario are not computed. Texts for the app are English;
+tour data stay German (decision UI language).
 """
 import argparse
 import datetime as dt
@@ -291,7 +292,7 @@ def hints_en(netz, s):
 # ---------------------------------------------------------------- changes (reason + source)
 
 def changes_for(netz, res, plan, sim, mode):
-    """Change list with reason and source, English. if_rejected stays null in v1 (Mon build step)."""
+    """Change list with reason and source, English (detail view, Why tab). if_rejected is always null (redesign)."""
     v0_times = {s["nr"]: t for p in res["v0"]["plan"] for s, t in p["stopps"]}
     konf = {s["nr"]: (what, src) for s, what, src in res["v0_konf"]}
     moved = {h["stops"][0]["nr"]: (a, b) for h, a, b in res["v1_moves"]} if mode == "only_necessary" else {}
@@ -426,18 +427,31 @@ def assign_slots(plan, rows_by_stop):
         n_items = sum(len(s) for _, s in items)
         first_halt = items[0][0]["seq"]
         last_halt = items[-1][0]["seq"]
-        # halts with a parcel over 10 kg first (bottom slots 1–2), then the others; route order inside each group;
-        # then contiguous blocks, one per slot, so the halts of one slot follow each other
+        # halts with a parcel over 10 kg always go to the bottom slots 1–2, the others to the upper slots
+        # (a bottom slot may hold a few more parcels); route order inside each group; contiguous blocks per slot
         is_heavy = lambda sh: any(r["Gewicht kg"] > HEAVY_KG for r in sh)
-        items = [it for it in items if is_heavy(it[1])] + [it for it in items if not is_heavy(it[1])]
-        blocks, acc, b = [[] for _ in slot_nos], 0, 0
-        for halt, shelf in items:
-            mid = acc + len(shelf) / 2
-            while b < len(slot_nos) - 1 and mid > n_items * (b + 1) / len(slot_nos):
-                b += 1
-            blocks[b].append((halt, shelf))
-            acc += len(shelf)
-        for slot_no, block in zip(slot_nos, blocks):
+        heavy_items = [it for it in items if is_heavy(it[1])]
+        light_items = [it for it in items if not is_heavy(it[1])]
+        low = [n for n in slot_nos if n <= 2]
+        high = [n for n in slot_nos if n > 2]
+        if heavy_items and light_items and high:
+            groups = [(heavy_items, low), (light_items, high)]
+        else:
+            groups = [(heavy_items + light_items, slot_nos)]
+
+        def split(group, nos):
+            total_g = sum(len(s) for _, s in group)
+            out, acc_g, b = [[] for _ in nos], 0, 0
+            for halt, shelf in group:
+                mid = acc_g + len(shelf) / 2
+                while b < len(nos) - 1 and mid > total_g * (b + 1) / len(nos):
+                    b += 1
+                out[b].append((halt, shelf))
+                acc_g += len(shelf)
+            return list(zip(nos, out))
+
+        assigned = [pair for group, nos in groups for pair in split(group, nos)]
+        for slot_no, block in assigned:
             slot = f"{rack}{slot_no}"
             for halt, shelf in block:
                 for r in shelf:
@@ -455,8 +469,8 @@ def assign_slots(plan, rows_by_stop):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--departure", default="08:30", help="departure from the depot (HH:MM)")
-    ap.add_argument("--start-mode", default="only_necessary", choices=["only_necessary", "replan_full"],
-                    help="plan the app shows first (open decision B8)")
+    ap.add_argument("--start-mode", default="replan_full", choices=["only_necessary", "replan_full"],
+                    help="plan the app uses (B8 decided 2026-11-20: replan_full)")
     args = ap.parse_args()
     A["abfahrt_depot"] = args.departure
 
@@ -507,7 +521,7 @@ def main():
         "attributions": ATTRIBUTIONS,
         "assumptions": ASSUMPTIONS_EN,
         "weather": weather_json(),
-        "not_yet_included": ["if_rejected per change", "scenario_march.json (Update situation)"],
+        "not_yet_included": ["Real-time updates during the round (outlook)", "The driver accepts or rejects single changes (outlook)"],
         "files": ["meta.json", "tour.json", "import.json", "map.json", "plan_before.json",
                   "plan_only_necessary.json", "plan_replan_full.json"],
     }
