@@ -44,7 +44,7 @@ Goal: show that proposals follow understandable rules and the driver keeps contr
 3. **Second goal, efficiency:** shortest total time; short walks (up to 150 m, bulky items up to 30 m).
 4. **Third goal, familiarity:** as little change to the original as necessary (default mode "only necessary changes"; alternative "replan completely").
 
-**Next to it: the driver decides.** Every change comes with reason and source. Real example from the trial: "Halt in Fürbringerstraße · Solmsstraße 7 and 12 on foot (23 m / 107 m) · Reason: Solmsstraße closed between Fürbringerstraße and Gneisenaustraße (VIZ, until 31 Dec) · [Accept] [Reject]". The driver can reject single changes; the app recalculates.
+**Next to it: the driver decides.** Every change comes with reason and source. Real example from the trial: "Halt in Fürbringerstraße · Solmsstraße 7 and 12 on foot (23 m / 107 m) · Reason: Solmsstraße closed between Fürbringerstraße and Gneisenaustraße (VIZ, until 31 Dec) · [Accept] [Reject]". The driver can reject single changes; the app recalculates. **(2026-11-20: not in the demo; the demo app replans completely and the system decides. Present "the driver decides" as outlook, slide D.)**
 
 **Strip underneath, the six building blocks:** situation picture → impact → halts and parking point → order → schedule (with loop back) → proposal with reasons.
 
@@ -59,7 +59,10 @@ Goal: show that proposals follow understandable rules and the driver keeps contr
 - **Optional second scenario:** the same tour on 2026-11-20 with the registered march 08:00–10:30 from Gneisenaustraße via Südstern and Hasenheide to Hermannplatz.
 
 ## Slide D: Outlook (not built yet)
-- **Live mode:** the route is recalculated during the round whenever new data arrives (new closure, spontaneous demo, customer absent, new pickup).
+- **Live mode:** the route is recalculated during the round whenever new data arrives (new closure, spontaneous demo, customer absent, new pickup). (2026-11-20, user:) our system also checks in real time along a route that Google Maps or Waze has changed and decides again, e.g. after an accident. Real example: the registered march of 2026-11-20 through the tour area (not built as a demo scenario).
+- **The driver decides (2026-11-20):** accept or reject single changes with reason; the demo app replans completely without asking.
+- **Driver notes shared between drivers (2026-11-20):** notes like door codes or access tips reach the next driver on the same stop (demo: stored only on the phone).
+- **Driver settings (2026-11-20):** language switch, own walking-distance limit (needs live recalculation); the navigation-app choice (Google Maps, Apple Maps, Waze) already works in the demo.
 - **Navigation inside our app (added 2026-11-20):** turn-by-turn without switching apps (e.g. Google Navigation SDK), combined with real-time data and updates. Two ways to decide: the driver decides every change, or our system makes optimised real-time decisions. Frame the second as a mode the driver can switch on (today's principle: the driver decides). Why not in the prototype: needs its own app build instead of Expo Go, the React Native package is still beta, needs a Google Cloud project with billing; and Google's routing cannot take our closures either, so the parking-point decision stays our job.
 - **Handling deviations during the round (added 2026-11-20):** "loading zone occupied" → next valid parking point from our data; detect "parked elsewhere" and recalculate the walks; driver chooses the next halt freely and the app warns about time windows and priority deadlines.
 - **Use opportunities:** if the route changes and the driver passes a later stop, the app suggests "take this stop now, then continue". Google Maps only navigates to the next destination and does not know the rest of the round.

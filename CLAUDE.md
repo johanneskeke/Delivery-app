@@ -22,6 +22,7 @@ Talk to the user in German. Project docs are in English.
 - The app does not calculate. Everything it shows is precomputed by the Python engine in `probelauf/` and bundled with the app.
 - Google Maps hand-off: one driving link per halt to the parking-point coordinates (no origin, no waypoints, `dir_action=navigate`). Walking is shown on a Google map inside the app (WebView + Maps JavaScript API + Maps Demo Key; fallback react-native-maps with Apple Maps), plus an optional walking link per halt with all doors as waypoints (no `dir_action`).
 - Internet is allowed in the demo; fallback is a video recorded beforehand.
+- Driver app redesign (2026-11-20): minimal screens (start → comparison + small detail view → loading → halt loop → end), "replan completely" directly, no accept/reject, no "Update situation"; notes for later drivers; settings with a working navigation-app choice (Google Maps, Apple Maps, Waze). The Google Maps rules above still apply when Google Maps is chosen.
 
 ## Folders
 - `docs/`: project docs 00 to 06

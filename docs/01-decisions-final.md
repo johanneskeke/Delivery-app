@@ -42,8 +42,8 @@ Six building blocks; each records its decisions with reason and source ("knowled
 
 Rules:
 - **A Goal:** keep time windows and priority shipments first, then the shortest total time. **Hard rules are never broken:** closures, one-way streets, no-through-traffic, no-stopping zones, loading-zone times.
-- **B Amount of change:** two modes: "only necessary changes" (**default**, close to how the interviewed drivers work) and "replan completely". (2026-11-20: user tendency to plan completely right away for the demo; open, see 02 B8.)
-- **C Control:** the driver can reject individual changes; the app then recalculates. Rejection reasons are learning material for the user test.
+- **B Amount of change:** two modes: "only necessary changes" (**default**, close to how the interviewed drivers work) and "replan completely". (2026-11-20: user tendency to plan completely right away for the demo; open, see 02 B8.) *(Superseded for the demo 2026-11-20, see "Driver app redesign".)*
+- **C Control:** the driver can reject individual changes; the app then recalculates. Rejection reasons are learning material for the user test. *(Superseded for the demo 2026-11-20, see "Driver app redesign".)*
 - **D Halts (starting values):** walk up to 150 m, at most 4 stops per halt, bulky items (Sperrgut) at most 30 m.
 - **E Stop duration (assumption, labelled):** 2 min per stop + 1 min per parcel; bulky item +3 min; ID check/age check +2 min.
 - **F Technology:** decided at build time (own calculation or ORS optimisation); condition: closures are always avoided. (2026-11-20: for the prototype everything is precomputed, see "Demo build decisions".)
@@ -52,9 +52,9 @@ Rules:
 ## Step 3b: Calculation and recalculation (decided 2026-11-20)
 **When the app recalculates**
 - In the morning before departure: load all data fresh and calculate (default).
-- During the round via a button "Update situation": reload data, plan only the remaining halts, starting from the current position; loaded parcels keep their slot.
+- During the round via a button "Update situation": reload data, plan only the remaining halts, starting from the current position; loaded parcels keep their slot. *(Superseded for the demo 2026-11-20, see "Driver app redesign".)*
 - Automatically in the background: future outlook (slide D), not in the prototype.
-- Demo: inject a new event (e.g. the march of 2026-11-20 as a labelled scenario) → the app shows the changes with reasons → the driver confirms.
+- Demo: inject a new event (e.g. the march of 2026-11-20 as a labelled scenario) → the app shows the changes with reasons → the driver confirms. *(Superseded for the demo 2026-11-20, see "Driver app redesign".)*
 - (2026-11-20: in the prototype these results are precomputed by our engine and bundled, see "Demo build decisions".)
 
 **How it calculates**
@@ -90,16 +90,16 @@ Rules:
 
 **Q3 Loop in the app and confirmation**
 - Halt card (parking point, reason, stops, slots) → [Drive] opens Google Maps → driver returns to the app, which still shows the current halt → one card per stop (recipient, slot, walking distance, services and notes) → [Delivered] / [Not at home …] → after the last stop of the halt the next halt card appears with [Drive].
-- Google Maps is **not** opened automatically after confirming: the driver first sees where and why to park and which slot is next.
+- Google Maps is **not** opened automatically after confirming: the driver first sees where and why to park and which slot is next. *(Superseded for the demo 2026-11-20, see "Driver app redesign".)*
 - "Not at home" in the demo: three choices: neighbour, drop-off spot, "stays in slot, back to depot"; preferred neighbour (Wunschnachbar) and preferred drop-off spot (Wunschablageort) from the tour list are pre-filled.
 
 **Q4 Deviations from the plan**
 - No extra functions in the prototype. Google reroutes by itself; the destination stays the parking point; our notes (e.g. closure) are on the halt card before departure.
-- Only exception: the "Update situation" button from Step 3b stays (demo moment with the march scenario).
+- Only exception: the "Update situation" button from Step 3b stays (demo moment with the march scenario). *(Superseded for the demo 2026-11-20, see "Driver app redesign".)*
 - Moved to the future (slide D): "loading zone occupied" with an alternative parking point, "parked elsewhere?" GPS check, free choice of the next halt with time-window warnings.
 
 **Q5 Google Maps app not installed**
-- No extra function: always the same https Maps URL. Android and iOS open the Google Maps app if installed, otherwise Google Maps in the browser (driving links have no waypoints, walking links ≤3, so both work; navigation in the browser is probably only a route preview). No app check, no Apple Maps fallback.
+- No extra function: always the same https Maps URL. Android and iOS open the Google Maps app if installed, otherwise Google Maps in the browser (driving links have no waypoints, walking links ≤3, so both work; navigation in the browser is probably only a route preview). No app check, no Apple Maps fallback. *(Superseded for the demo 2026-11-20, see "Driver app redesign".)*
 - The demo runs on an **iPhone**; the user installs the Google Maps app; one driving and one walking link are tested before 2026-11-26.
 
 **Q6 Plan B for the demo (and the user test)** (stage 1 revised 2026-11-20: internet is allowed; see "Demo build decisions")
@@ -114,9 +114,9 @@ Rules:
 
 ## Demo build decisions (2026-11-20)
 **Calculation (02 B11): everything precomputed, nothing live**
-- The Python planning engine from the trial run computes everything the app shows: the plan(s), the "Update situation" scenario with the march of 2026-11-20, the shelf slot per shipment, and for each proposed change the result "what if the driver rejects it". The results are bundled in the app.
+- The Python planning engine from the trial run computes everything the app shows: the plan(s), the "Update situation" scenario with the march of 2026-11-20, the shelf slot per shipment, and for each proposed change the result "what if the driver rejects it". The results are bundled in the app. *(Superseded for the demo 2026-11-20, see "Driver app redesign".)*
 - The app reads the import, shows plan and reasons, scans parcels, recommends slots and hands off to Google Maps. It does not calculate itself.
-- Consequences: only one rejection at a time works (a second one shows "recalculation not available in the prototype"); the scan reconciliation from Step 4 (missing parcel → recalculation) is only a note; **no OpenRouteService key is needed for the demo** (coordinates of all 58 stops exist).
+- Consequences: only one rejection at a time works (a second one shows "recalculation not available in the prototype"); the scan reconciliation from Step 4 (missing parcel → recalculation) is only a note; **no OpenRouteService key is needed for the demo** (coordinates of all 58 stops exist). *(Superseded for the demo 2026-11-20, see "Driver app redesign".)*
 - Slide wording: "The planning logic runs as our engine (computed offline); the app shows its result."
 
 **Internet in the demo (revises Step 5 Q6 stage 1)**
@@ -136,7 +136,7 @@ Rules:
 - A language switch is a future item (slide D: "localisable"). Caveat: for a German-speaking driver in the user test, an English UI is a small hurdle.
 
 **Five non-existent house numbers (02 B4)**
-- Bergmannstraße 34 and 61, Chamissoplatz 9, Methfesselstraße 22, Willibald-Alexis-Straße 24 are **not corrected**. The engine already uses the nearest existing house number; the app shows this as an import note (e.g. "Chamissoplatz 9 not found, Chamissoplatz 8 used").
+- Bergmannstraße 34 and 61, Chamissoplatz 9, Methfesselstraße 22, Willibald-Alexis-Straße 24 are **not corrected**. The engine already uses the nearest existing house number; the app shows this as an import note (e.g. "Chamissoplatz 9 not found, Chamissoplatz 8 used"). *(Superseded for the demo 2026-11-20, see "Driver app redesign".)*
 - Together with the 5 deliberate address errors this forms the import check. No files are rebuilt (tour list, PDF delivery list, Excel in OneDrive, sheet artifact stay); none of the 14 demo labels is affected. Walking links use coordinates for these doors.
 - Documented honestly: these five cases were not planned; they are kept as test cases.
 
@@ -153,7 +153,7 @@ Rules:
 | Mon 2026-11-23 | Plan screen: key figures before/after, change list with reason and source, [Accept]/[Reject] with precomputed "what if rejected" |
 | Tue 2026-11-24 | Scan and load (camera, "→ A2", "Not on the list", "Already scanned", bulky item) and "Update situation" with the march scenario |
 | Wed 2026-11-25 | Data refresh, rerun at 08:30, polish, fallback video (P6) |
-Cut first if time runs short: the "what if rain" scenario and a real file picker for the import.
+Cut first if time runs short: the "what if rain" scenario and a real file picker for the import. *(Superseded for the demo 2026-11-20, see "Driver app redesign".)*
 
 **P2 Reuse of the parked skeleton**
 - Keep: Expo config, Expo Router, TypeScript, UI building blocks (`ui/kit.tsx`, texts in English), zustand + AsyncStorage store (progress survives a reload; plus a "Reset demo" button), camera logic from `scan.tsx`, `drivingUrl`.
@@ -161,11 +161,11 @@ Cut first if time runs short: the "what if rain" scenario and a real file picker
 - New: map component (WebView), types and loader for the data bundle, plan and change screens, halt loop, "Update situation", data sources / attributions screen.
 
 **P3 Data format engine → app (v1)**
-- JSON files in `lieferplan-prototyp/assets/data/`, written by the engine, with a `schema_version`: `meta.json` (generated at, departure, data dates per source, synthetic flag, attributions, start mode), `tour.json` (header, shipments, stops), `import.json` (import notes incl. the five house numbers not found), `map.json` (closures with lines, depot), `plan_before.json`, `plan_only_necessary.json`, `plan_replan_full.json` (key figures, halts with parking point, stops, warnings, driving path and walking lines, slots per shipment, changes with reason, source, `rejectable` and `if_rejected`), `alt/<change_id>.json` (plan after one rejection), `scenario_march.json` (event, trigger halt, changes, remaining halts; slots unchanged).
+- JSON files in `lieferplan-prototyp/assets/data/`, written by the engine, with a `schema_version`: `meta.json` (generated at, departure, data dates per source, synthetic flag, attributions, start mode), `tour.json` (header, shipments, stops), `import.json` (import notes incl. the five house numbers not found), `map.json` (closures with lines, depot), `plan_before.json`, `plan_only_necessary.json`, `plan_replan_full.json` (key figures, halts with parking point, stops, warnings, driving path and walking lines, slots per shipment, changes with reason, source, `rejectable` and `if_rejected`), `alt/<change_id>.json` (plan after one rejection), `scenario_march.json` (event, trigger halt, changes, remaining halts; slots unchanged). *(Superseded for the demo 2026-11-20, see "Driver app redesign".)*
 - Both modes are always precomputed; a switch in `meta.json` sets the start mode, so B8 does not block the build.
-- Changes that protect a hard rule (e.g. parking point outside a closure) are `rejectable: false` with the reason; the app shows "not possible" instead of a recalculation.
+- Changes that protect a hard rule (e.g. parking point outside a closure) are `rejectable: false` with the reason; the app shows "not possible" instead of a recalculation. *(Superseded for the demo 2026-11-20, see "Driver app redesign".)*
 - Driving paths along the road network; walking lines as straight lines (as the engine calculates, straight line × 1.25), stated openly.
-- The march scenario is labelled in the app as the real march of 2026-11-20 replayed on the tour day.
+- The march scenario is labelled in the app as the real march of 2026-11-20 replayed on the tour day. *(Superseded for the demo 2026-11-20, see "Driver app redesign".)*
 - Google Maps links are built by the app from the coordinates (display, not planning).
 
 **P4 git**
@@ -191,6 +191,48 @@ Cut first if time runs short: the "what if rain" scenario and a real file picker
 - **Map test passed:** the Google map inside the app (WebView + Maps JavaScript API + Maps Demo Key from `lieferplan-prototyp/.env`) loads in Expo Go on the user's iPhone. It shows one real halt (Solmsstraße 7 + 12, parking point Fürbringerstraße) with doors, straight walking lines and the VIZ closures (closed red, narrowing orange). The react-native-maps / Apple Maps fallback is not needed. The driving link starts navigation directly and the walking link shows both doors (user check on the iPhone).
 - Implemented: `src/components/google-map.tsx` (draws only precomputed data; reports key rejection via `gm_authFailure`), temporary screen `src/app/map-test.tsx`, `walkingUrl` corrected to the decision (one link per halt, doors as waypoints, no origin, no `dir_action`).
 
+## Driver app redesign (decided 2026-11-20, user)
+Principle: the app is used by the driver while working, so it shows as little as possible: one main action per screen, details only on demand. The value of our data work stays visible through one-line reasons and a detail view.
+
+**Plan and control (supersedes Step 3 rules B and C for the demo, 02 B8)**
+- The app uses **"replan completely"** directly; the system decides. No "only necessary changes" in the app, no "keep my list", no accepting or rejecting single changes, so no precomputed "what if rejected" (supersedes that part of "Demo build decisions" and P3).
+- "The driver decides" (rule C) becomes an outlook item (slide D). Slide E must not claim that the driver can reject single changes in the demo (team to adjust).
+- The engine still computes all three plans; the app uses `plan_replan_full.json` and `plan_before.json` for the comparison (`meta.json` start_mode = replan_full).
+
+**Screens**
+1. **Start:** only "Start tour" with tour number and date; gear icon top right for settings.
+2. **Comparison:** "Your list: 58 stops, 10 conflicts" vs "New route: 34 halts, 0 conflicts" and the button to continue. A small, unobtrusive button in a corner opens the **detail view** with two tabs: **Map** (Google map in the app: old route grey with the conflicts marked, new route blue, closures red; switch Old / New / Both; key figures) and **Why** (all changes with reason and source, grouped: closures and no-stopping zones, time windows and priority, loading zones, stops bundled; plus the import check, data dates and assumptions).
+3. **Loading:** progress bar on top, big "Scan parcel" button, after a scan a big "→ A2" with street. **Pre-selection:** all parcels count as "already loaded (simulated)" except the 13 demo labels of the tour, so the bar starts at 82 of 95; in the demo 2–3 labels are scanned plus the 14th label that is not on the tour ("Not on the list"). "Start route" also works before everything is scanned (short confirmation).
+4. **Halt loop:** (a) approach: small map with the way to the parking point, **one line why** (e.g. "Park in Fürbringerstraße – Solmsstraße closed (VIZ)"), big button "Open in <navigation app>"; (b) after "Arrived": which slots to take out (e.g. "A2 × 3"), map with the walks, "Walk in <app>", per stop "Delivered", "Not at home" as a small link; (c) "Next halt" shows the next approach screen (navigation opens automatically only if switched on in the settings).
+5. **End:** "All parcels delivered" with one line of summary.
+
+**Import notes (revises "Five non-existent house numbers" display):** no separate list for the driver. A house number not found is shown on the card of that stop (e.g. "Chamissoplatz 9 not found – door at No. 8"); the five deliberate import errors that were corrected automatically appear only in the detail view (Why tab, "Import check").
+
+**Notes for later drivers (new)**
+- On every stop card a small "Add note": free text, saved, shown next time on the same stop as "Note from a driver".
+- One pre-filled note from an "earlier driver" (labelled synthetic) shows reading and writing in the demo.
+- Stored only on this iPhone in the demo; sharing between drivers needs a server (slide D). Notes are learning material for the user test.
+
+**Settings (new, gear icon)**
+- **Navigation app: Google Maps / Apple Maps / Waze, working.** Buttons are labelled with the chosen app ("Open in Google Maps", "Open in Apple Maps", "Open in Waze"). Driving: all three by URL to the parking point. Walking: Google Maps one link with all doors; Apple Maps one destination per link (one button per door, unless a test shows that several stops work); Waze has no walking mode, so walking then uses Apple Maps and the button says so. Supersedes Step 5 Q5 ("no Apple Maps fallback"). To be tested on the user's iPhone (Apple Maps and Waze installed).
+- **Open navigation automatically after "Next halt"**, on/off (default off), working.
+- **Language** English / Deutsch: Deutsch shown as "planned" (B2).
+- **Max. walking distance per halt** 150 m: shown, "planned" (plans are precomputed).
+- **Reset demo** and **About the data** move here.
+
+**"Update situation" (supersedes Step 3b demo, Step 5 Q4 exception, P1 Tue and the march scenario in P3)**
+- Not built. Everything is computed before the tour. Real-time reaction is outlook (slide D): during the round our system checks new data in real time, also along a changed route from Google Maps or Waze, and decides again (e.g. after an accident). The march of 2026-11-20 can serve as the real example on the slide.
+
+**Build order (supersedes P1 from Sat 2026-11-21)**
+| Day | Part |
+|---|---|
+| Sat 2026-11-21 | Start, comparison, detail view (Map, Why); start mode replan_full |
+| Sun 2026-11-22 | Halt loop with one-line reasons, slots, walks, delivered / not at home, end screen; navigation-app links |
+| Mon 2026-11-23 | Scan and load with pre-selection |
+| Tue 2026-11-24 | Settings, notes, polish, buffer |
+| Wed 2026-11-25 | as in P6 (without the march scenario) |
+If time runs short, the settings keep only the navigation app; language and walking distance become a line in the outlook.
+
 ## Other decisions made in this chat
 - **2026-11-19:** the data-flow and data-source slides are presentation ideas (see 05), not yet agreed with the team.
 - **2026-11-20:** the decision-logic slide (E) is added to the slide ideas.
@@ -199,3 +241,4 @@ Cut first if time runs short: the "what if rain" scenario and a real file picker
 - **2026-11-20:** Step 5 Navigation decided (see above); scope principle "only what the demo and the user test need".
 - **2026-11-20:** demo build decisions: everything precomputed; internet allowed with a video as fallback; Google map in the app via WebView and Maps Demo Key; UI in English; the five non-existent house numbers stay as import notes; slide numbers at 08:30 departure.
 - **2026-11-20:** build plan P1–P6 (order, reuse of the skeleton, data format v1, one git repository, roles, plan for 2026-11-25); map test passed on the iPhone.
+- **2026-11-20:** driver app redesign: replan completely directly, minimal screens with one-line reasons and a detail view, notes for later drivers, settings with a working navigation-app choice, no "Update situation" in the demo.
