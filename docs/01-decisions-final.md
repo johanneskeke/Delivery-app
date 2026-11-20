@@ -245,6 +245,16 @@ Refines screen 4 of "Driver app redesign".
 - **End:** "All parcels delivered", one summary line (delivered, not at home), button "Drive back to depot".
 - Technical: the navigation button goes through one small switch (Google Maps until the settings exist on Tue); progress (current halt, status per stop) survives an app reload, "Reset demo" clears it.
 
+## Scan and load details (decided 2026-11-20, user)
+Refines screen 3 of "Driver app redesign".
+- **Correction of the pre-selection count:** the 3 pickups are not loaded, so 92 shipments are loaded (incl. 2 bulky items). Without the 13 demo labels of the tour the progress bar starts at **79 of 92** (not "82 of 95").
+- **Screen:** progress bar "n of 92 loaded", small link "n still to scan" (list of the missing parcels with recipient and slot, so the presenter knows which cartons are left), big "Scan parcel", "Start route" (asks "n parcels not scanned. Start anyway?" if parcels are missing).
+- **Camera stays open** after "Scan parcel" (full screen, Code128); each scan shows a large result card for about 2 s, then the next parcel can be scanned; "Done" closes it.
+- **Result cards:** normal → huge "→ A2" plus halt, address, recipient; over 10 kg → also "<kg> kg → bottom slot"; bulky → "→ Floor at the back"; already scanned → grey "Already scanned → A2", counter unchanged; not on the tour (demo label 14) → red "Not on the list", "Put it aside and report it at the depot".
+- **Feedback: vibration only** (short pattern on success, double on error; expo-haptics, included in Expo Go). No sound.
+- **"Type number"** link inside the camera as a fallback (bad light, camera problems).
+- The camera logic for Code128 is taken from the parked skeleton (git history, scan.tsx). "Reset demo" also resets the scans.
+
 ## Other decisions made in this chat
 - **2026-11-19:** the data-flow and data-source slides are presentation ideas (see 05), not yet agreed with the team.
 - **2026-11-20:** the decision-logic slide (E) is added to the slide ideas.
@@ -255,3 +265,4 @@ Refines screen 4 of "Driver app redesign".
 - **2026-11-20:** build plan P1–P6 (order, reuse of the skeleton, data format v1, one git repository, roles, plan for 2026-11-25); map test passed on the iPhone.
 - **2026-11-20:** driver app redesign: replan completely directly, minimal screens with one-line reasons and a detail view, notes for later drivers, settings with a working navigation-app choice, no "Update situation" in the demo.
 - **2026-11-20:** halt loop details: delivered per stop, not-at-home sheet, all-halts list to jump, end screen with drive back to depot, one-line reason precomputed by the engine.
+- **2026-11-20:** scan and load details: camera stays open, vibration only, type-number fallback, still-to-scan list; pre-selection corrected to 79 of 92.
