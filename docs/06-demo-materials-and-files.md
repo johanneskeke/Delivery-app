@@ -1,7 +1,7 @@
 # 06 Demo materials, artifacts and files
 Last updated: 2026-11-20 · Living document.
 
-**Important:** files created in a chat live only in that chat's workspace. Everything below is in the workspace bundle **`M10_lieferplan_workspace_2026-11-20.zip`** (sent in the chat on 2026-11-20). Attach it to a new chat whenever code, data or PDFs are needed. Recommended: keep a copy in the uni folder (OneDrive rule: see 00).
+**Important:** since 2026-11-20 everything below lives in the project folder `M10_lieferplan_workspace` on the user's computer, one git repository (also pushed to the user's GitHub repository). The workspace bundle `M10_lieferplan_workspace_2026-11-20.zip` is the starting state of that day. A chat on claude.ai cannot see these files; attach what is needed.
 
 ## 1. Synthetic tour (Step 1)
 **Tour header:** tour KRZ-61-07 · date Thu 2026-11-26 · delivery district "Kreuzberg 61 (Bergmannkiez to Graefekiez)" · start and end: depot "Zustellbasis Tempelhof, Eresburgstraße 24, 12103 Berlin" · vehicle: van, 3 racks (A–C) with 4 slots each · shift start 07:30 · planned departure 08:30 · origin: synthetic test data for the M10 prototype; all names and companies invented, streets real; not a real carrier document.
@@ -68,13 +68,13 @@ Slots can change after the 2026-11-25 rerun: rebuild the PDF then. The older Cod
 Folder `lieferplan-prototyp/assets/data/`, written by `probelauf/export_app.py`, checked by `probelauf/check_app_data.py`. Departure 08:30. Texts for the app in English, tour data in German.
 | File | Content |
 |---|---|
-| `meta.json` | format version, generation time, departure, start mode (B8 switch, default `only_necessary`), synthetic label, data dates per source, attributions, assumptions, weather summary for the tour day |
+| `meta.json` | format version, generation time, departure, start mode (B8: `replan_full`), synthetic label, data dates per source, attributions, assumptions, weather summary for the tour day, demo labels (printed ones and the four `to_scan`) |
 | `tour.json` | tour header (from the Excel sheet Tourkopf), 95 shipments, 58 stops with door coordinates and flags |
 | `import.json` | 10 import notes: 5 deliberate errors + 5 house numbers not found (nearest number used) |
 | `map.json` | closures (full, one direction, notes) with lines, depot, start point |
-| `plan_before.json`, `plan_only_necessary.json`, `plan_replan_full.json` | key figures, halts (arrival, parking point, stops with ETA, walk, window, notes, warnings, conflicts), driving path per halt and back, changes with reason, source and `rejectable`, slot per shipment with reason |
-Not yet included (P1): `if_rejected` per change (Mon 2026-11-23), `scenario_march.json` (Tue 2026-11-24).
-Slots: rack by route position (A = first part, at the sliding door), same halt → same slot, parcels over 10 kg in slots 1–2, bulky → floor, pickups → C4. In "replan completely" two parcels over 10 kg end up in A3 because the bottom slots of rack A are full; the reason text says so.
+| `plan_before.json`, `plan_only_necessary.json`, `plan_replan_full.json` | key figures, halts (arrival, parking point, one-line `reason`, stops with ETA, walk, window, notes, warnings, conflicts), driving path per halt and back, changes with reason, source and `rejectable`, slot per shipment with reason |
+Not computed since the driver app redesign (2026-11-20): `if_rejected` per change (always null) and a march scenario.
+Slots: rack by route position (A = first part, at the sliding door), same halt → same slot, halts with a parcel over 10 kg always in slots 1–2 (a bottom slot may hold a few more parcels; slots hold 4–13 parcels), bulky → floor, pickups → C4.
 
 ## 4. Other outputs
 - `tourdaten/Data_sources_delivery_prototype.pdf`: English one-page data-source overview (built by `build_datasources_pdf.py`).
@@ -94,7 +94,8 @@ Slots: rack by route position (A = first part, at the sliding door), same halt �
 | `data_weather/weather_26-11.json` | DWD/Bright Sky hourly forecast for 2026-11-26 | 2026-11-19 |
 | `scripts/` | analyze_viz, repair_tic (cp1252 → UTF-8, removes line breaks inside strings), analyze_tic, merge_closures (normalises both feeds), parse_demos (HTML table → JSON), analyze_lz | — |
 
-## 6. Parked code skeleton (Expo, 2026-11-19)
+## 6. Code skeleton (Expo, 2026-11-19), reused and rebuilt 2026-11-20
+- **Since 2026-11-20:** reused as decided in 01 "Build plan" P2 and rebuilt into the demo app (screens, data bundle, stores; see 01 "Driver app redesign" and the details sections). Its own git history is kept in `_archive/lieferplan-prototyp-skeleton-2026-11-19.bundle`. The points below describe the state of 2026-11-19.
 - Folder `lieferplan-prototyp/` (without node_modules), git commits "Initial commit" and "Grundgerüst Lieferplan-Prototyp: Ablauf, Demo-Tour, Planung, Scanner, Google-Maps-Übergabe". README in German.
 - Stack: Expo SDK 58 (React Native 0.88, React 19.3), Expo Router, TypeScript, zustand + AsyncStorage, expo-camera, expo-location; Node.js ≥ 22.13; Expo Go from the store (SDK 58).
 - Start: `npm install`, `npx expo start` (or `--tunnel` on university Wi-Fi); `npm test` for the planning logic; `npm run typecheck`.
