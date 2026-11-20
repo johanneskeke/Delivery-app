@@ -41,8 +41,8 @@ Last updated: 2026-11-20 · Living document: update after every working session.
 ## C. To-dos with dates
 | When | What | Who |
 |---|---|---|
-| before building | Create the **Maps Demo Key** with a personal Google account (Gmail; Workspace accounts are not eligible); store it in `.env` in the project folder, never in chat or git. | user |
-| before building | Choose the project folder on the computer (not in OneDrive because of node_modules). | user |
+| ~~before building~~ | ~~Create the **Maps Demo Key** with a personal Google account (Gmail; Workspace accounts are not eligible); store it in `.env` in the project folder, never in chat or git.~~ **Done 2026-11-20.** | user |
+| ~~before building~~ | ~~Choose the project folder on the computer (not in OneDrive because of node_modules).~~ **Done 2026-11-20:** `~/Documents/Projekte/Uni/M10_lieferplan_workspace`. | user |
 | optional | OpenRouteService account (openrouteservice.org, HeiGIT, free standard token) is **not needed for the demo** since everything is precomputed (B11); only if the app calculates live later. Not my.optimoroute.com (commercial planner). | user/team |
 | ~~before demo~~ | ~~Install the Google Maps app on the demo iPhone; test one driving link and one walking link (with waypoints) from the app.~~ **Done 2026-11-20.** | user |
 | 2026-11-25 | Re-download both VIZ feeds and the weather forecast for 2026-11-26; recheck the Christmas markets list (2026 list was not yet published on 2026-11-19); rerun the trial **at 08:30 departure**; update slide numbers. | user downloads, Claude checks |
@@ -53,7 +53,7 @@ Last updated: 2026-11-20 · Living document: update after every working session.
 | before demo | Print the demo labels (actual size, not "fit to page"), stick them on empty cartons. | team |
 | before slides | Check logo usage rules (Land Berlin, Police, DWD, OpenStreetMap brand); fallback: names in one typeface plus licence note. | team |
 | before slides | Add mandatory attributions (see 03; for the in-app map also Google's attribution as shown by the map). | team |
-| end of session | Sync the OneDrive snapshot (`Prototyp/Dokumentation/`) once with the current docs. | Claude (with OK) |
+| end of session | Sync the OneDrive snapshot (`Prototyp/Dokumentation/`) once with the current docs. **Done 2026-11-20** (00, 01, 02, 04, 05, 06 updated; 03 unchanged). | Claude (with OK) |
 
 ## D. Build phase (started 2026-11-20)
 - **Status 2026-11-20:** Xcode command line tools installed (git, Python 3.9.6); `.venv` at the top level with shapely, pyproj, networkx, matplotlib, openpyxl (reportlab needs Python 3.10+, only for rebuilding PDFs); `npm install` done, `react-native-webview` added; `.env` with the Maps Demo Key (not in git), `.env.example` as template; map test passed on the iPhone. Build plan P1–P6 decided (01). Workspace is one git repository, pushed to a GitHub repository of the user (`main`). Engine export v1 + check script done (0 errors; warnings: 'what if rejected' not yet computed, 2 heavy parcels in an upper slot in "replan completely"). Replan-completely numbers at 08:30 on the Mac: 78 min driving, back 16:59 (04). App reads the bundle (`src/data/`), new screens: start (`index`), `import`, `about`; old calculation services, the 12-stop demo tour and the old screens removed (in git history, commit b598de4; camera logic of `scan.tsx` to be taken from there on Tue); new store `src/store/demo-store.ts` (start mode from `meta.json`, progress reset when a new bundle arrives); tests now check links and the bundle; ESLint (`eslint-config-expo`) set up by `npx expo lint`. Map test still reachable from the start screen.
