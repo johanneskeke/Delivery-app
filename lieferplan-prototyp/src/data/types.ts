@@ -29,7 +29,7 @@ export type Meta = {
     note: string | null;
     hours: { hour: string; condition: string; precip_mm: number; precip_prob: number; temp_c: number; gust_kmh: number }[];
   };
-  /** The printed demo labels; only `to_scan` (4 QR labels) is scanned live, every other loadable shipment counts as already loaded (simulated). */
+  /** The printed demo labels; only `to_scan` (4 Code128 labels) is scanned live, every other loadable shipment counts as already loaded (simulated). */
   demo_labels: { on_tour: string[]; not_on_tour: string; to_scan: string[]; source: string };
   not_yet_included: string[];
   files: string[];

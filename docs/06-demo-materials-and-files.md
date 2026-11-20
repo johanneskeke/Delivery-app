@@ -54,8 +54,8 @@ Correction 2026-11-20: overview line no. 12 first said "Bergmannstraße has no l
 
 Built by `tourdaten/build_labels.py`. Senders used: Kiezkiste Versand GmbH, Nordlicht Feinkost-Großhandel, Praxisbedarf Süd GmbH, Radteile Direkt GmbH, Buchgroßhandel Mustermann (all "Musterstadt", invented).
 
-## 3a. Demo scan labels with QR code (2026-11-20)
-`tourdaten/Demo-Scan-Etiketten_QR_Tour_KRZ-61-07.pdf` (2 pages), built by `tourdaten/build_scan_labels.py` (`../.venv/bin/python build_scan_labels.py`, reportlab 4.0, Helvetica). Page 1: four A6 labels with a QR code (content = shipment number), fictional carrier header, footer "Synthetische Testdaten …"; print at actual size, cut, stick on empty cartons. Page 2: overview for the team. The four parcels are scanned live in the demo (01 "Changes after the first iPhone tests"):
+## 3a. Demo scan labels, four parcels (2026-11-20)
+`tourdaten/Demo-Scan-Etiketten_Tour_KRZ-61-07.pdf` (2 pages), built by `tourdaten/build_scan_labels.py` (`../.venv/bin/python build_scan_labels.py`, reportlab 4.0, Helvetica). Page 1: four A6 labels with a Code128 barcode (content = shipment number), note line and hand-written slot box as on the other labels, fictional carrier header, footer "Synthetische Testdaten …"; print at actual size, cut, stick on empty cartons. Page 2: overview for the team. The four parcels are scanned live in the demo (01 "Changes after the first iPhone tests"):
 | Shipment | Recipient, address | App shows (data run 2026-11-20) |
 |---|---|---|
 | SYN969042356 | Zahnarztpraxis Dr. Albers, Fidicinstraße 33 | → B1, halt 11, priority |

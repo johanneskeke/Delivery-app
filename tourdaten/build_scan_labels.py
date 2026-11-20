@@ -1,4 +1,4 @@
-"""Four demo parcel labels with a QR code for the live scan in the app (decided 2026-11-20).
+"""Four demo parcel labels with a Code128 barcode for the live scan in the app (decided 2026-11-20).
 
     cd tourdaten && ../.venv/bin/python build_scan_labels.py
 
@@ -11,9 +11,7 @@ Uses the built-in Helvetica font, so it runs on macOS without extra fonts.
 import json
 import os
 
-from reportlab.graphics import renderPDF
-from reportlab.graphics.barcode.qr import QrCodeWidget
-from reportlab.graphics.shapes import Drawing
+from reportlab.graphics.barcode import createBarcodeDrawing
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
@@ -22,7 +20,7 @@ from reportlab.pdfgen import canvas
 HERE = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.dirname(HERE)
 DATA = os.path.join(BASE, "lieferplan-prototyp", "assets", "data")
-OUT = os.path.join(HERE, "Demo-Scan-Etiketten_QR_Tour_KRZ-61-07.pdf")
+OUT = os.path.join(HERE, "Demo-Scan-Etiketten_Tour_KRZ-61-07.pdf")
 
 ACCENT = colors.HexColor("#0F5257")
 MUTED = colors.HexColor("#5C6670")
@@ -47,14 +45,6 @@ def load():
         slot = plan["slots"][sid]
         items.append((rows[sid], slot["slot"], seq[slot["halt_id"]]))
     return items
-
-
-def qr(value, size):
-    w = QrCodeWidget(value, barLevel="M")
-    x0, y0, x1, y1 = w.getBounds()
-    d = Drawing(size, size, transform=[size / (x1 - x0), 0, 0, size / (y1 - y0), 0, 0])
-    d.add(w)
-    return d
 
 
 def draw_label(c, x, y, r):
@@ -115,13 +105,28 @@ def draw_label(c, x, y, r):
     c.setFont("Helvetica-Bold", 9)
     c.drawRightString(left + w - 6, ty - 11, f"{r['Gewicht kg']:.1f}".replace(".", ",") + " kg")
     c.line(left, ty - 17, left + w, ty - 17)
-    # QR code with the shipment number (what the app scans)
+    # Code128 barcode with the shipment number (what the app scans), as on the other demo labels
     code = r["Sendungsnummer"]
-    size = 44 * mm
-    qx, qy = left + (w - size) / 2, ty - 17 - 6 - size
-    renderPDF.draw(qr(code, size), c, qx, qy)
+    bc = createBarcodeDrawing("Code128", value=code, barWidth=1.15, barHeight=58, humanReadable=False, quiet=True,
+                              lquiet=10 * 1.15, rquiet=10 * 1.15)
+    bx = left + (w - bc.width) / 2
+    by = ty - 17 - 8 - bc.height
+    bc.drawOn(c, bx, by)
     c.setFont("Helvetica-Bold", 11)
-    c.drawCentredString(left + w / 2, qy - 12, " ".join([code[:3], code[3:6], code[6:9], code[9:]]))
+    c.drawCentredString(left + w / 2, by - 13, " ".join([code[:3], code[3:6], code[6:9], code[9:]]))
+    if r["Hinweis"]:
+        c.setFont("Helvetica", 7.5)
+        c.drawCentredString(left + w / 2, by - 26, r["Hinweis"])
+    # box for the slot, written by hand as drivers often do (optional)
+    bw, bh = 34 * mm, 15 * mm
+    fx, fy = left + w - bw - 6, y + pad + 14
+    c.setStrokeColor(colors.black)
+    c.setLineWidth(0.8)
+    c.rect(fx, fy, bw, bh)
+    c.setFont("Helvetica", 6.5)
+    c.setFillColor(MUTED)
+    c.drawString(fx + 4, fy + bh - 9, "Fach (optional per Hand)")
+    c.setFillColor(colors.black)
     c.setFillColor(MUTED)
     c.setFont("Helvetica", 5.8)
     c.drawCentredString(left + w / 2, y + pad + 5,
@@ -168,7 +173,7 @@ def overview(c, items):
 def main():
     items = load()
     c = canvas.Canvas(OUT, pagesize=A4)
-    c.setTitle("Demo scan labels (QR), tour KRZ-61-07, synthetic")
+    c.setTitle("Demo scan labels, tour KRZ-61-07, synthetic")
     positions = [(0, LH), (LW, LH), (0, 0), (LW, 0)]
     for (r, _, _), (x, y) in zip(items, positions):
         draw_label(c, x, y, r)

@@ -67,7 +67,7 @@ export default function ScanScreen() {
         <CameraView
           style={StyleSheet.absoluteFill}
           facing="back"
-          barcodeScannerSettings={{ barcodeTypes: ['qr', 'code128'] }}
+          barcodeScannerSettings={{ barcodeTypes: ['code128'] }}
           onBarcodeScanned={onBarcodeScanned}
         />
       ) : (
