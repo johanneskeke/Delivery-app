@@ -28,7 +28,15 @@ export default function RootLayout() {
   return (
     <>
       <StatusBar style="dark" />
-      <Stack screenOptions={{ headerBackTitle: 'Back', contentStyle: { backgroundColor: colors.bg } }}>
+      <Stack
+        screenOptions={{
+          headerBackTitle: 'Back',
+          // Solid header: on iOS the header can be translucent, then the content starts behind it.
+          headerTransparent: false,
+          headerStyle: { backgroundColor: colors.bg },
+          headerShadowVisible: false,
+          contentStyle: { backgroundColor: colors.bg },
+        }}>
         <Stack.Screen name="index" options={{ title: '', headerRight: () => <SettingsButton /> }} />
         <Stack.Screen name="compare" options={{ title: 'Your route' }} />
         <Stack.Screen name="details" options={{ title: 'Details' }} />
