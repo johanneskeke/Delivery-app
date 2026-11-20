@@ -263,6 +263,15 @@ Refines screen 3 of "Driver app redesign".
 - **Delivered and Picked up separately:** at the three stops with a pickup (they all also get parcels) the driver confirms both; "Not at home" completes the stop.
 - **"Deliver all (demo)":** small link at the top of "All halts"; marks every stop as done and opens the end screen. The driver can still click through as far as wanted.
 
+## Settings and notes details (decided 2026-11-20, user)
+Refines "Settings" and "Notes for later drivers" in "Driver app redesign".
+- **Settings screen (gear icon):** Navigation: app Google Maps / Apple Maps / Waze, "Open navigation automatically after Next halt" (default off); Driver: language English (Deutsch "planned"), max. walking distance per halt 150 m ("planned"); Data: "About the data" (Insights → Why), "Reset demo". Settings are saved on the phone and are not cleared by "Reset demo".
+- **Walking with Apple Maps / Waze:** an Apple Maps link is assumed to take one destination; this is checked on the user's iPhone during the build. If several do not work, Apple Maps and Waze show a small "Walk ›" link per stop card (to that door); Waze has no walking mode, so these links open Apple Maps. Google Maps keeps one walking link per halt with all doors.
+- **Auto-navigation:** when on, "Next halt" opens the navigation app straight away; the approach screen of the next halt is behind it when the driver returns.
+- **Notes:** "Add note" on every stop card (text field in the card, Save); shown as "Note from a driver" with Edit and Delete. One pre-filled example at **Chamissoplatz 9** (halt 1; the house number that does not exist), in German as a Berlin driver would write it: "Nr. 9 gibt es nicht – Eingang ist Nr. 8, Seitenflügel, 2. OG.", labelled "earlier driver · synthetic example".
+- **Reset demo** deletes own notes; the example note stays, so every demo starts the same.
+- **Insights → Why** gets a group "Driver notes" (driver knowledge flowing back to the back office).
+
 ## Other decisions made in this chat
 - **2026-11-19:** the data-flow and data-source slides are presentation ideas (see 05), not yet agreed with the team.
 - **2026-11-20:** the decision-logic slide (E) is added to the slide ideas.
@@ -275,3 +284,4 @@ Refines screen 3 of "Driver app redesign".
 - **2026-11-20:** halt loop details: delivered per stop, not-at-home sheet, all-halts list to jump, end screen with drive back to depot, one-line reason precomputed by the engine.
 - **2026-11-20:** scan and load details: camera stays open, vibration only, type-number fallback, still-to-scan list; pre-selection corrected to 79 of 92.
 - **2026-11-20:** after the first iPhone tests: Insights button for the back office, four Code128 demo parcels (88 of 92, scans reset on app start), shorter approach screen, delivered and picked up separately, Deliver all (demo).
+- **2026-11-20:** settings and notes details: navigation app choice with per-door walk links for Apple Maps/Waze, auto-navigation off by default, example note at Chamissoplatz 9, reset keeps the example, driver notes in Insights.
