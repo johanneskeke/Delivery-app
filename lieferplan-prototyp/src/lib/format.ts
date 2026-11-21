@@ -32,3 +32,19 @@ export function greeting(date = new Date()): string {
   const h = date.getHours();
   return h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening';
 }
+
+/** Minutes from "08:30" to "17:00". */
+export function minutesBetween(from: string, to: string): number {
+  const m = (t: string) => {
+    const [h, mm] = t.split(':').map(Number);
+    return h * 60 + mm;
+  };
+  return m(to) - m(from);
+}
+
+/** 195 → "3 h 15 min", 45 → "45 min". */
+export function formatDuration(min: number): string {
+  const h = Math.floor(min / 60);
+  const m = min % 60;
+  return h ? `${h} h${m ? ` ${m} min` : ''}` : `${m} min`;
+}

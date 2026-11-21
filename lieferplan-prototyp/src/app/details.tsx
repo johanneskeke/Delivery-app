@@ -144,8 +144,13 @@ const SECTIONS: Section[] = [
 // ---------------------------------------------------------------- screen
 
 type Tab = 'map' | 'why';
-type Show = 'old' | 'new' | 'both';
-const GROUPS: Record<Show, string[]> = { old: ['old'], new: ['new'], both: ['old', 'new'] };
+// Only "Old" and "New" (decided 2026-11-21); the map starts with the new route.
+type Show = 'old' | 'new';
+const GROUPS: Record<Show, string[]> = { old: ['old'], new: ['new'] };
+const LEGEND: Record<Show, string> = {
+  old: 'Grey: your list · ✕ conflict · Red: closed',
+  new: 'Blue: new route · numbers: halts · Red: closed',
+};
 
 export default function DetailsScreen() {
   const params = useLocalSearchParams<{ tab?: string }>();
@@ -163,10 +168,8 @@ export default function DetailsScreen() {
 }
 
 function MapTab() {
-  const [show, setShow] = useState<Show>('both');
+  const [show, setShow] = useState<Show>('new');
   const [status, setStatus] = useState<MapStatus>('loading');
-  const old = listPlan.kpis;
-  const now = route.kpis;
 
   return (
     <View style={{ flex: 1 }}>
@@ -191,13 +194,8 @@ function MapTab() {
         <View style={styles.segment}>
           <SegmentButton label="Old" active={show === 'old'} onPress={() => setShow('old')} />
           <SegmentButton label="New" active={show === 'new'} onPress={() => setShow('new')} />
-          <SegmentButton label="Both" active={show === 'both'} onPress={() => setShow('both')} />
         </View>
-        <Text style={styles.kpiLine}>
-          Driving {old.drive_min} → {now.drive_min} min · conflicts {old.conflicts} → {now.conflicts} · stops {listPlan.halts.length} →{' '}
-          {now.halts} halts
-        </Text>
-        <Text style={styles.legend}>Grey: your list · ✕ conflict · Blue: new route · Red: closed</Text>
+        <Text style={styles.legend}>{LEGEND[show]}</Text>
       </View>
     </View>
   );
@@ -265,7 +263,6 @@ const styles = StyleSheet.create({
   segText: { fontSize: 14, fontWeight: '600', color: colors.muted },
   segTextActive: { color: colors.text },
   mapFooter: { backgroundColor: colors.card, borderTopWidth: StyleSheet.hairlineWidth, borderColor: colors.border, paddingBottom: 8 },
-  kpiLine: { fontSize: 14, fontWeight: '600', color: colors.text, textAlign: 'center', paddingHorizontal: 12 },
   legend: { fontSize: 12, color: colors.muted, textAlign: 'center', paddingHorizontal: 12, marginTop: 4 },
   error: { position: 'absolute', top: 12, left: 12, right: 12, color: colors.danger, fontWeight: '600' },
   why: { padding: 12, paddingTop: 0, gap: 10, paddingBottom: 32 },

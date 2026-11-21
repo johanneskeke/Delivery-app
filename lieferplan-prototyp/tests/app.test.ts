@@ -71,3 +71,11 @@ test('start card: return time rounded to the quarter hour', async () => {
   assert.equal(roundToQuarter('08:07'), '08:00');
   assert.equal(roundToQuarter('08:08'), '08:15');
 });
+
+test('insights: time saved from the rounded time spans', async () => {
+  const { formatDuration, minutesBetween } = await import('../src/lib/format');
+  assert.equal(minutesBetween('17:00', '20:15'), 195);
+  assert.equal(formatDuration(195), '3 h 15 min');
+  assert.equal(formatDuration(45), '45 min');
+  assert.equal(formatDuration(120), '2 h');
+});
