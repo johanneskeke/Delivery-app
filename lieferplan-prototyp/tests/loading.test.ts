@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
 import { meta } from '../src/data/bundle';
-import { isLoaded, loadable, scanResult, stillToScan } from '../src/data/loading';
+import { demoParcels, isLoaded, loadable, scanResult, stillToScan } from '../src/data/loading';
 
 test('92 shipments are loaded; 88 count as already loaded, the 4 demo scan labels are left to scan', () => {
   assert.equal(loadable.length, 92);
@@ -27,4 +27,14 @@ test('scan: bulky item → floor; label 14 → not on the list; lower-case input
   assert.equal(scanResult('  syn969042356 ', {}).kind, 'slot');
   // a printed label that is not one of the four counts as already loaded
   assert.equal(scanResult('SYN464094408', {}).kind, 'already');
+});
+
+test('loading cards: the four demo parcels in route order, green after the scan', () => {
+  const before = demoParcels({});
+  assert.equal(before.length, 4);
+  assert.ok(before.every((p) => !p.scanned));
+  assert.deepEqual([...before].sort((a, b) => a.halt - b.halt), before);
+  const after = demoParcels({ SYN842112630: true });
+  assert.equal(after.find((p) => p.id === 'SYN842112630')?.slot, 'Floor');
+  assert.equal(after.find((p) => p.id === 'SYN842112630')?.scanned, true);
 });

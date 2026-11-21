@@ -58,3 +58,22 @@ export function stillToScan(scanned: Record<string, true>) {
       };
     });
 }
+
+/** The four demo parcels in route order, with their scan state, for the cards on the loading screen. */
+export function demoParcels(scanned: Record<string, true>) {
+  return meta.demo_labels.to_scan
+    .map((id) => {
+      const s = shipmentById(id)!;
+      const slot = route.slots[id];
+      return {
+        id,
+        recipient: s.recipient,
+        address: `${s.street} ${s.house_no}`,
+        bulky: s.product === 'Sperrgut',
+        slot: slot.slot === 'FLOOR' ? 'Floor' : slot.slot,
+        halt: haltSeq.get(slot.halt_id) ?? 0,
+        scanned: !!scanned[id],
+      };
+    })
+    .sort((a, b) => a.halt - b.halt);
+}

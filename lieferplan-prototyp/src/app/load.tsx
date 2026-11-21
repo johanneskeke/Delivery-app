@@ -1,17 +1,22 @@
 import { router } from 'expo-router';
-import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { isLoaded, loadable } from '@/data/loading';
+import { ProgressRing } from '@/components/progress-ring';
+import { demoParcels, isLoaded, loadable } from '@/data/loading';
 import { useDemoStore } from '@/store/demo-store';
 import { Button, colors } from '@/ui/kit';
 
-/** Loading (decided 2026-11-20, "Scan and load details"): progress, one big scan button, start route. */
+/**
+ * Loading (decided 2026-11-21, "Start and loading screen design"): progress ring, the four demo parcels as cards
+ * (green with slot after the scan), "Scan parcel" and "Start route".
+ */
 export default function LoadScreen() {
   const scanned = useDemoStore((s) => s.scanned);
   const loaded = loadable.filter((s) => isLoaded(s.id, scanned)).length;
   const total = loadable.length;
   const missing = total - loaded;
+  const parcels = demoParcels(scanned);
 
   const startRoute = () => {
     if (!missing) return router.push('/tour');
@@ -23,53 +28,68 @@ export default function LoadScreen() {
 
   return (
     <SafeAreaView style={styles.screen} edges={['bottom']}>
-      <View style={styles.top}>
-        <Text style={styles.count}>
-          {loaded} of {total} loaded
-        </Text>
-        <View style={styles.track}>
-          <View style={[styles.fill, { width: `${(loaded / total) * 100}%` }]} />
+      <ScrollView contentContainerStyle={styles.content}>
+        <View style={styles.summary}>
+          <ProgressRing value={loaded} total={total} />
+          <View style={{ flex: 1, gap: 2 }}>
+            <Text style={styles.title}>
+              {missing ? `${missing} ${missing === 1 ? 'parcel' : 'parcels'} to scan` : 'All parcels loaded'}
+            </Text>
+            <Text style={styles.sub}>The rest is already loaded (simulated)</Text>
+          </View>
         </View>
-        {missing ? (
-          <Pressable hitSlop={10} onPress={() => router.push('/to-scan')}>
-            <Text style={styles.link}>{missing} still to scan ›</Text>
-          </Pressable>
-        ) : (
-          <Text style={[styles.link, { color: colors.ok }]}>All parcels loaded</Text>
-        )}
-      </View>
 
-      <View style={styles.center}>
-        <Pressable
-          accessibilityRole="button"
-          onPress={() => router.push('/scan')}
-          style={({ pressed }) => [styles.scan, pressed && { opacity: 0.85 }]}>
-          <Text style={styles.scanText}>Scan parcel</Text>
-        </Pressable>
-        <Text style={styles.note}>Parcels without a printed demo label count as already loaded (simulated).</Text>
-      </View>
+        {parcels.map((p) => (
+          <View key={p.id} style={[styles.card, p.scanned && styles.cardDone]}>
+            <Text style={[styles.icon, p.scanned && { color: colors.ok }]}>{p.scanned ? '✓' : '▢'}</Text>
+            <View style={{ flex: 1, gap: 2 }}>
+              <Text style={[styles.name, p.scanned && { color: colors.ok }]}>{p.recipient}</Text>
+              <Text style={[styles.address, p.scanned && { color: colors.ok }]}>
+                {p.address}
+                {p.bulky ? ' · bulky' : ''}
+              </Text>
+            </View>
+            {p.scanned ? <Text style={styles.slot}>{p.slot}</Text> : <Text style={styles.todo}>to scan</Text>}
+          </View>
+        ))}
+      </ScrollView>
 
-      <Button title="Start route" variant={missing ? 'secondary' : 'primary'} onPress={startRoute} />
+      <View style={styles.footer}>
+        <Button title="Scan parcel" variant={missing ? 'primary' : 'secondary'} onPress={() => router.push('/scan')} />
+        <Button title="Start route" variant={missing ? 'secondary' : 'primary'} onPress={startRoute} />
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: colors.bg, padding: 20, gap: 16 },
-  top: { gap: 8, marginTop: 8 },
-  count: { fontSize: 22, fontWeight: '700', color: colors.text },
-  track: { height: 10, borderRadius: 5, backgroundColor: colors.neutralBg, overflow: 'hidden' },
-  fill: { height: 10, borderRadius: 5, backgroundColor: colors.primary },
-  link: { fontSize: 15, fontWeight: '600', color: colors.primary },
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center', gap: 16 },
-  scan: {
-    width: 220,
-    height: 220,
-    borderRadius: 110,
-    backgroundColor: colors.primary,
+  screen: { flex: 1, backgroundColor: colors.bg },
+  content: { padding: 20, gap: 10 },
+  summary: { flexDirection: 'row', alignItems: 'center', gap: 16, marginBottom: 10 },
+  title: { fontSize: 20, fontWeight: '700', color: colors.text },
+  sub: { fontSize: 14, color: colors.muted },
+  card: {
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    gap: 12,
+    backgroundColor: colors.card,
+    borderRadius: 16,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: colors.border,
   },
-  scanText: { color: colors.primaryText, fontSize: 24, fontWeight: '700' },
-  note: { fontSize: 12, color: colors.muted, textAlign: 'center', paddingHorizontal: 24 },
+  cardDone: { backgroundColor: colors.okBg, borderColor: colors.okBg },
+  icon: { width: 22, fontSize: 18, color: colors.muted, textAlign: 'center' },
+  name: { fontSize: 16, fontWeight: '600', color: colors.text },
+  address: { fontSize: 13, color: colors.muted },
+  slot: { fontSize: 20, fontWeight: '700', color: colors.ok },
+  todo: { fontSize: 13, color: colors.muted },
+  footer: {
+    padding: 16,
+    gap: 8,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: colors.border,
+    backgroundColor: colors.card,
+  },
 });

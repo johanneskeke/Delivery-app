@@ -1,5 +1,5 @@
 # 01 Decisions (final)
-Last updated: 2026-11-20 · Append only. Changing a decision = add a new dated entry and mark the old one as superseded.
+Last updated: 2026-11-21 · Append only. Changing a decision = add a new dated entry and mark the old one as superseded.
 
 ## 0. Framework (2026-11-19)
 - Platform: **Expo Go** app (React Native). City: **Berlin**, tour area Kreuzberg 61 (Bergmannkiez) to Graefekiez.
@@ -275,6 +275,10 @@ Refines "Settings" and "Notes for later drivers" in "Driver app redesign".
 ## Fresh start on every app start (decided 2026-11-20, user)
 - On every app start (or reload) the route starts at **halt 1** with no stop confirmed and the four demo parcels unscanned. Only the driver's own notes and the settings are saved on the phone. (Supersedes "progress survives an app reload" in "Halt loop details" and "the halt progress is still saved" in "Changes after the first iPhone tests".)
 
+## Start and loading screen design (decided 2026-11-21, user)
+- **Start:** greeting with the driver's first name ("Good morning, Mike"; Mike is an invented driver, like all tour data synthetic), then "Your tours" with one rounded card per tour. Today's card: "Today · Thu 26 Nov", large time span "08:30 – about 17:00" (departure and the precomputed return to the depot, rounded to the quarter hour), "Kreuzberg · 58 stops · 34 halts", badge "Route ready", the technical tour number only small. Tapping the card opens loading; no big button. "Insights" top left, gear top right, synthetic note small at the bottom. (Supersedes screen 1 in "Driver app redesign".)
+- **Loading:** progress ring "88/92" with "n parcels to scan", the four demo parcels as rounded cards (recipient, address; green with check mark and slot after the scan), "Scan parcel" as the main button and "Start route" below; "Start route" becomes the main button when all four are scanned. The separate "still to scan" list is dropped. The scanner itself stays. (Refines "Scan and load details" and "Changes after the first iPhone tests".)
+
 ## Other decisions made in this chat
 - **2026-11-19:** the data-flow and data-source slides are presentation ideas (see 05), not yet agreed with the team.
 - **2026-11-20:** the decision-logic slide (E) is added to the slide ideas.
@@ -289,3 +293,4 @@ Refines "Settings" and "Notes for later drivers" in "Driver app redesign".
 - **2026-11-20:** after the first iPhone tests: Insights button for the back office, four Code128 demo parcels (88 of 92, scans reset on app start), shorter approach screen, delivered and picked up separately, Deliver all (demo).
 - **2026-11-20:** settings and notes details: navigation app choice with per-door walk links for Apple Maps/Waze, auto-navigation off by default, example note at Chamissoplatz 9, reset keeps the example, driver notes in Insights.
 - **2026-11-20:** every app start begins at halt 1; only notes and settings are saved.
+- **2026-11-21:** start screen with greeting and tour cards; loading screen with progress ring and the four parcels as cards.

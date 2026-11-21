@@ -64,3 +64,10 @@ test('the app uses "replan completely" (B8, redesign 2026-11-20) and every heavy
 test('date format', () => {
   assert.equal(formatDate('2026-11-26'), 'Thu 26 Nov 2026');
 });
+
+test('start card: return time rounded to the quarter hour', async () => {
+  const { roundToQuarter } = await import('../src/lib/format');
+  assert.equal(roundToQuarter('16:59'), '17:00');
+  assert.equal(roundToQuarter('08:07'), '08:00');
+  assert.equal(roundToQuarter('08:08'), '08:15');
+});
